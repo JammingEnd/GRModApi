@@ -18,6 +18,7 @@ public static class Test_StartingChestHook
         BindingFlags.Public | BindingFlags.NonPublic;
 
     private static bool _injected;
+    private static bool _injecting;
     private static Il2CppSystem.Collections.Generic.List<int>? _lastForgetList;
     private static PCWeaponBaseTitle? _lastUIInstance;
 
@@ -35,11 +36,35 @@ public static class Test_StartingChestHook
         TryPatch(harmony, typeof(inscriptionData), nameof(inscriptionData.GetWeaponInscription),
             null, nameof(PostGetWeaponInscription));
 
+        TryPatch(harmony, typeof(inscriptionData), "Init",
+            null, nameof(PostInscriptionDataInit));
+
         TryPatch(harmony, typeof(TableData.inscriptiondata), "GetData",
+            null, nameof(PostGetTableData));
+
+        TryPatch(harmony, typeof(TableData.inscriptiondata), "GetNormalData",
+            null, nameof(PostGetTableData));
+
+        TryPatch(harmony, typeof(TableData.inscriptiondata), "GetPressData",
             null, nameof(PostGetTableData));
 
         TryPatch(harmony, typeof(ItemManager), nameof(ItemManager.AddWeapon),
             null, nameof(OnAddWeapon));
+
+        TryPatch(harmony, typeof(ItemPropCache), nameof(ItemPropCache.GetPropObjAndUpdate),
+            null, nameof(PostGetPropObjAndUpdate));
+
+        TryPatch(harmony, typeof(s2citemcon), nameof(s2citemcon.GS2CItemAdd),
+            null, nameof(PostGS2CItemAdd));
+
+        TryPatch(harmony, typeof(s2citemcon), nameof(s2citemcon.GS2CEquipAdd),
+            null, nameof(PostGS2CEquipAdd));
+
+        TryPatch(harmony, typeof(WarInscriptionManager), "CheckInscWeapon",
+            null, nameof(PostCheckInscWeapon));
+
+        TryPatch(harmony, typeof(WarInscriptionManager), "CheckInscTag",
+            null, nameof(PostCheckInscTag));
 
         TryPatch(harmony, typeof(PCWeaponPanel_Logic), "SetWeaponInscriptionPanel",
             null, nameof(PostSetWeaponInscriptionPanel));
@@ -108,7 +133,7 @@ public static class Test_StartingChestHook
         data.Name = meta?.Description ?? "Custom Inscription";
         data.Desc = meta?.Description ?? "";
         data.ItemType = 1;
-        data.Weight = 3;
+        data.Weight = 10000;
         data.HurtType = "";
         data.DetailLabel = new Il2CppSystem.Collections.Generic.List<int>();
         data.LimitWeapon = new Il2CppSystem.Collections.Generic.List<int>();
@@ -137,39 +162,23 @@ public static class Test_StartingChestHook
 
     private static void InjectIntoDict()
     {
-        if (_injected) return;
-        _injected = true;
-
+        if (_injecting) return;
+        _injecting = true;
         try
         {
-            var staticDict = inscriptiondata.GetData();
-            if (staticDict != null)
-            {
-                foreach (var insc in InscriptionRegistry.Instance.GetAll())
-                {
-                    if (!staticDict.ContainsKey(insc.Id))
-                        staticDict.Add(insc.Id, MakeData(insc));
-                }
-            }
-
             var instProp = AccessTools.Property(typeof(inscriptionData), "Instance");
             if (instProp?.GetValue(null) is inscriptionData inst)
-            {
-                if (inst.m_InscriptionDict == null)
-                    inst.m_InscriptionDict = new Il2CppSystem.Collections.Generic.Dictionary<int, inscriptiondataclass>();
-                foreach (var insc in InscriptionRegistry.Instance.GetAll())
-                {
-                    if (!inst.m_InscriptionDict.ContainsKey(insc.Id))
-                        inst.m_InscriptionDict.Add(insc.Id, MakeData(insc));
-                }
-            }
-
-            Log.LogWarning($"[INJECT] Injected {InscriptionRegistry.Instance.GetAll().Count()} inscriptions");
-            LogDataComparison();
+                InjectIntoInstance(inst);
+            else
+                Log.LogWarning("[INJECT] inscriptionData.Instance is null");
         }
         catch (System.Exception ex)
         {
             Log.LogWarning($"[INJECT] Failed: {ex.Message}");
+        }
+        finally
+        {
+            _injecting = false;
         }
     }
 
@@ -179,7 +188,8 @@ public static class Test_StartingChestHook
         {
             var dict = inscriptiondata.GetData();
             if (dict == null) return;
-            if (!dict.TryGetValue(100000, out var ourData)) return;
+            var firstOurs = InscriptionRegistry.Instance.GetAll().FirstOrDefault()?.Id;
+            if (firstOurs == null || !dict.TryGetValue(firstOurs.Value, out var ourData)) return;
 
             int[] testSids = new int[] { 1, 13078, 4846, 1001, 2 };
             foreach (var testSid in testSids)
@@ -207,7 +217,7 @@ public static class Test_StartingChestHook
 
     private static bool PreGetInscriptionData(int sid, ref inscriptiondataclass __result)
     {
-        if (sid < 100000) return true;
+        if (!InscriptionRegistry.Instance.IsCustom(sid)) return true;
         var insc = InscriptionRegistry.Instance.GetById(sid);
         if (insc == null) return true;
         __result = MakeData(insc);
@@ -217,13 +227,13 @@ public static class Test_StartingChestHook
 
     private static void PostGetInscriptionData(int sid, inscriptiondataclass __result)
     {
-        if (sid == 100000)
+        if (InscriptionRegistry.Instance.IsCustom(sid))
             Log.LogWarning($"[INS_DATA_POST] sid={sid} result={__result?.Name ?? "null"} ItemType={__result?.ItemType}");
     }
 
     private static bool PreGetWeaponAttrInfo(int sid, string attrName, ref WeaponAttrInfo __result)
     {
-        if (sid < 100000) return true;
+        if (!InscriptionRegistry.Instance.IsCustom(sid)) return true;
         var insc = InscriptionRegistry.Instance.GetById(sid);
         if (insc == null) return true;
 
@@ -268,7 +278,74 @@ public static class Test_StartingChestHook
     {
         if (__result == null) return;
         InjectIntoDict();
+        InjectIntoTableDict(__result);
         Log.LogWarning($"[TABLE_DATA] Registry injected (count={__result.Count})");
+    }
+
+    private static void InjectIntoTableDict(Il2CppSystem.Collections.Generic.Dictionary<int, inscriptiondataclass> dict)
+    {
+        if (_injecting) return;
+        _injecting = true;
+        try
+        {
+            var ids = InscriptionRegistry.Instance.GetAll().Select(i => i.Id).ToList();
+            foreach (var insc in InscriptionRegistry.Instance.GetAll())
+            {
+                if (!dict.ContainsKey(insc.Id))
+                    dict.Add(insc.Id, MakeData(insc));
+            }
+            Log.LogWarning($"[TABLE_INJECT] GetData dict count={dict.Count} " +
+                $"ours={string.Join(",", ids)} present={ids.All(dict.ContainsKey)}");
+        }
+        catch (System.Exception ex)
+        {
+            Log.LogWarning($"[TABLE_INJECT] Failed: {ex.Message}");
+        }
+        finally
+        {
+            _injecting = false;
+        }
+    }
+
+    private static void PostInscriptionDataInit(inscriptionData __instance)
+    {
+        Log.LogWarning($"[INS_INIT] called; m_InscriptionDict count={(__instance?.m_InscriptionDict?.Count.ToString() ?? "null")}");
+        if (__instance != null)
+            InjectIntoInstance(__instance);
+    }
+
+    private static void InjectIntoInstance(inscriptionData inst)
+    {
+        if (_injecting) return;
+        _injecting = true;
+        try
+        {
+            InscriptionRegistry.Instance.AssignIdsFromTable(inst.m_InscriptionDict);
+            if (inst.m_InscriptionDict == null)
+                inst.m_InscriptionDict = new Il2CppSystem.Collections.Generic.Dictionary<int, inscriptiondataclass>();
+            var ids = InscriptionRegistry.Instance.GetAll().Select(i => i.Id).ToList();
+            foreach (var insc in InscriptionRegistry.Instance.GetAll())
+            {
+                if (!inst.m_InscriptionDict.ContainsKey(insc.Id))
+                    inst.m_InscriptionDict.Add(insc.Id, MakeData(insc));
+            }
+            Log.LogWarning($"[INJECT] m_InscriptionDict count={inst.m_InscriptionDict.Count} " +
+                $"ours={string.Join(",", ids)} present={ids.All(inst.m_InscriptionDict.ContainsKey)}");
+            if (!_injected)
+            {
+                _injected = true;
+                Log.LogWarning($"[INJECT] Injected {InscriptionRegistry.Instance.GetAll().Count()} inscriptions");
+                LogDataComparison();
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Log.LogWarning($"[INJECT] Failed: {ex.Message}");
+        }
+        finally
+        {
+            _injecting = false;
+        }
     }
 
     private static void OnAddWeapon(ItemObject it, int heroID)
@@ -289,11 +366,128 @@ public static class Test_StartingChestHook
         }
     }
 
+    private static void PostGetPropObjAndUpdate(int propID,
+        Il2CppSystem.Collections.Generic.Dictionary<string, Il2CppSystem.Object> dInfo)
+    {
+        try
+        {
+            var items = new List<string>();
+            var inscItems = new List<string>();
+            if (dInfo != null)
+            {
+                foreach (var kvp in dInfo)
+                {
+                    items.Add(kvp.Key);
+                    if (kvp.Key == "Inscription" && kvp.Value != null)
+                    {
+                        var list = kvp.Value.TryCast<Il2CppSystem.Collections.Generic.List<int>>();
+                        if (list != null)
+                            for (int i = 0; i < list.Count; i++)
+                                inscItems.Add(list[i].ToString());
+                        else
+                            inscItems.Add($"({kvp.Value.GetType().Name})");
+                    }
+                }
+            }
+            Log.LogInfo($"[PROP] propID={propID} keys ({items.Count}): {string.Join(", ", items)}" +
+                (inscItems.Count > 0 ? $"  Inscription=[{string.Join(", ", inscItems)}]" : ""));
+        }
+        catch (System.Exception ex)
+        {
+            Log.LogWarning($"[PROP] Failed for propID={propID}: {ex.Message}");
+        }
+    }
+
+    private static void PostGS2CItemAdd(object __0)
+    {
+        LogGS2C("S2C_ADD", __0);
+    }
+
+    private static void PostGS2CEquipAdd(object __0)
+    {
+        LogGS2C("S2C_EQUIP", __0);
+    }
+
+    private static void LogGS2C(string tag, object data)
+    {
+        try
+        {
+            if (data == null)
+            {
+                Log.LogInfo($"[{tag}] data=null");
+                return;
+            }
+            var dInfoField = data.GetType().GetField("dInfo",
+                BindingFlags.Public | BindingFlags.Instance);
+            if (dInfoField == null)
+            {
+                Log.LogInfo($"[{tag}] no dInfo field on {data.GetType().Name}");
+                return;
+            }
+            var dInfo = dInfoField.GetValue(data) as
+                Il2CppSystem.Collections.Generic.Dictionary<string, Il2CppSystem.Object>;
+            if (dInfo == null)
+            {
+                Log.LogInfo($"[{tag}] dInfo=null");
+                return;
+            }
+            var parts = new List<string>();
+            if (dInfo.ContainsKey("Inscription"))
+            {
+                var value = dInfo["Inscription"];
+                var list = value.TryCast<Il2CppSystem.Collections.Generic.List<int>>();
+                if (list != null)
+                    for (int i = 0; i < list.Count; i++)
+                        parts.Add(list[i].ToString());
+                else
+                    parts.Add($"({value?.GetType().Name ?? "null"})");
+            }
+            else
+                parts.Add("(no Inscription key)");
+            Log.LogInfo($"[{tag}] itemId={data.GetType().GetField("iItemID")?.GetValue(data)} " +
+                $"Inscription=[{string.Join(", ", parts)}]");
+        }
+        catch (System.Exception ex)
+        {
+            Log.LogWarning($"[{tag}] Failed: {ex.Message}");
+        }
+    }
+
+    private static void PostCheckInscWeapon(int weaponSid, inscriptiondataclass inscriptionData,
+        bool __result)
+    {
+        bool isOurs = false;
+        if (inscriptionData != null)
+        {
+            var ourNames = InscriptionRegistry.Instance.GetAll()
+                .Select(i => i.Metadata?.Description).Where(n => n != null);
+            isOurs = ourNames.Any(n => n == inscriptionData.Name);
+        }
+        Log.LogInfo($"[CHECK_WPN] weaponSid={weaponSid} name={(inscriptionData?.Name ?? "null")} " +
+            $"isOurs={isOurs} result={__result}");
+    }
+
+    private static void PostCheckInscTag(inscriptiondataclass inscriptionData, itemdataclass waponData,
+        bool __result)
+    {
+        Log.LogInfo($"[CHECK_TAG] name={(inscriptionData?.Name ?? "null")} " +
+            $"weaponId={waponData?.ID} result={__result}");
+    }
+
+    private static bool HasCustom(Il2CppSystem.Collections.Generic.List<int>? list)
+    {
+        if (list == null) return false;
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (InscriptionRegistry.Instance.IsCustom(list[i]))
+                return true;
+        }
+        return false;
+    }
+
     private static void PostSetWeaponInscriptionPanel(Il2CppSystem.Collections.Generic.List<int> inscriptionList)
     {
-        bool hasOurs = false;
-        try { hasOurs = inscriptionList?.Contains(100000) == true; } catch { }
-        Log.LogWarning($"[UI_PANEL] SetWeaponInscriptionPanel hasOurs={hasOurs}");
+        Log.LogWarning($"[UI_PANEL] SetWeaponInscriptionPanel hasOurs={HasCustom(inscriptionList)}");
     }
 
     private static void PostShowInscription(int WeaponId, string type, bool isResort, bool debugInfo, bool ignoreSpecial, string source)
@@ -301,7 +495,7 @@ public static class Test_StartingChestHook
         Log.LogWarning($"[BASE_UI] ShowInscription(WeaponId={WeaponId}, type={type}, source={source})");
         if (_lastForgetList != null)
         {
-            Log.LogWarning($"[BASE_UI]   ForgetList count={_lastForgetList.Count} hasOurs={_lastForgetList.Contains(100000)}");
+            Log.LogWarning($"[BASE_UI]   ForgetList count={_lastForgetList.Count} hasOurs={HasCustom(_lastForgetList)}");
             foreach (var sid in _lastForgetList)
                 Log.LogWarning($"[BASE_UI]     F[{sid}]");
         }
@@ -310,7 +504,7 @@ public static class Test_StartingChestHook
             var field = AccessTools.Field(typeof(PCWeaponBaseTitle), "inscriptionList");
             if (field?.GetValue(_lastUIInstance) is Il2CppSystem.Collections.Generic.List<int> list)
             {
-                Log.LogWarning($"[BASE_UI]   inscriptionList count={list.Count} hasOurs={list.Contains(100000)}");
+                Log.LogWarning($"[BASE_UI]   inscriptionList count={list.Count} hasOurs={HasCustom(list)}");
                 foreach (var sid in list)
                     Log.LogWarning($"[BASE_UI]     L[{sid}]");
             }
@@ -334,7 +528,7 @@ public static class Test_StartingChestHook
         Log.LogWarning($"[BASE_UI] ShowInscriptionList(type={type}, source={source}, " +
             $"Forget={ForgetList?.Count ?? 0}, sealed={sealedList?.Count ?? 0}, " +
             $"disabled={disableList?.Count ?? 0}, " +
-            $"hasOurs={(ForgetList?.Contains(100000) == true)})");
+            $"hasOurs={HasCustom(ForgetList)})");
         if (ForgetList != null)
             foreach (var sid in ForgetList)
                 Log.LogWarning($"[BASE_UI]   F[{sid}]");

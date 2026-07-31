@@ -1,5 +1,6 @@
 using System.Reflection;
 using BepInEx.Logging;
+using DataHelper;
 
 namespace GRModApi.Modules.Inscriptions;
 
@@ -10,6 +11,7 @@ public class InscriptionRegistry
     private readonly List<WeaponInscription> _inscriptions = new();
     private ManualLogSource? _log;
     private int _nextId = 100000;
+    private bool _idsAssigned;
 
     private static readonly Dictionary<WeaponCategory, GO_ENUM.WeaponType> CategoryMap = new()
     {
@@ -88,6 +90,48 @@ public class InscriptionRegistry
     public IEnumerable<WeaponInscription> GetAll() => _inscriptions;
 
     public WeaponInscription? GetById(int id) => _inscriptions.Find(i => i.Id == id);
+
+    public bool IsCustom(int id) => GetById(id) != null;
+
+    public int CustomIdCount() => _inscriptions.Count;
+
+    public void AssignIdsFromTable(Il2CppSystem.Collections.Generic.Dictionary<int, inscriptiondataclass>? table)
+    {
+        if (_idsAssigned) return;
+        _idsAssigned = true;
+
+        const int maxVanillaId = 13000;
+
+        int start = 1;
+        if (table != null)
+        {
+            int maxKey = -1;
+            foreach (var key in table.Keys)
+            {
+                if (key >= maxVanillaId) continue;
+                if (key > maxKey) maxKey = key;
+            }
+            start = maxKey + 1;
+            if (start >= maxVanillaId) start = maxVanillaId - _inscriptions.Count;
+        }
+
+        var used = new HashSet<int>(_inscriptions.Select(i => i.Id));
+        int id = start;
+        foreach (var insc in _inscriptions)
+        {
+            while (id < maxVanillaId && used.Contains(id)) id++;
+            insc.Id = id;
+            used.Add(id);
+            _log?.LogInfo($"Reassigned inscription ID to [{insc.Id}]");
+            id++;
+        }
+    }
+
+    public void ResetIds()
+    {
+        _idsAssigned = false;
+        _nextId = 100000;
+    }
 
     public IEnumerable<WeaponInscription> GetForWeapon(int weaponType)
     {
