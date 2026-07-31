@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <BepInExCoreDir Condition="'$(BepInExCoreDir)'==''">/home/jammingend/.local/share/Steam/ubuntu12_32/steamapps/content/app_1217060/depot_1217061/BepInEx/core</BepInExCoreDir>
+        <BepInExInteropDir Condition="'$(BepInExInteropDir)'==''">/home/jammingend/.local/share/Steam/ubuntu12_32/steamapps/content/app_1217060/depot_1217061/BepInEx/interop</BepInExInteropDir>
+        <BepInExPluginsDir Condition="'$(BepInExPluginsDir)'==''">$([System.IO.Path]::GetFullPath('$(BepInExCoreDir)/../plugins'))</BepInExPluginsDir>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Update="$(TargetPath)" Pack="false" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="BepInEx.Core">
+            <HintPath>$(BepInExCoreDir)/BepInEx.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="BepInEx.Unity.IL2CPP">
+            <HintPath>$(BepInExCoreDir)/BepInEx.Unity.IL2CPP.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppInterop.Runtime">
+            <HintPath>$(BepInExCoreDir)/Il2CppInterop.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppInterop.Common">
+            <HintPath>$(BepInExCoreDir)/Il2CppInterop.Common.dll</HintPath>
+        </Reference>
+        <Reference Include="0Harmony">
+            <HintPath>$(BepInExCoreDir)/0Harmony.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Modules\" />
+    </ItemGroup>
+
+    <Target Name="AddInteropReferences" BeforeTargets="BeforeBuild;BeforeResolveReferences">
+        <ItemGroup>
+            <_InteropDll Include="$(BepInExInteropDir)/*.dll" />
+            <Reference Include="@(_InteropDll->'%(FileName)')">
+                <HintPath>%(FullPath)</HintPath>
+            </Reference>
+        </ItemGroup>
+        <Message Text="Added interop assembly references for browsing" Importance="high" />
+    </Target>
+
+    <Target Name="CopyToPlugins" AfterTargets="Build">
+        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(BepInExPluginsDir)/$(ProjectName)" />
+    </Target>
+
+</Project>

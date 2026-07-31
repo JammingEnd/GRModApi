@@ -1,0 +1,3 @@
+WINEDLLOVERRIDES="winhttp=n,b" %command%
+
+/mnt/seagate/SteamLibraryD/steamapps/compatdata/1217060/pfx/
