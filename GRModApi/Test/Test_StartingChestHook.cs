@@ -154,7 +154,10 @@ public static class Test_StartingChestHook
             foreach (var cat in cats)
             {
                 if (CategoryWeaponType.TryGetValue(cat, out var wt))
+                {
                     data.LimitWeaponType.Add(wt);
+                    data.AnyOfWeaponType.Add(wt);
+                }
             }
         }
         return data;

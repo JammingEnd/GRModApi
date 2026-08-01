@@ -100,6 +100,8 @@ public class InscriptionRegistry
         if (_idsAssigned) return;
         _idsAssigned = true;
 
+        var oldIds = _inscriptions.Select(i => i.Id).ToList();
+
         const int maxVanillaId = 13000;
 
         int start = 1;
@@ -124,6 +126,15 @@ public class InscriptionRegistry
             used.Add(id);
             _log?.LogInfo($"Reassigned inscription ID to [{insc.Id}]");
             id++;
+        }
+
+        if (table != null)
+        {
+            foreach (var oldId in oldIds)
+            {
+                if (table.ContainsKey(oldId))
+                    table.Remove(oldId);
+            }
         }
     }
 
