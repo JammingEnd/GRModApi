@@ -31,27 +31,50 @@ configurable per-slot chance.
 `ItemPropCache.GetPropObjAndUpdate(int propID, Dictionary<string, object> dInfo)`
 — the single choke point where the client builds a `NewItemProp` from a received
 `dInfo` dict. At this point `dInfo["Inscription"]` is a `List<int>` of the rolled
-IDs, and it runs *before* the prop's `set_Inscription` is applied. Mutating that
-list there propagates to `NewItemProp`, UI, and effect code automatically.
+IDs. We install a **prefix** that mutates the list *before* the original runs, so
+the prop is built with our IDs from the start — guaranteeing propagation to
+`NewItemProp`, UI, and effect code. A postfix would run after the prop is built
+and could miss if the original copies the list, so a prefix is used.
 
 This covers every weapon source (drops, equips, starting chest) through one hook,
 and does not duplicate per-message (GS2CItemAdd / GS2CEquipAdd) handling.
 
+Note: whether the starting chest flows through `GetPropObjAndUpdate` is unverified.
+Drops and equips are confirmed to pass through it (the `[PROP]` logs); the starting
+chest path should be confirmed during implementation. If it does not flow through
+the hook, it simply won't be injected — drops/equips are unaffected.
+
 ### New component: `Modules/Inscriptions/InscriptionInjector.cs`
 
-`Apply(Harmony)` installs a postfix on `ItemPropCache.GetPropObjAndUpdate`.
+`Apply(Harmony)` installs a prefix on `ItemPropCache.GetPropObjAndUpdate`.
 
-Postfix logic:
-1. Read `dInfo["Inscription"]` as `List<int>`; skip if null or empty.
+Prefix logic:
+1. Guard `dInfo.ContainsKey("Inscription")` first (non-weapon items may lack the
+   key; the Il2Cpp `Dictionary` indexer throws for a missing key), then read
+   `dInfo["Inscription"]` as `List<int>`; skip if null or empty.
 2. Resolve the weapon's type from `propID` via `ItemData`.
 3. Candidate pool = `InscriptionRegistry.Instance.GetAll()` filtered for
    compatibility with this weapon, reusing the existing category/weapon-type
-   mapping (`InscriptionRegistry.GetForWeapon(weaponType)`) plus the
-   `LimitWeapon`/SID check for precision.
+   mapping (`InscriptionRegistry.GetForWeapon(weaponType)`).
 4. For each slot in the list, with configurable `Chance`, replace that slot's ID
-   with a random compatible candidate. Never replace a slot that already holds a
-   custom inscription or an exclusive/other-special inscription.
+   with a random compatible candidate. Guard rules: never replace a slot whose ID
+   is already a custom inscription, and never introduce a duplicate custom ID
+   (skip a candidate already present in another slot). If exclusive/special slot
+   detection is feasible at runtime, also exclude those slots; otherwise rely on
+   the duplicate-own-ID guard alone and document the limitation (see Out of scope).
 5. Log each replacement (`[INJECTOR] replaced slot i: X -> Y`).
+
+Prefix semantics: the prefix **must return `true`** (never skip the original) and
+mutate the `List<int>` **in place**. It uses the real Il2Cpp types:
+`Il2CppSystem.Collections.Generic.Dictionary<string, Il2CppSystem.Object> dInfo`
+and the `Il2CppSystem.Collections.Generic.List<int>` stored under
+`dInfo["Inscription"]`, matching the existing postfix signature
+(Test_StartingChestHook.cs:372-373).
+
+Note: resolving the weapon's type from `propID` via `ItemData` is currently
+unverified — the plan must confirm the actual `propID -> GO_ENUM.WeaponType`
+lookup path (the test hook only references `itemdataclass`, e.g.
+Test_StartingChestHook.cs:473) before relying on `GetForWeapon`.
 
 ### Config
 
@@ -65,11 +88,11 @@ Test hook setup.
 
 ## Multiplayer note
 
-This is client-only. The replaced IDs (4992/4993) already exist in the server-side
-tables (`m_InscriptionDict`, `GetData()`), so no unknown-ID state is produced. Stat
-and effect math is computed from inscription data client-side via the existing
-patches, keeping the local client consistent. Authoritative server revalidation is
-out of scope.
+This is client-only. The replaced IDs (4992/4993) already exist in the client-side
+tables (`m_InscriptionDict`, `GetData()`) injected by the test hook, so no
+unknown-ID state is produced. Stat and effect math is computed from inscription
+data client-side via the existing patches, keeping the local client consistent.
+Authoritative server revalidation is out of scope.
 
 ## Out of scope
 
@@ -77,6 +100,9 @@ out of scope.
 - C2S propagation of injected inscriptions to other clients.
 - Non-weapon inscription sources (amulets) unless they flow through the same hook.
 - Config for per-inscription replacement weight.
+- Replacing exclusive/special slots: detect rarity at runtime and exclude
+  exclusives from the replaceable set if feasible; otherwise only guard against
+  duplicating our own IDs and document the limitation.
 
 ## Verification
 
