@@ -23,39 +23,35 @@ public static class InscriptionInjector
             return;
         }
         harmony.Patch(original,
-            prefix: new HarmonyMethod(typeof(InscriptionInjector),
-                nameof(PrefixGetPropObjAndUpdate)));
+            postfix: new HarmonyMethod(typeof(InscriptionInjector),
+                nameof(PostfixGetPropObjAndUpdate)));
     }
 
-    private static bool PrefixGetPropObjAndUpdate(int propID,
-        Il2CppSystem.Collections.Generic.Dictionary<string, Il2CppSystem.Object> dInfo)
+    private static void PostfixGetPropObjAndUpdate(NewItemProp __result)
     {
-        if (_chance == null || _log == null || dInfo == null) return true;
-        if (dInfo.TryGetValue("Inscription", out var obj) == false) return true;
-        var list = obj?.TryCast<Il2CppSystem.Collections.Generic.List<int>>();
-        if (list == null || list.Count == 0) return true;
+        if (_chance == null || _log == null || __result == null) return;
+        var list = __result.Inscription;
+        if (list == null || list.Count == 0) return;
 
-        if (!TryGetWeaponType(propID, out var weaponType))
-            return true;
-
-        if (!TryGetCandidateIds(weaponType, list, out var candidates) || candidates.Count == 0)
-            return true;
+        var weaponSid = __result.SID;
+        if (!TryGetCandidateIds(weaponSid, list, out var candidates) || candidates.Count == 0)
+            return;
 
         var chance = _chance.Value;
         for (int i = 0; i < list.Count; i++)
         {
-            if (InscriptionRegistry.Instance.IsCustom(list[i])) continue;
+            var current = list[i];
+            if (current == 0) continue;
+            if (InscriptionRegistry.Instance.IsCustom(current)) continue;
 
             if (!Roll(chance)) continue;
 
             var candidate = candidates[UnityEngine.Random.Range(0, candidates.Count)];
             if (list.Contains(candidate)) continue;
 
-            _log.LogInfo($"[INJECTOR] weaponSid={propID} replaced slot {i}: {list[i]} -> {candidate}");
+            _log.LogInfo($"[INJECTOR] weaponSid={weaponSid} replaced slot {i}: {current} -> {candidate}");
             list[i] = candidate;
         }
-
-        return true;
     }
 
     private static bool Roll(float chance)
@@ -63,33 +59,28 @@ public static class InscriptionInjector
         return UnityEngine.Random.Range(0f, 1f) < chance;
     }
 
-    private static bool TryGetWeaponType(int propID, out int weaponType)
-    {
-        weaponType = 0;
-        try
-        {
-            var data = ItemData.Instance?.GetWeaponData(propID);
-            if (data == null) return false;
-            weaponType = data.WeaponType;
-            return true;
-        }
-        catch (System.Exception ex)
-        {
-            _log?.LogWarning($"[INJECTOR] GetWeaponData failed for sid={propID}: {ex.Message}");
-            return false;
-        }
-    }
-
-    private static bool TryGetCandidateIds(int weaponType,
+    private static bool TryGetCandidateIds(int weaponSid,
         Il2CppSystem.Collections.Generic.List<int> existing,
         out Il2CppSystem.Collections.Generic.List<int> candidates)
     {
         candidates = new Il2CppSystem.Collections.Generic.List<int>();
-        foreach (var insc in InscriptionRegistry.Instance.GetForWeapon(weaponType))
+        try
         {
-            if (existing.Contains(insc.Id)) continue;
-            candidates.Add(insc.Id);
+            var pool = inscriptionData.Instance?.GetWeaponInscription(weaponSid);
+            if (pool == null) return false;
+            for (int i = 0; i < pool.Count; i++)
+            {
+                var id = pool[i];
+                if (!InscriptionRegistry.Instance.IsCustom(id)) continue;
+                if (existing.Contains(id)) continue;
+                candidates.Add(id);
+            }
+            return candidates.Count > 0;
         }
-        return candidates.Count > 0;
+        catch (System.Exception ex)
+        {
+            _log?.LogWarning($"[INJECTOR] GetWeaponInscription failed for sid={weaponSid}: {ex.Message}");
+            return false;
+        }
     }
 }
