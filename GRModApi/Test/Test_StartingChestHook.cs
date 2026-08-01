@@ -51,6 +51,9 @@ public static class Test_StartingChestHook
         TryPatch(harmony, typeof(ItemManager), nameof(ItemManager.AddWeapon),
             null, nameof(OnAddWeapon));
 
+        TryPatch(harmony, typeof(ItemPropCache), nameof(ItemPropCache.UpdatePropByItem),
+            null, nameof(PostUpdatePropByItem));
+
         TryPatch(harmony, typeof(ItemPropCache), nameof(ItemPropCache.GetPropObjAndUpdate),
             null, nameof(PostGetPropObjAndUpdate));
 
@@ -81,6 +84,29 @@ public static class Test_StartingChestHook
 
         TryPatch(harmony, typeof(PCWeaponBaseTitle), "ShowInscriptionList",
             null, nameof(PostShowInscriptionList));
+
+        TryPatch(harmony, typeof(PCWeaponBaseTitle), "GetAddAttrInfo",
+            null, nameof(PostGetAddAttrInfo));
+
+        var displayClass100 = AccessTools.Inner(typeof(PCWeaponBaseTitle), "<>c__DisplayClass100_0");
+        if (displayClass100 == null)
+        {
+            Log.LogWarning("PCWeaponBaseTitle.<>c__DisplayClass100_0 not found");
+        }
+        else
+        {
+            var b0 = AccessTools.Method(displayClass100, "<GetAddAttrInfo>b__0");
+            if (b0 == null)
+            {
+                Log.LogWarning("DisplayClass100_0.<GetAddAttrInfo>b__0 not found");
+            }
+            else
+            {
+                harmony.Patch(b0,
+                    postfix: new HarmonyMethod(typeof(Test_StartingChestHook).GetMethod(nameof(PostAggregateB0), Flags)));
+                Log.LogInfo("Patched DisplayClass100_0.<GetAddAttrInfo>b__0");
+            }
+        }
     }
 
     private static void TryPatch(Harmony harmony, System.Type targetType,
@@ -132,7 +158,9 @@ public static class Test_StartingChestHook
         var data = new inscriptiondataclass();
         data.Name = meta?.Description ?? "Custom Inscription";
         data.Desc = meta?.Description ?? "";
-        data.ItemType = 1;
+        data.ItemType = meta != null && RarityQuality.TryGetValue(meta.Rarity, out var rarity)
+            ? rarity
+            : 1;
         data.Weight = 10000;
         data.HurtType = "";
         data.DetailLabel = new Il2CppSystem.Collections.Generic.List<int>();
@@ -456,6 +484,26 @@ public static class Test_StartingChestHook
         }
     }
 
+    private static void PostUpdatePropByItem(int itemid, string attrName, Il2CppSystem.Object attrValue,
+        bool isSetProp)
+    {
+        if (attrName != "Inscription") return;
+        try
+        {
+            var list = attrValue.TryCast<Il2CppSystem.Collections.Generic.List<int>>();
+            var parts = new List<string>();
+            if (list != null)
+                for (int i = 0; i < list.Count; i++)
+                    parts.Add(list[i].ToString());
+            Log.LogWarning($"[UPD_PROP] itemid={itemid} Inscription=[{string.Join(", ", parts)}] " +
+                $"hasOurs={HasCustom(list)}");
+        }
+        catch (System.Exception ex)
+        {
+            Log.LogWarning($"[UPD_PROP] Failed for itemid={itemid}: {ex.Message}");
+        }
+    }
+
     private static void PostCheckInscWeapon(int weaponSid, inscriptiondataclass inscriptionData,
         bool __result)
     {
@@ -514,6 +562,33 @@ public static class Test_StartingChestHook
             else
                 Log.LogWarning("[BASE_UI]   inscriptionList field is null or empty");
         }
+    }
+
+    private static void PostGetAddAttrInfo(
+        Il2CppSystem.Collections.Generic.List<int> inscriptionLst,
+        string attrName,
+        ref float val)
+    {
+        try
+        {
+            var items = new List<string>();
+            if (inscriptionLst != null)
+                for (int i = 0; i < inscriptionLst.Count; i++)
+                    items.Add(inscriptionLst[i].ToString());
+            Log.LogWarning($"[GET_ADD_ATTR] attrName={attrName} val={val} " +
+                $"hasOurs={HasCustom(inscriptionLst)} list=[{string.Join(", ", items)}]");
+        }
+        catch (System.Exception ex)
+        {
+            Log.LogWarning($"[GET_ADD_ATTR] Failed: {ex.Message}");
+        }
+    }
+
+    private static void PostAggregateB0(WeaponAttrInfo weaponAttrData)
+    {
+        if (weaponAttrData == null) return;
+        Log.LogWarning($"[AGG] b__0 attr={weaponAttrData.AttrName} Mul={weaponAttrData.MulValue} " +
+            $"Add={weaponAttrData.AddValue}");
     }
 
     private static void PostShowInscriptionList(

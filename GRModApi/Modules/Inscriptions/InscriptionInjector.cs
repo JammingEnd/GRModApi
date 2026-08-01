@@ -27,7 +27,7 @@ public static class InscriptionInjector
                 nameof(PostfixGetPropObjAndUpdate)));
     }
 
-    private static void PostfixGetPropObjAndUpdate(NewItemProp __result)
+    private static void PostfixGetPropObjAndUpdate(int propID, NewItemProp __result)
     {
         if (_chance == null || _log == null || __result == null) return;
         var list = __result.Inscription;
@@ -44,19 +44,34 @@ public static class InscriptionInjector
             if (current == 0) continue;
             if (InscriptionRegistry.Instance.IsCustom(current)) continue;
 
-            if (!Roll(chance)) continue;
+            if (!Roll(chance, propID, i, current)) continue;
 
-            var candidate = candidates[UnityEngine.Random.Range(0, candidates.Count)];
+            var candidate = candidates[PickIndex(candidates.Count, propID, i, current)];
             if (list.Contains(candidate)) continue;
 
-            _log.LogInfo($"[INJECTOR] weaponSid={weaponSid} replaced slot {i}: {current} -> {candidate}");
+            _log.LogInfo($"[INJECTOR] propID={propID} weaponSid={weaponSid} replaced slot {i}: {current} -> {candidate}");
             list[i] = candidate;
         }
     }
 
-    private static bool Roll(float chance)
+    private static bool Roll(float chance, int dropId, int slot, int current)
     {
-        return UnityEngine.Random.Range(0f, 1f) < chance;
+        if (chance >= 1f) return true;
+        if (chance <= 0f) return false;
+        var rng = new System.Random(StableSeed(dropId, slot, current));
+        return rng.NextDouble() < chance;
+    }
+
+    private static int PickIndex(int count, int dropId, int slot, int current)
+    {
+        if (count <= 1) return 0;
+        var rng = new System.Random(StableSeed(dropId, slot, current) + 0x1234);
+        return rng.Next(count);
+    }
+
+    private static int StableSeed(int weaponSid, int slot, int current)
+    {
+        return unchecked(weaponSid * 0x45D9F3B + slot * 0x119De1 + current);
     }
 
     private static bool TryGetCandidateIds(int weaponSid,
