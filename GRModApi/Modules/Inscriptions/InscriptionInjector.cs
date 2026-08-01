@@ -15,8 +15,14 @@ public static class InscriptionInjector
         _chance = chance;
         _log = log;
 
-        harmony.Patch(
-            AccessTools.Method(typeof(ItemPropCache), nameof(ItemPropCache.GetPropObjAndUpdate)),
+        var original = AccessTools.Method(typeof(ItemPropCache),
+            nameof(ItemPropCache.GetPropObjAndUpdate));
+        if (original == null)
+        {
+            log.LogWarning($"Method {typeof(ItemPropCache).Name}.{nameof(ItemPropCache.GetPropObjAndUpdate)} not found");
+            return;
+        }
+        harmony.Patch(original,
             prefix: new HarmonyMethod(typeof(InscriptionInjector),
                 nameof(PrefixGetPropObjAndUpdate)));
     }
