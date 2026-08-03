@@ -142,11 +142,10 @@ reflected in real combat damage (solo/offline — server sim is in-process):
      `MulValue` / `AddValue` for the `Att` key via `WeaponStatContext`.
   3. Apply `__result = (base + addSum) * (mulSum + 10000) / 10000` to the base
      `Att` value.
-- Gated by config `Damage.Enabled` (default `true`).
-- `CombatDamagePatch.Apply(harmony, damageEnabled, debugEnabled, log)` — the
+- No config gate for the damage hook — `CombatDamagePatch` is applied
+  unconditionally. `CombatDamagePatch.Apply(harmony, debugEnabled, log)`; the
   `[COMBAT]` verification log lines are emitted only when `Debug.Enabled` is on
-  (threaded through), while the postfix itself is installed whenever
-  `Damage.Enabled` is on.
+  (threaded through).
 - Hooks **unconditionally** (no solo/online guard); online co-op is a remote
   server so the getter postfix simply won't fire there. Verification step
   confirms this in-game.
@@ -168,16 +167,15 @@ reflected in real combat damage (solo/offline — server sim is in-process):
 
 ```
 [Injection] Chance    (existing)   per-slot replacement chance
-[Damage]    Enabled   (new, true)  enable CombatDamagePatch server getter hooks
 [Debug]     Enabled   (new, false) enable diagnostic logging postfixes
 ```
 
 ### `GRModApi.cs` changes
 
-- Register `[Damage] Enabled` and `[Debug] Enabled` config entries.
+- Register the `[Debug] Enabled` config entry.
 - Call `InscriptionDataPatch.Apply(harmony)` (essential) always.
 - Call `InscriptionDiagnostics.Apply(harmony, debugEnabled)` when enabled.
-- Call `CombatDamagePatch.Apply(harmony, damageEnabled, debugEnabled, log)`.
+- Call `CombatDamagePatch.Apply(harmony, debugEnabled, log)`.
 - Remove `WeaponStatsPatch.Apply()` / `CombatEventsPatch.Apply()` calls.
 
 ### `InscriptionBase.cs` changes
