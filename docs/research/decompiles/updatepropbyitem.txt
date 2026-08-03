@@ -1,0 +1,107 @@
+openjdk version "26.0.1" 2026-04-21
+OpenJDK Runtime Environment (build 26.0.1)
+OpenJDK 64-Bit Server VM (build 26.0.1, mixed mode)
+INFO  Using log config file: jar:file:/home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: /home/jammingend/.config/ghidra/ghidra_11.3.2_PUBLIC/application.log (LoggingInitialization)  
+INFO  Loading user preferences: /home/jammingend/.config/ghidra/ghidra_11.3.2_PUBLIC/preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (515 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (SSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: NativePRNGNonBlocking (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (ApplicationTrustManagerFactory)  
+INFO  Headless startup complete (1192 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 57 extension points (18 false positives) (ClassSearcher)  
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldOffset has been called by org.apache.felix.framework.util.SecureAction (file:/home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Base/lib/org.apache.felix.framework-7.0.5.jar)
+WARNING: Please consider reporting this to the maintainers of class org.apache.felix.framework.util.SecureAction
+WARNING: sun.misc.Unsafe::staticFieldOffset will be removed in a future release
+INFO  HEADLESS Script Paths:
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/DecompilerDependent/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/PyGhidra/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/8051/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/GnuDemangler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/FileFormats/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts
+    /tmp/opencode
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/BytePatterns/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Decompiler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/JVM/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/FunctionID/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/WildcardAssembler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/SwiftDemangler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/VersionTracking/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Base/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/PDB/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Jython/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Debug/Debugger/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/PIC/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/BSim/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/Atmel/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/DATA/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/SystemEmulation/ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: /tmp/opencode/GunfireReborn_decomp_23_7_2026 (HeadlessAnalyzer)  
+INFO  Opening project: /tmp/opencode/GunfireReborn_decomp_23_7_2026 (HeadlessProject)  
+INFO  REPORT: Processing project file: /GameAssembly.dll (HeadlessAnalyzer)  
+INFO  SCRIPT: /tmp/opencode/decompile_upb.py (HeadlessAnalyzer)  
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by com.kenai.jffi.internal.StubLoader in an unnamed module (file:/home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Jython/lib/jython-standalone-2.7.4.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+================================================================================
+FUNC: ItemPropCache$$UpdatePropByItem  @ 1812be9e0
+
+void ItemPropCache__UpdatePropByItem
+               (int32_t itemid,System_String_o *attrName,Il2CppObject *attrValue,bool isSetProp,
+               MethodInfo *method)
+
+{
+  System_Collections_Generic_Dictionary_int__NewItemProp__o *pSVar1;
+  code *pcVar2;
+  char cVar3;
+  PropObject_o *__this;
+  
+  if (DAT_186ac6669 == '\0') {
+    FUN_1804782b0(0x13649);
+    DAT_186ac6669 = '\x01';
+  }
+  if ((((ItemPropCache_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((ItemPropCache_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620(ItemPropCache_TypeInfo);
+  }
+  pSVar1 = ItemPropCache_TypeInfo->static_fields->m_PropInfo;
+  if (pSVar1 != (System_Collections_Generic_Dictionary_int__NewItemProp__o *)0x0) {
+    cVar3 = System_Collections_Generic_Dictionary<RailResult,_FileResult>__ContainsKey
+                      (pSVar1,itemid,
+                       Method_System_Collections_Generic_Dictionary<int,_NewItemProp>_ContainsKey__)
+    ;
+    if (cVar3 == '\0') {
+      return;
+    }
+    if ((((ItemPropCache_TypeInfo->_2).bitflags2 & 2) != 0) &&
+       ((ItemPropCache_TypeInfo->_2).cctor_finished == 0)) {
+      FUN_180486620(ItemPropCache_TypeInfo);
+    }
+    pSVar1 = ItemPropCache_TypeInfo->static_fields->m_PropInfo;
+    if ((pSVar1 != (System_Collections_Generic_Dictionary_int__NewItemProp__o *)0x0) &&
+       (__this = (PropObject_o *)
+                 System_Collections_Generic_Dictionary<int,_TerrainUtility_TerrainMap>__get_Item
+                           (pSVar1,itemid,
+                            Method_System_Collections_Generic_Dictionary<int,_NewItemProp>_get_Item__
+                           ), __this != (PropObject_o *)0x0)) {
+      PropObject__UpdatePropValue
+                (__this,attrName,attrValue,itemid,isSetProp,false,(MethodInfo *)0x0);
+      return;
+    }
+  }
+  FUN_1804a7d90(0);
+  pcVar2 = (code *)swi(3);
+  (*pcVar2)();
+  return;
+}
+
+
+INFO  REPORT: Save succeeded for processed file: /GameAssembly.dll (HeadlessAnalyzer)  

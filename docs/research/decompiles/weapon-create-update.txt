@@ -1,0 +1,746 @@
+openjdk version "26.0.1" 2026-04-21
+OpenJDK Runtime Environment (build 26.0.1)
+OpenJDK 64-Bit Server VM (build 26.0.1, mixed mode)
+INFO  Using log config file: jar:file:/home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: /home/jammingend/.config/ghidra/ghidra_11.3.2_PUBLIC/application.log (LoggingInitialization)  
+INFO  Loading user preferences: /home/jammingend/.config/ghidra/ghidra_11.3.2_PUBLIC/preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (534 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (SSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: NativePRNGNonBlocking (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (ApplicationTrustManagerFactory)  
+INFO  Headless startup complete (1162 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 57 extension points (18 false positives) (ClassSearcher)  
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldOffset has been called by org.apache.felix.framework.util.SecureAction (file:/home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Base/lib/org.apache.felix.framework-7.0.5.jar)
+WARNING: Please consider reporting this to the maintainers of class org.apache.felix.framework.util.SecureAction
+WARNING: sun.misc.Unsafe::staticFieldOffset will be removed in a future release
+INFO  HEADLESS Script Paths:
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/DecompilerDependent/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/PyGhidra/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/8051/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/GnuDemangler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/FileFormats/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts
+    /tmp/opencode
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/BytePatterns/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Decompiler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/JVM/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/FunctionID/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/WildcardAssembler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/SwiftDemangler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/VersionTracking/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Base/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/PDB/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Jython/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Debug/Debugger/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/PIC/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/BSim/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/Atmel/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/DATA/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/SystemEmulation/ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: /tmp/opencode/GunfireReborn_decomp_23_7_2026 (HeadlessAnalyzer)  
+INFO  Opening project: /tmp/opencode/GunfireReborn_decomp_23_7_2026 (HeadlessProject)  
+INFO  REPORT: Processing project file: /GameAssembly.dll (HeadlessAnalyzer)  
+INFO  SCRIPT: /tmp/opencode/decompile_weapon.py (HeadlessAnalyzer)  
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by com.kenai.jffi.internal.StubLoader in an unnamed module (file:/home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Jython/lib/jython-standalone-2.7.4.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+================================================================================
+FUNC: s2citemcon$$CreateItemObject  @ 1805be850
+
+ItemObject_o *
+s2citemcon__CreateItemObject
+          (int32_t itemId,int32_t pos,int32_t sid,int32_t mainType,int32_t subType,
+          System_String_o *MainTypeName,
+          System_Collections_Generic_Dictionary_string__object__o *dInfo,MethodInfo *method)
+
+{
+  code *pcVar1;
+  int32_t shape;
+  NewItemProp_o *handler;
+  NetFunc_basenet_o *__this;
+  ItemObject_o *pIVar2;
+  
+  if (DAT_186ab5c69 == '\0') {
+    FUN_1804782b0(0x2e395);
+    DAT_186ab5c69 = '\x01';
+  }
+  if ((((ItemPropCache_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((ItemPropCache_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620();
+  }
+  handler = ItemPropCache__GetPropObjAndUpdate(itemId,dInfo,(MethodInfo *)0x0);
+  if (handler != (NewItemProp_o *)0x0) {
+    shape = PropObject__GetPropValue<int>
+                      (handler,StringLiteral_22092,0,Method_PropObject_GetPropValue<int>__);
+    __this = (NetFunc_basenet_o *)FUN_1804b8f20(ItemObject_TypeInfo);
+    ItemObject___ctor((ItemObject_o *)__this,itemId,sid,shape,pos,mainType,subType,(MethodInfo *)0x0
+                     );
+    if (__this != (NetFunc_basenet_o *)0x0) {
+      NetFunc_basenet__SetConnectFailCallback
+                (__this,(DYPublic_DYNet_NetClient_ConnectFailHandler_o *)handler,(MethodInfo *)0x0);
+      return (ItemObject_o *)__this;
+    }
+  }
+  FUN_1804a7d90(0);
+  pcVar1 = (code *)swi(3);
+  pIVar2 = (ItemObject_o *)(*pcVar1)();
+  return pIVar2;
+}
+
+
+================================================================================
+FUNC: s2citemcon$$GS2CItemAdd  @ 1805beda0
+
+void s2citemcon__GS2CItemAdd(int32_t *param_1)
+
+{
+  System_Collections_Generic_Dictionary_string__object__o *dInfo;
+  int32_t sid;
+  undefined8 uVar1;
+  code *pcVar2;
+  int32_t heroID;
+  int32_t iVar3;
+  int32_t iVar4;
+  longlong *plVar5;
+  int32_t *piVar6;
+  longlong lVar7;
+  System_String_o *MainTypeName;
+  ItemObject_o *it;
+  
+  if (DAT_186ab5c6a == '\0') {
+    FUN_1804782b0(0x2e399);
+    DAT_186ab5c6a = '\x01';
+  }
+  heroID = *param_1;
+  iVar3 = param_1[2];
+  uVar1 = *(undefined8 *)param_1;
+  if (((*(byte *)(Item_PackageDefine_TypeInfo + 0x127) & 2) != 0) &&
+     (*(int *)(Item_PackageDefine_TypeInfo + 0xd8) == 0)) {
+    FUN_180486620();
+  }
+  iVar3 = Item_PackageDefine__ToTagPos(StringLiteral_38920,iVar3,(MethodInfo *)0x0);
+  dInfo = *(System_Collections_Generic_Dictionary_string__object__o **)(param_1 + 4);
+  if (dInfo != (System_Collections_Generic_Dictionary_string__object__o *)0x0) {
+    plVar5 = (longlong *)
+             System_Collections_Generic_Dictionary<string,_string>__get_Item
+                       (dInfo,StringLiteral_26294,
+                        Method_System_Collections_Generic_Dictionary<string,_object>_get_Item__);
+    if (plVar5 != (longlong *)0x0) {
+      if (*(Il2CppClass **)(*plVar5 + 0x40) != (int_TypeInfo->_1).element_class) {
+        FUN_180259620(plVar5,int_TypeInfo);
+        pcVar2 = (code *)swi(3);
+        (*pcVar2)();
+        return;
+      }
+      piVar6 = (int32_t *)FUN_1803c7fa0();
+      sid = *piVar6;
+      lVar7 = Singleton<object>__GetInstance(Method_Singleton<ItemData>_get_Instance__);
+      if (lVar7 != 0) {
+        lVar7 = DataHelper_ItemData__GetItemData(lVar7,sid,0);
+        if (lVar7 != 0) {
+          iVar4 = *(int32_t *)(lVar7 + 0x2c);
+          MainTypeName = ObjectDefine__GetItemMainName(iVar4,(MethodInfo *)0x0);
+          iVar4 = ObjectDefine__GetMainType(iVar4,(MethodInfo *)0x0);
+          it = s2citemcon__CreateItemObject
+                         ((int32_t)((ulonglong)uVar1 >> 0x20),iVar3,sid,iVar4,
+                          *(int32_t *)(lVar7 + 0x2c),MainTypeName,dInfo,(MethodInfo *)0x0);
+          if (it != (ItemObject_o *)0x0) {
+            if (((*(byte *)(Item_ItemManager_TypeInfo + 0x127) & 2) != 0) &&
+               (*(int *)(Item_ItemManager_TypeInfo + 0xd8) == 0)) {
+              FUN_180486620();
+            }
+            Item_ItemManager__AddItem(it,heroID,(MethodInfo *)0x0);
+          }
+          return;
+        }
+      }
+    }
+  }
+  FUN_1804a7d90(0);
+  pcVar2 = (code *)swi(3);
+  (*pcVar2)();
+  return;
+}
+
+
+================================================================================
+FUNC: s2citemcon$$GS2CEquipAdd  @ 1805bea80
+
+void s2citemcon__GS2CEquipAdd(undefined1 (*param_1) [16])
+
+{
+  System_Collections_Generic_Dictionary_string__object__o *dInfo;
+  undefined1 auVar1 [16];
+  int32_t sid;
+  undefined8 uVar2;
+  code *pcVar3;
+  int32_t heroID;
+  int iVar4;
+  int32_t iVar5;
+  longlong *plVar6;
+  int32_t *piVar7;
+  longlong lVar8;
+  System_String_o *MainTypeName;
+  ItemObject_o *pIVar9;
+  int32_t itemId;
+  
+  if (cRam0000000186ab5c6c == '\0') {
+    FUN_1804782b0(0x2e397);
+    cRam0000000186ab5c6c = '\x01';
+  }
+  dInfo = *(System_Collections_Generic_Dictionary_string__object__o **)param_1[1];
+  heroID = *(int32_t *)*param_1;
+  uVar2 = *(undefined8 *)*param_1;
+  if (dInfo != (System_Collections_Generic_Dictionary_string__object__o *)0x0) {
+    plVar6 = (longlong *)
+             System_Collections_Generic_Dictionary<string,_string>__get_Item
+                       (dInfo,StringLiteral_26294,
+                        Method_System_Collections_Generic_Dictionary<string,_object>_get_Item__);
+    if (plVar6 != (longlong *)0x0) {
+      if (*(Il2CppClass **)(*plVar6 + 0x40) != (int_TypeInfo->_1).element_class) {
+        FUN_180259620(plVar6,int_TypeInfo);
+        pcVar3 = (code *)swi(3);
+        (*pcVar3)();
+        return;
+      }
+      piVar7 = (int32_t *)FUN_1803c7fa0();
+      iVar4 = *(int *)(*param_1 + 8);
+      sid = *piVar7;
+      lVar8 = Singleton<object>__GetInstance(Method_Singleton<ItemData>_get_Instance__);
+      if (lVar8 != 0) {
+        lVar8 = DataHelper_ItemData__GetItemData(lVar8);
+        if (lVar8 != 0) {
+          iVar5 = *(int32_t *)(lVar8 + 0x2c);
+          MainTypeName = ObjectDefine__GetItemMainName(iVar5,(MethodInfo *)0x0);
+          iVar5 = ObjectDefine__GetMainType(iVar5,(MethodInfo *)0x0);
+          auVar1 = *param_1;
+          itemId = (int32_t)((ulonglong)uVar2 >> 0x20);
+          if (iVar5 == 0x21000) {
+            if (((*(byte *)(Item_PackageDefine_TypeInfo + 0x127) & 2) != 0) &&
+               (*(int *)(Item_PackageDefine_TypeInfo + 0xd8) == 0)) {
+              FUN_180486620();
+            }
+            iVar5 = Item_PackageDefine__ToTagPos
+                              (StringLiteral_38929,auVar1._12_4_,(MethodInfo *)0x0);
+            pIVar9 = s2citemcon__CreateItemObject
+                               (itemId,iVar5,sid,0x21000,*(int32_t *)(lVar8 + 0x2c),MainTypeName,
+                                dInfo,(MethodInfo *)0x0);
+            if (((*(byte *)(Item_ItemManager_TypeInfo + 0x127) & 2) != 0) &&
+               (*(int *)(Item_ItemManager_TypeInfo + 0xd8) == 0)) {
+              FUN_180486620();
+            }
+            Item_ItemManager__AddEquip(pIVar9,heroID,(MethodInfo *)0x0);
+          }
+          else {
+            pIVar9 = s2citemcon__CreateItemObject
+                               (itemId,auVar1._12_4_ + iVar4 * 100,sid,iVar5,
+                                *(int32_t *)(lVar8 + 0x2c),MainTypeName,dInfo,(MethodInfo *)0x0);
+            if (((*(byte *)(Item_ItemManager_TypeInfo + 0x127) & 2) != 0) &&
+               (*(int *)(Item_ItemManager_TypeInfo + 0xd8) == 0)) {
+              FUN_180486620();
+            }
+            Item_ItemManager__AddWeapon(pIVar9,heroID,(MethodInfo *)0x0);
+          }
+          return;
+        }
+      }
+    }
+  }
+  FUN_1804a7d90(0);
+  pcVar3 = (code *)swi(3);
+  (*pcVar3)();
+  return;
+}
+
+
+================================================================================
+FUNC: ItemPropCache$$GetPropObjAndUpdate  @ 1812be4c0
+
+/* WARNING: Removing unreachable block (ram,0x0001812be7ef) */
+
+NewItemProp_o *
+ItemPropCache__GetPropObjAndUpdate
+          (int32_t propID,System_Collections_Generic_Dictionary_string__object__o *dInfo,
+          MethodInfo *method)
+
+{
+  byte bVar1;
+  System_Collections_Generic_Dictionary_int__NewItemProp__o *pSVar2;
+  code *pcVar3;
+  bool bVar4;
+  char cVar5;
+  NewItemProp_o *pNVar6;
+  NewItemProp_o *pNVar7;
+  undefined8 *puVar8;
+  UnityEngine_Quaternion_o *pUVar9;
+  System_String_o *attrName;
+  MethodInfo *method_00;
+  undefined8 local_a8;
+  undefined8 uStack_a0;
+  undefined1 local_98 [32];
+  UnityEngine_Transform_o *local_78;
+  UnityEngine_Quaternion_o local_70;
+  System_Collections_Generic_List_byte__o *local_60;
+  undefined1 local_50 [40];
+  
+  local_60 = (System_Collections_Generic_List_byte__o *)0xfffffffffffffffe;
+  if (DAT_186ac666a == '\0') {
+    FUN_1804782b0(0x13645);
+    DAT_186ac666a = '\x01';
+  }
+  local_98._0_8_ = (NetFunc_basenet_c *)0x0;
+  local_98._8_8_ = (void *)0x0;
+  local_98._16_8_ = (UnityEngine_MonoBehaviour_o *)0x0;
+  local_98._24_8_ = (DYPublic_DYNet_NetInterface_o *)0x0;
+  local_78 = (UnityEngine_Transform_o *)0x0;
+  local_a8 = 0;
+  uStack_a0 = 0;
+  if ((((ItemPropCache_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((ItemPropCache_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620();
+  }
+  pNVar6 = ItemPropCache__GetPropByItem(propID,(MethodInfo *)0x0);
+  if (pNVar6 != (NewItemProp_o *)0x0) goto LAB_1812be6bf;
+  if ((((ClassPoolManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((ClassPoolManager_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620();
+  }
+  pNVar7 = (NewItemProp_o *)ClassPoolManager__SpawnClass(2,(MethodInfo *)0x0);
+  if (pNVar7 == (NewItemProp_o *)0x0) {
+LAB_1812be5eb:
+    pNVar6 = (NewItemProp_o *)FUN_1804b8f20(NewItemProp_TypeInfo);
+    PlayerProp___ctor((PlayerProp_o *)pNVar6,0x32,(MethodInfo *)0x0);
+    if (pNVar6 == (NewItemProp_o *)0x0) {
+      FUN_1804a7d90(0);
+      pcVar3 = (code *)swi(3);
+      pNVar6 = (NewItemProp_o *)(*pcVar3)();
+      return pNVar6;
+    }
+  }
+  else {
+    bVar1 = (NewItemProp_TypeInfo->_2).typeHierarchyDepth;
+    if (((pNVar7->klass->_2).typeHierarchyDepth < bVar1) ||
+       ((pNVar7->klass->_2).typeHierarchy[(ulonglong)bVar1 - 1] !=
+        (Il2CppClass *)NewItemProp_TypeInfo)) {
+      bVar4 = false;
+    }
+    else {
+      bVar4 = true;
+    }
+    pNVar6 = (NewItemProp_o *)0x0;
+    if (bVar4) {
+      pNVar6 = pNVar7;
+    }
+    if (pNVar6 == (NewItemProp_o *)0x0) goto LAB_1812be5eb;
+  }
+  (pNVar6->fields).super.IsClone = false;
+  (*(pNVar6->klass->vtable)._7_SetID.methodPtr)
+            (pNVar6,(ulonglong)(uint)propID,(pNVar6->klass->vtable)._7_SetID.method);
+  if ((((ItemPropCache_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((ItemPropCache_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620(ItemPropCache_TypeInfo);
+  }
+  if (DAT_186ac6664 == '\0') {
+    FUN_1804782b0(0x13648);
+    DAT_186ac6664 = '\x01';
+  }
+  if ((((ItemPropCache_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((ItemPropCache_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620(ItemPropCache_TypeInfo);
+  }
+  pSVar2 = ItemPropCache_TypeInfo->static_fields->m_PropInfo;
+  if (pSVar2 == (System_Collections_Generic_Dictionary_int__NewItemProp__o *)0x0) {
+    FUN_1804a7d90();
+    pcVar3 = (code *)swi(3);
+    pNVar6 = (NewItemProp_o *)(*pcVar3)();
+    return pNVar6;
+  }
+  System_Collections_Generic_Dictionary<RailResult,_FileResult>__set_Item(pSVar2,propID,pNVar6);
+LAB_1812be6bf:
+  if (dInfo != (System_Collections_Generic_Dictionary_string__object__o *)0x0) {
+    method_00 = Method_System_Collections_Generic_Dictionary<string,_object>_GetEnumerator__;
+    puVar8 = (undefined8 *)
+             System_Collections_Generic_Dictionary<ZmID,_object>__GetEnumerator(local_50,dInfo);
+    local_98._0_8_ = *puVar8;
+    local_98._8_8_ = puVar8[1];
+    local_98._16_8_ = puVar8[2];
+    local_98._24_8_ = puVar8[3];
+    local_78 = (UnityEngine_Transform_o *)puVar8[4];
+    while (cVar5 = FUN_182247c30(local_98,
+                                 Method_System_Collections_Generic_Dictionary_Enumerator<string,_object>_MoveNext__
+                                ), cVar5 != '\0') {
+      pUVar9 = DG_Tweening_ShortcutExtensions_<>c__DisplayClass73_0__<DOBlendableLocalRotateBy>b__0
+                         (&local_70,
+                          (DG_Tweening_ShortcutExtensions___c__DisplayClass73_0_o *)local_98,
+                          Method_System_Collections_Generic_Dictionary_Enumerator<string,_object>_get_Current__
+                         );
+      local_a8._0_4_ = (pUVar9->fields).x;
+      local_a8._4_4_ = (pUVar9->fields).y;
+      uStack_a0._0_4_ = (pUVar9->fields).z;
+      uStack_a0._4_4_ = (pUVar9->fields).w;
+      attrName = (System_String_o *)
+                 System_Runtime_CompilerServices_Unsafe__ReadUnaligned<object>
+                           (&local_a8,
+                            Method_System_Collections_Generic_KeyValuePair<string,_object>_get_Key__
+                           );
+      method_00 = (MethodInfo *)
+                  FUN_1819f5620(&local_a8,
+                                Method_System_Collections_Generic_KeyValuePair<string,_object>_get_Value__
+                               );
+      if ((((ItemPropCache_TypeInfo->_2).bitflags2 & 2) != 0) &&
+         ((ItemPropCache_TypeInfo->_2).cctor_finished == 0)) {
+        FUN_180486620();
+      }
+      ItemPropCache__UpdatePropByItem
+                (propID,attrName,(Il2CppObject *)method_00,false,(MethodInfo *)0x0);
+    }
+    NetFunc_basenet__OnServerCommand
+              ((NetFunc_basenet_o *)local_98,
+               (int32_t)
+               Method_System_Collections_Generic_Dictionary_Enumerator<string,_object>_Dispose__,
+               method_00);
+    return pNVar6;
+  }
+  FUN_1804a7d90(0);
+  pcVar3 = (code *)swi(3);
+  pNVar6 = (NewItemProp_o *)(*pcVar3)();
+  return pNVar6;
+}
+
+
+================================================================================
+FUNC: PropObject$$UpdatePropValue  @ 180ca4ec0
+
+void PropObject__UpdatePropValue
+               (PropObject_o *__this,System_String_o *key,Il2CppObject *value,int32_t itemID,
+               bool isSetProp,bool noExec,MethodInfo *method)
+
+{
+  int32_t iVar1;
+  System_Collections_Generic_HashSet_string__o *pSVar2;
+  System_Collections_Generic_List_string__o *pSVar3;
+  System_Collections_Generic_Dictionary_int__Dictionary_string__bool___o *pSVar4;
+  code *pcVar5;
+  PropItem_o *pPVar6;
+  bool bVar7;
+  char cVar8;
+  PropObjectOptimizing_o *pPVar9;
+  longlong lVar10;
+  ScriptEventManager_o *pSVar11;
+  System_Collections_Generic_Dictionary_string__PropItem__o *pSVar12;
+  System_Collections_Generic_Dictionary_int__PropObject__o *pSVar13;
+  System_String_o *pSVar14;
+  PropItem_o *local_res8;
+  longlong local_res10;
+  
+  if (DAT_186ac2421 == '\0') {
+    FUN_1804782b0(0x1aeb1);
+    DAT_186ac2421 = '\x01';
+  }
+  local_res8 = (PropItem_o *)0x0;
+  bVar7 = System_String__op_Equality(key,StringLiteral_28117,(MethodInfo *)0x0);
+  pSVar14 = StringLiteral_26746;
+  if ((!bVar7) &&
+     (bVar7 = System_String__op_Equality(key,StringLiteral_26980,(MethodInfo *)0x0), pSVar14 = key,
+     isSetProp && bVar7)) {
+    PerformMSG_PassiveSkillSetReload__SetReloadEndMsg(itemID,(MethodInfo *)0x0);
+  }
+  pSVar12 = (__this->fields).m_PropDict;
+  if (pSVar12 != (System_Collections_Generic_Dictionary_string__PropItem__o *)0x0) {
+    cVar8 = System_Collections_Generic_Dictionary<pb_Object,_HashSet<int>>__TryGetValue
+                      (pSVar12,pSVar14,&local_res8,
+                       Method_System_Collections_Generic_Dictionary<string,_PropItem>_TryGetValue__)
+    ;
+    if (cVar8 == '\0') {
+      return;
+    }
+    pSVar2 = (__this->fields).UpdatedPropLst;
+    if ((pSVar2 != (System_Collections_Generic_HashSet_string__o *)0x0) &&
+       (System_Collections_Generic_HashSet<Triangle>__Add(pSVar2,pSVar14),
+       local_res8 != (PropItem_o *)0x0)) {
+      PropItem__UpdatePropValue(local_res8,value,(MethodInfo *)0x0);
+      if ((((PropObjectOptimizing_TypeInfo->_2).bitflags2 & 2) != 0) &&
+         ((PropObjectOptimizing_TypeInfo->_2).cctor_finished == 0)) {
+        FUN_180486620();
+      }
+      pPVar9 = PropObjectOptimizing__get_Instance((MethodInfo *)0x0);
+      iVar1 = (__this->fields).ObjectID;
+      if (pPVar9 != (PropObjectOptimizing_o *)0x0) {
+        if (DAT_186ac2425 == '\0') {
+          FUN_1804782b0(0x1ae91);
+          DAT_186ac2425 = '\x01';
+        }
+        local_res10 = 0;
+        if ((((PropObjectOptimizing_TypeInfo->_2).bitflags2 & 2) != 0) &&
+           ((PropObjectOptimizing_TypeInfo->_2).cctor_finished == 0)) {
+          FUN_180486620(PropObjectOptimizing_TypeInfo);
+        }
+        pSVar3 = PropObjectOptimizing_TypeInfo->static_fields->unNeedDealAttr;
+        if (pSVar3 == (System_Collections_Generic_List_string__o *)0x0) {
+LAB_180ca52f9:
+          FUN_1804a7d90(0);
+          pcVar5 = (code *)swi(3);
+          (*pcVar5)();
+          return;
+        }
+        cVar8 = System_Collections_Generic_List<RailID>__Contains
+                          (pSVar3,pSVar14,Method_System_Collections_Generic_List<string>_Contains__)
+        ;
+        if (cVar8 == '\0') {
+          pSVar4 = (pPVar9->fields).hasDealedData;
+          if (pSVar4 == (System_Collections_Generic_Dictionary_int__Dictionary_string__bool___o *)
+                        0x0) goto LAB_180ca52f9;
+          cVar8 = System_Collections_Generic_Dictionary<pb_Object,_HashSet<int>>__TryGetValue
+                            (pSVar4,iVar1,&local_res10,
+                             Method_System_Collections_Generic_Dictionary<int,_Dictionary<string,_bool>>_TryGetValue__
+                            );
+          if (cVar8 != '\0') {
+            if (local_res10 == 0) goto LAB_180ca52f9;
+            cVar8 = System_Collections_Generic_Dictionary<RailResult,_FileResult>__ContainsKey
+                              (local_res10,pSVar14,
+                               Method_System_Collections_Generic_Dictionary<string,_bool>_ContainsKey__
+                              );
+            pPVar6 = local_res8;
+            if (cVar8 != '\0') {
+              if (DAT_186ac241b == '\0') {
+                FUN_1804782b0(0x1ae9e);
+                DAT_186ac241b = '\x01';
+              }
+              if ((((PropObjectOptimizing_TypeInfo->_2).bitflags2 & 2) != 0) &&
+                 ((PropObjectOptimizing_TypeInfo->_2).cctor_finished == 0)) {
+                FUN_180486620();
+              }
+              pPVar9 = PropObjectOptimizing__get_Instance((MethodInfo *)0x0);
+              if (pPVar9 != (PropObjectOptimizing_o *)0x0) {
+                if (DAT_186ac242a == '\0') {
+                  FUN_1804782b0(0x1ae90);
+                  DAT_186ac242a = '\x01';
+                }
+                if ((pPVar9->fields).curCacheIndex == 0) {
+                  pSVar13 = (pPVar9->fields).cachePropObject;
+                }
+                else {
+                  pSVar13 = (pPVar9->fields).cachePropObjectBackUp;
+                }
+                if (pSVar13 != (System_Collections_Generic_Dictionary_int__PropObject__o *)0x0) {
+                  cVar8 = System_Collections_Generic_Dictionary<RailResult,_FileResult>__ContainsKey
+                                    (pSVar13,(__this->fields).ObjectID,
+                                     Method_System_Collections_Generic_Dictionary<int,_PropObject>_ContainsKey__
+                                    );
+                  if ((cVar8 == '\0') && ((__this->fields).IsClone == false)) {
+                    System_Collections_Generic_Dictionary<RailID,_WGPeerEndPointShared>__Add
+                              (pSVar13,(__this->fields).ObjectID,__this,
+                               Method_System_Collections_Generic_Dictionary<int,_PropObject>_Add__);
+                  }
+                  if ((__this->fields).curCacheIndex == 0) {
+                    pSVar12 = (__this->fields).m_ValueChangedCache;
+                  }
+                  else {
+                    pSVar12 = (__this->fields).m_ValueChangedCacheBackUp;
+                  }
+                  if (pSVar12 != (System_Collections_Generic_Dictionary_string__PropItem__o *)0x0) {
+                    cVar8 = System_Collections_Generic_Dictionary<RailResult,_FileResult>__ContainsKey
+                                      (pSVar12,pSVar14,
+                                       Method_System_Collections_Generic_Dictionary<string,_PropItem>_ContainsKey__
+                                      );
+                    if (cVar8 != '\0') {
+                      return;
+                    }
+                    System_Collections_Generic_Dictionary<RailID,_WGPeerEndPointShared>__Add
+                              (pSVar12,pSVar14,pPVar6,
+                               Method_System_Collections_Generic_Dictionary<string,_PropItem>_Add__)
+                    ;
+                    return;
+                  }
+                }
+              }
+              goto LAB_180ca52e9;
+            }
+          }
+        }
+        if (noExec) {
+          return;
+        }
+        if (DAT_186ac241d == '\0') {
+          FUN_1804782b0(0x1aea1);
+          DAT_186ac241d = '\x01';
+        }
+        if ((((PropObjectOptimizing_TypeInfo->_2).bitflags2 & 2) != 0) &&
+           ((PropObjectOptimizing_TypeInfo->_2).cctor_finished == 0)) {
+          FUN_180486620();
+        }
+        pPVar9 = PropObjectOptimizing__get_Instance((MethodInfo *)0x0);
+        iVar1 = (__this->fields).ObjectID;
+        if (pPVar9 != (PropObjectOptimizing_o *)0x0) {
+          if (DAT_186ac2429 == '\0') {
+            FUN_1804782b0(0x1ae92);
+            DAT_186ac2429 = '\x01';
+          }
+          pSVar4 = (pPVar9->fields).hasDealedData;
+          local_res10 = 0;
+          if (pSVar4 == (System_Collections_Generic_Dictionary_int__Dictionary_string__bool___o *)
+                        0x0) {
+LAB_180ca52f1:
+            FUN_1804a7d90(0);
+            pcVar5 = (code *)swi(3);
+            (*pcVar5)();
+            return;
+          }
+          cVar8 = System_Collections_Generic_Dictionary<pb_Object,_HashSet<int>>__TryGetValue
+                            (pSVar4,iVar1,&local_res10,
+                             Method_System_Collections_Generic_Dictionary<int,_Dictionary<string,_bool>>_TryGetValue__
+                            );
+          if (cVar8 == '\0') {
+            pSVar4 = (pPVar9->fields).hasDealedData;
+            lVar10 = FUN_1804b8f20(System_Collections_Generic_Dictionary<string,_bool>_TypeInfo);
+            UnityEngine_Rendering_PostProcessing_ParameterOverride<Texture>___ctor
+                      (lVar10,Method_System_Collections_Generic_Dictionary<string,_bool>__ctor__);
+            if ((lVar10 == 0) ||
+               (System_Collections_Generic_Dictionary<RailID,_WGPeerEndPointShared>__Add
+                          (lVar10,pSVar14,1,
+                           Method_System_Collections_Generic_Dictionary<string,_bool>_Add__),
+               pSVar4 == (System_Collections_Generic_Dictionary_int__Dictionary_string__bool___o *)
+                         0x0)) goto LAB_180ca52f1;
+            System_Collections_Generic_Dictionary<RailID,_WGPeerEndPointShared>__Add
+                      (pSVar4,iVar1,lVar10,
+                       Method_System_Collections_Generic_Dictionary<int,_Dictionary<string,_bool>>_Add__
+                      );
+          }
+          else {
+            if (local_res10 == 0) goto LAB_180ca52f1;
+            System_Collections_Generic_Dictionary<RailResult,_FileResult>__set_Item
+                      (local_res10,pSVar14,1,
+                       Method_System_Collections_Generic_Dictionary<string,_bool>_set_Item__);
+          }
+          pSVar11 = ScriptEventManager__GetInstance((MethodInfo *)0x0);
+          if (pSVar11 != (ScriptEventManager_o *)0x0) {
+            ScriptEventManager__ExecEvent<Transform,_int>
+                      (pSVar11,(__this->fields).m_EventStr,pSVar14,(__this->fields).ObjectID,
+                       Method_ScriptEventManager_ExecEvent<string,_int>__);
+            return;
+          }
+        }
+      }
+    }
+  }
+LAB_180ca52e9:
+  FUN_1804a7d90(0);
+  pcVar5 = (code *)swi(3);
+  (*pcVar5)();
+  return;
+}
+
+
+================================================================================
+FUNC: PropItem$$UpdatePropValue  @ 180ca3620
+
+void PropItem__UpdatePropValue(PropItem_o *__this,Il2CppObject *value,MethodInfo *method)
+
+{
+  code *pcVar1;
+  undefined8 uVar2;
+  System_Collections_ArrayList_o *pSVar3;
+  undefined8 uVar4;
+  longlong *plVar5;
+  System_String_o *pSVar6;
+  int32_t *piVar7;
+  int32_t local_res8 [2];
+  
+  if (DAT_186ac2417 == '\0') {
+    FUN_1804782b0(0x1ae8f);
+    DAT_186ac2417 = '\x01';
+  }
+  local_res8[0] = (__this->fields).m_PropValueType;
+  switch(local_res8[0]) {
+  case 0:
+  case 1:
+  case 3:
+  case 4:
+  case 6:
+  case 8:
+  case 9:
+  case 0xb:
+  case 0xc:
+  case 0xd:
+  case 0xe:
+    (__this->fields).Value = value;
+    return;
+  case 2:
+  case 5:
+  case 10:
+    pSVar3 = (System_Collections_ArrayList_o *)
+             FUN_180259200((__this->fields).Value,System_Collections_Generic_List<int>_TypeInfo);
+    if (pSVar3 != (System_Collections_ArrayList_o *)0x0) {
+      System_Collections_ArrayList__Clear
+                (pSVar3,Method_System_Collections_Generic_List<int>_Clear__);
+      uVar4 = Method_System_Collections_Generic_List<int>_AddRange__;
+      uVar2 = FUN_180259200(value,System_Collections_Generic_List<int>_TypeInfo);
+      System_Collections_Generic_List<ZmID>__AddRange(pSVar3,uVar2,uVar4);
+      return;
+    }
+    break;
+  case 7:
+    pSVar3 = (System_Collections_ArrayList_o *)
+             FUN_180259200((__this->fields).Value,
+                           System_Collections_Generic_List<List<int>>_TypeInfo);
+    if (pSVar3 != (System_Collections_ArrayList_o *)0x0) {
+      System_Collections_ArrayList__Clear
+                (pSVar3,Method_System_Collections_Generic_List<List<int>>_Clear__);
+      uVar4 = System_Collections_Generic_List<List<int>>_TypeInfo;
+      uVar2 = Method_System_Collections_Generic_List<List<int>>_AddRange__;
+LAB_180ca37bd:
+      uVar4 = FUN_180259200(value,uVar4);
+      System_Collections_Generic_List<ZmID>__AddRange(pSVar3,uVar4,uVar2);
+      return;
+    }
+    break;
+  case 0xf:
+    pSVar3 = (System_Collections_ArrayList_o *)
+             FUN_180259200((__this->fields).Value,System_Collections_Generic_List<float>_TypeInfo);
+    if (pSVar3 != (System_Collections_ArrayList_o *)0x0) {
+      System_Collections_ArrayList__Clear
+                (pSVar3,Method_System_Collections_Generic_List<float>_Clear__);
+      uVar4 = Method_System_Collections_Generic_List<float>_AddRange__;
+      uVar2 = FUN_180259200(value,System_Collections_Generic_List<float>_TypeInfo);
+      System_Collections_Generic_List<ZmID>__AddRange(pSVar3,uVar2,uVar4);
+      return;
+    }
+    break;
+  case 0x10:
+    pSVar3 = (System_Collections_ArrayList_o *)
+             FUN_180259200((__this->fields).Value,System_Collections_Generic_List<string>_TypeInfo);
+    if (pSVar3 != (System_Collections_ArrayList_o *)0x0) {
+      System_Collections_ArrayList__Clear
+                (pSVar3,Method_System_Collections_Generic_List<string>_Clear__);
+      uVar4 = System_Collections_Generic_List<string>_TypeInfo;
+      uVar2 = Method_System_Collections_Generic_List<string>_AddRange__;
+      goto LAB_180ca37bd;
+    }
+    break;
+  default:
+    plVar5 = (longlong *)FUN_1804b8a90(PropType_TypeInfo,local_res8);
+    if (plVar5 != (longlong *)0x0) {
+      pSVar6 = (System_String_o *)
+               (**(code **)(*plVar5 + 0x158))(plVar5,*(undefined8 *)(*plVar5 + 0x160));
+      piVar7 = (int32_t *)FUN_1803c7fa0(plVar5);
+      local_res8[0] = *piVar7;
+      pSVar6 = System_String__Concat(StringLiteral_41474,pSVar6,(MethodInfo *)0x0);
+      DYPublic_XLog_Logger__LogE((Il2CppObject *)pSVar6,(MethodInfo *)0x0);
+      return;
+    }
+  }
+  FUN_1804a7d90(0);
+  pcVar1 = (code *)swi(3);
+  (*pcVar1)();
+  return;
+}
+
+
+INFO  REPORT: Save succeeded for processed file: /GameAssembly.dll (HeadlessAnalyzer)  

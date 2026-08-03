@@ -1,0 +1,1335 @@
+openjdk version "26.0.1" 2026-04-21
+OpenJDK Runtime Environment (build 26.0.1)
+OpenJDK 64-Bit Server VM (build 26.0.1, mixed mode)
+INFO  Using log config file: jar:file:/home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: /home/jammingend/.config/ghidra/ghidra_11.3.2_PUBLIC/application.log (LoggingInitialization)  
+INFO  Loading user preferences: /home/jammingend/.config/ghidra/ghidra_11.3.2_PUBLIC/preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (513 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (SSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: NativePRNGNonBlocking (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (ApplicationTrustManagerFactory)  
+INFO  Headless startup complete (1122 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 57 extension points (18 false positives) (ClassSearcher)  
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldOffset has been called by org.apache.felix.framework.util.SecureAction (file:/home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Base/lib/org.apache.felix.framework-7.0.5.jar)
+WARNING: Please consider reporting this to the maintainers of class org.apache.felix.framework.util.SecureAction
+WARNING: sun.misc.Unsafe::staticFieldOffset will be removed in a future release
+INFO  HEADLESS Script Paths:
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/DecompilerDependent/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/PyGhidra/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/8051/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/GnuDemangler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/FileFormats/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts
+    /tmp/opencode
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/BytePatterns/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Decompiler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/JVM/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/FunctionID/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/WildcardAssembler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/SwiftDemangler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/VersionTracking/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Base/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/PDB/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Jython/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Debug/Debugger/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/PIC/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/BSim/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/Atmel/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/DATA/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/SystemEmulation/ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: /tmp/opencode/GunfireReborn_decomp_23_7_2026 (HeadlessAnalyzer)  
+INFO  Opening project: /tmp/opencode/GunfireReborn_decomp_23_7_2026 (HeadlessProject)  
+INFO  REPORT: Processing project file: /GameAssembly.dll (HeadlessAnalyzer)  
+INFO  SCRIPT: /tmp/opencode/decompile_funcs.py (HeadlessAnalyzer)  
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by com.kenai.jffi.internal.StubLoader in an unnamed module (file:/home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Jython/lib/jython-standalone-2.7.4.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+================================================================================
+FUNC: WarInscriptionManager$$SetupInscriptionPanel  @ 180b7c7f0
+
+/* WARNING: Removing unreachable block (ram,0x0001805e0d97) */
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void WarInscriptionManager__SetupInscriptionPanel
+               (int32_t Index,int32_t iNpc,
+               System_Collections_Generic_List_InscriptionUnit__o *objlist,MethodInfo *method)
+
+{
+  byte bVar1;
+  OCNpc_OCNpcBase_o *com;
+  System_Collections_ArrayList_o *__this;
+  System_Collections_Generic_Dictionary_string__ScriptEventManager_EventHandler__o *pSVar2;
+  code *pcVar3;
+  bool bVar4;
+  UnityEngine_Networking_UploadHandler_o *pUVar5;
+  DYPublic_WebUtil_HttpClient_HttpCallBack_o *__this_00;
+  char cVar6;
+  int32_t iVar7;
+  NewPlayerObject_o *pNVar8;
+  ScriptEventManager_o *pSVar9;
+  CommonNotifyManager_o *__this_01;
+  System_Object_array *msg;
+  longlong lVar10;
+  UnityEngine_Networking_UnityWebRequest_o *w;
+  longlong lVar11;
+  undefined8 uVar12;
+  NewPlayerObject_o *__this_02;
+  undefined8 unaff_RDI;
+  DYPublic_WebUtil_HttpClient_HttpCallBack_o *pDStackX_8;
+  
+  if (cRam0000000186ac1ab1 == '\0') {
+    FUN_1804782b0(0x2c52c);
+    cRam0000000186ac1ab1 = '\x01';
+  }
+  if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620(WarInscriptionManager_TypeInfo);
+  }
+  WarInscriptionManager_TypeInfo->static_fields->m_MenuIndex = Index;
+  __this = (System_Collections_ArrayList_o *)
+           WarInscriptionManager_TypeInfo->static_fields->m_GsPropList;
+  if (__this != (System_Collections_ArrayList_o *)0x0) {
+    System_Collections_ArrayList__Clear
+              (__this,_Method_System_Collections_Generic_List<InscriptionUnit>_Clear__);
+    WarInscriptionManager_TypeInfo->static_fields->m_GsPropList = objlist;
+    if (objlist != (System_Collections_Generic_List_InscriptionUnit__o *)0x0) {
+      iVar7 = HeroMoveState_HeroMoveHashName__get_JumpState
+                        ((HeroMoveState_HeroMoveHashName_o *)objlist,
+                         _Method_System_Collections_Generic_List<InscriptionUnit>_get_Count__);
+      if (iVar7 == 0) {
+        __this_01 = CommonNotifyManager__GetInstance((MethodInfo *)0x0);
+        msg = (System_Object_array *)FUN_1804c1430(object___TypeInfo,1);
+        pDStackX_8 = (DYPublic_WebUtil_HttpClient_HttpCallBack_o *)CONCAT44(pDStackX_8._4_4_,0x840);
+        lVar11 = FUN_1804b8a90(int_TypeInfo,&pDStackX_8);
+        if (msg != (System_Object_array *)0x0) {
+          if ((lVar11 != 0) &&
+             (lVar10 = FUN_1804b8e10(lVar11,*(undefined8 *)(*(longlong *)msg + 0x40)), lVar10 == 0))
+          {
+            uVar12 = thunk_FUN_1804a68b0();
+            FUN_1802590e0(uVar12,0,0);
+            pcVar3 = (code *)swi(3);
+            (*pcVar3)();
+            return;
+          }
+          if (*(int *)(msg + 0x18) == 0) {
+            uVar12 = FUN_1804a69d0();
+            FUN_1804a7d00(uVar12,0,0);
+            pcVar3 = (code *)swi(3);
+            (*pcVar3)();
+            return;
+          }
+          *(longlong *)(msg + 0x20) = lVar11;
+          if (__this_01 != (CommonNotifyManager_o *)0x0) {
+            CommonNotifyManager__ClientFastCommonnotify(__this_01,msg,(MethodInfo *)0x0);
+            return;
+          }
+        }
+        FUN_1804a7d90(0);
+        pcVar3 = (code *)swi(3);
+        (*pcVar3)();
+        return;
+      }
+      if (((*(byte *)(UI_CUIManagerInstance_TypeInfo + 0x127) & 2) != 0) &&
+         (*(int *)(UI_CUIManagerInstance_TypeInfo + 0xd8) == 0)) {
+        FUN_180486620(UI_CUIManagerInstance_TypeInfo);
+      }
+      lVar11 = **(longlong **)(UI_CUIManagerInstance_TypeInfo + 0xb8);
+      if ((((UIFormName_TypeInfo->_2).bitflags2 & 2) != 0) &&
+         ((UIFormName_TypeInfo->_2).cctor_finished == 0)) {
+        FUN_180486620(UIFormName_TypeInfo);
+      }
+      if (lVar11 != 0) {
+        cVar6 = UI_CUIManager__IsUIFormShown
+                          (lVar11,UIFormName_TypeInfo->static_fields->INSCIPRTION_SHOP,0);
+        if (cVar6 == '\0') {
+          if (((*(byte *)(UI_CUIManagerInstance_TypeInfo + 0x127) & 2) != 0) &&
+             (*(int *)(UI_CUIManagerInstance_TypeInfo + 0xd8) == 0)) {
+            FUN_180486620(UI_CUIManagerInstance_TypeInfo);
+          }
+          lVar11 = **(longlong **)(UI_CUIManagerInstance_TypeInfo + 0xb8);
+          if ((((UIFormName_TypeInfo->_2).bitflags2 & 2) != 0) &&
+             ((UIFormName_TypeInfo->_2).cctor_finished == 0)) {
+            FUN_180486620(UIFormName_TypeInfo);
+          }
+          if (lVar11 != 0) {
+            UI_CUIManager__ShowUIForm(lVar11,UIFormName_TypeInfo->static_fields->INSCIPRTION_SHOP,0)
+            ;
+            if ((((NpcManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+               ((NpcManager_TypeInfo->_2).cctor_finished == 0)) {
+              FUN_180486620();
+            }
+            if (cRam0000000186ac197f == '\0') {
+              FUN_1804782b0(0x1725a);
+              cRam0000000186ac197f = '\x01';
+            }
+            if ((((NewPlayerManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+               ((NewPlayerManager_TypeInfo->_2).cctor_finished == 0)) {
+              FUN_180486620();
+            }
+            pNVar8 = NewPlayerManager__GetPlayer(iNpc,(MethodInfo *)0x0);
+            if ((pNVar8 == (NewPlayerObject_o *)0x0) ||
+               (com = (pNVar8->fields).NPCOPCom, com == (OCNpc_OCNpcBase_o *)0x0)) {
+              return;
+            }
+            if (DAT_186ab5d88 == '\0') {
+              FUN_1804782b0();
+              DAT_186ab5d88 = '\x01';
+            }
+            if ((com->fields).super.NeedUpdate == true) {
+              return;
+            }
+            pNVar8 = (NewPlayerObject_o *)(com->fields).super.luaparent;
+            (com->fields).super.NeedUpdate = true;
+            if (pNVar8 == (NewPlayerObject_o *)0x0) {
+              __this_02 = (NewPlayerObject_o *)0x0;
+            }
+            else {
+              bVar1 = (NewPlayerObject_TypeInfo->_2).typeHierarchyDepth;
+              if (((((LuaObjectBase_c *)pNVar8->klass)->_2).typeHierarchyDepth < bVar1) ||
+                 ((((LuaObjectBase_c *)pNVar8->klass)->_2).typeHierarchy[(ulonglong)bVar1 - 1] !=
+                  (Il2CppClass *)NewPlayerObject_TypeInfo)) {
+                bVar4 = false;
+              }
+              else {
+                bVar4 = true;
+              }
+              __this_02 = (NewPlayerObject_o *)0x0;
+              if (bVar4) {
+                __this_02 = pNVar8;
+              }
+              if (__this_02 == (NewPlayerObject_o *)0x0) {
+                FUN_180259620(pNVar8);
+                pcVar3 = (code *)swi(3);
+                (*pcVar3)();
+                return;
+              }
+            }
+            if (__this_02 == (NewPlayerObject_o *)0x0) {
+              FUN_1804a7d90();
+              pcVar3 = (code *)swi(3);
+              (*pcVar3)();
+              return;
+            }
+            NewPlayerObject__AddUpdateCom(__this_02,(LuaComBase_o *)com,(MethodInfo *)0x0);
+            return;
+          }
+        }
+        else {
+          pSVar9 = ScriptEventManager__GetInstance((MethodInfo *)0x0);
+          if (((*(byte *)(Game_EvenType_TypeInfo + 0x127) & 2) != 0) &&
+             (*(int *)(Game_EvenType_TypeInfo + 0xd8) == 0)) {
+            FUN_180486620(Game_EvenType_TypeInfo);
+          }
+          pUVar5 = _StringLiteral_41726;
+          if (pSVar9 != (ScriptEventManager_o *)0x0) {
+            uVar12 = *(undefined8 *)(*(longlong *)(Game_EvenType_TypeInfo + 0xb8) + 0x60);
+            if (DAT_186ae4c7e == '\0') {
+              FUN_1804782b0(0x1d8e3,uVar12,_StringLiteral_41726,
+                            Method_ScriptEventManager_ExecEvent<string>__,unaff_RDI);
+              DAT_186ae4c7e = '\x01';
+            }
+            pSVar2 = (pSVar9->fields).m_Events;
+            pDStackX_8 = (DYPublic_WebUtil_HttpClient_HttpCallBack_o *)0x0;
+            if (pSVar2 != (System_Collections_Generic_Dictionary_string__ScriptEventManager_EventHandler__o
+                           *)0x0) {
+              cVar6 = System_Collections_Generic_Dictionary<pb_Object,_HashSet<int>>__TryGetValue
+                                (pSVar2,uVar12,&pDStackX_8,
+                                 Method_System_Collections_Generic_Dictionary<string,_ScriptEventManager_EventHandler>_TryGetValue__
+                                );
+              __this_00 = pDStackX_8;
+              if (cVar6 == '\0') {
+                return;
+              }
+              w = (UnityEngine_Networking_UnityWebRequest_o *)FUN_1804c1430(object___TypeInfo,1);
+              if (w != (UnityEngine_Networking_UnityWebRequest_o *)0x0) {
+                if ((pUVar5 != (UnityEngine_Networking_UploadHandler_o *)0x0) &&
+                   (lVar11 = FUN_1804b8e10(pUVar5,(w->klass->_1).element_class), lVar11 == 0)) {
+                  uVar12 = thunk_FUN_1804a68b0();
+                  FUN_1802590e0(uVar12,0,0);
+                  pcVar3 = (code *)swi(3);
+                  (*pcVar3)();
+                  return;
+                }
+                if (*(int *)&(w->fields).m_DownloadHandler == 0) {
+                  uVar12 = FUN_1804a69d0();
+                  FUN_1804a7d00(uVar12,0,0);
+                  pcVar3 = (code *)swi(3);
+                  (*pcVar3)();
+                  return;
+                }
+                (w->fields).m_UploadHandler = pUVar5;
+                if (__this_00 != (DYPublic_WebUtil_HttpClient_HttpCallBack_o *)0x0) {
+                  DYPublic_WebUtil_HttpClient_HttpCallBack__Invoke(__this_00,w,(MethodInfo *)0x0);
+                  return;
+                }
+              }
+            }
+            FUN_1804a7d90(0);
+            pcVar3 = (code *)swi(3);
+            (*pcVar3)();
+            return;
+          }
+        }
+      }
+    }
+  }
+  FUN_1804a7d90(0);
+  pcVar3 = (code *)swi(3);
+  (*pcVar3)();
+  return;
+}
+
+
+================================================================================
+FUNC: WarInscriptionManager$$ReturnCurInscriptionList  @ 180b7c650
+
+System_Collections_Generic_List_InscriptionUnit__o *
+WarInscriptionManager__ReturnCurInscriptionList(MethodInfo *method)
+
+{
+  if (cRam0000000186ac1ab2 == '\0') {
+    FUN_1804782b0(0x2c52a);
+    cRam0000000186ac1ab2 = '\x01';
+  }
+  if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620(WarInscriptionManager_TypeInfo);
+  }
+  return WarInscriptionManager_TypeInfo->static_fields->m_GsPropList;
+}
+
+
+================================================================================
+FUNC: WarInscriptionManager$$SendRequest  @ 180b7c6b0
+
+void WarInscriptionManager__SendRequest(int32_t ItemID,int32_t Choice,MethodInfo *method)
+
+{
+  code *pcVar1;
+  SoundEffectManager_o *pSVar2;
+  int32_t effectID;
+  
+  if (cRam0000000186ac1ab3 == '\0') {
+    FUN_1804782b0(0x2c52b);
+    cRam0000000186ac1ab3 = '\x01';
+  }
+  if (Choice == -1) {
+    pSVar2 = (SoundEffectManager_o *)
+             Singleton<WindowsMgr>__get_instance
+                       (Method_Singleton<SoundEffectManager>_get_instance__);
+    if (pSVar2 != (SoundEffectManager_o *)0x0) {
+      SoundEffectManager__CreateEffctOnEffectPanel(pSVar2,0x2335,1.0,false,true,(MethodInfo *)0x0);
+      return;
+    }
+  }
+  else if (Choice == 0) {
+    pSVar2 = (SoundEffectManager_o *)
+             Singleton<WindowsMgr>__get_instance
+                       (Method_Singleton<SoundEffectManager>_get_instance__);
+    if (pSVar2 != (SoundEffectManager_o *)0x0) {
+      effectID = 0x2344;
+      goto code_r0x000180b7c738;
+    }
+  }
+  else {
+    if (((Choice != 1) && (Choice != 2)) && (Choice != 3)) {
+      return;
+    }
+    pSVar2 = (SoundEffectManager_o *)
+             Singleton<WindowsMgr>__get_instance
+                       (Method_Singleton<SoundEffectManager>_get_instance__);
+    if (pSVar2 != (SoundEffectManager_o *)0x0) {
+      effectID = 0x2345;
+code_r0x000180b7c738:
+      SoundEffectManager__CreateEffctOnEffectPanel(pSVar2,effectID,1.0,false,true,(MethodInfo *)0x0)
+      ;
+      if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+         ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+        FUN_180486620(WarInscriptionManager_TypeInfo);
+      }
+      s2cnpc__C2GSNpcItemInteract
+                (WarInscriptionManager_TypeInfo->static_fields->m_MenuIndex,ItemID,Choice,
+                 (MethodInfo *)0x0);
+      return;
+    }
+  }
+  FUN_1804a7d90(0);
+  pcVar1 = (code *)swi(3);
+  (*pcVar1)();
+  return;
+}
+
+
+================================================================================
+FUNC: WarInscriptionManager$$InscriptionResult  @ 180b7c5a0
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void WarInscriptionManager__InscriptionResult
+               (int32_t iNpc,int32_t iItem,int32_t iResult,MethodInfo *method)
+
+{
+  code *pcVar1;
+  ScriptEventManager_o *pSVar2;
+  
+  if (cRam0000000186ac1ab4 == '\0') {
+    FUN_1804782b0();
+    cRam0000000186ac1ab4 = '\x01';
+  }
+  pSVar2 = ScriptEventManager__GetInstance((MethodInfo *)0x0);
+  if (((*(byte *)(Game_EvenType_TypeInfo + 0x127) & 2) != 0) &&
+     (*(int *)(Game_EvenType_TypeInfo + 0xd8) == 0)) {
+    FUN_180486620(Game_EvenType_TypeInfo);
+  }
+  if (pSVar2 != (ScriptEventManager_o *)0x0) {
+    ScriptEventManager__ExecEvent<Transform,_int,_int>
+              (pSVar2,*(undefined8 *)(*(longlong *)(Game_EvenType_TypeInfo + 0xb8) + 0x60),
+               _StringLiteral_41727,iItem,iResult,
+               Method_ScriptEventManager_ExecEvent<string,_int,_int>__);
+    return;
+  }
+  FUN_1804a7d90(0);
+  pcVar1 = (code *)swi(3);
+  (*pcVar1)();
+  return;
+}
+
+
+================================================================================
+FUNC: WarInscriptionManager$$GetInscriptionList  @ 180b7c140
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+undefined8
+WarInscriptionManager__GetInscriptionList
+          (int32_t param_1,undefined8 param_2,undefined8 param_3,undefined8 param_4)
+
+{
+  code *pcVar1;
+  char cVar2;
+  int32_t iVar3;
+  undefined8 uVar4;
+  NewItemProp_o *pNVar5;
+  longlong lVar6;
+  undefined8 *puVar7;
+  MethodInfo *method;
+  BulletChange_CRuleBase_c *pBStack_48;
+  void *pvStack_40;
+  UnityEngine_MonoBehaviour_o *pUStack_38;
+  undefined1 auStack_30 [24];
+  
+  if (cRam0000000186ac1ab5 == '\0') {
+    FUN_1804782b0(0x2c526,param_2,param_3,param_4,0xfffffffffffffffe);
+    cRam0000000186ac1ab5 = '\x01';
+  }
+  pBStack_48 = (BulletChange_CRuleBase_c *)0x0;
+  pvStack_40 = (void *)0x0;
+  pUStack_38 = (UnityEngine_MonoBehaviour_o *)0x0;
+  uVar4 = FUN_1804b8f20(_System_Collections_Generic_List<InscriptionString>_TypeInfo);
+  System_Collections_Generic_List<serveruiobj>___ctor(uVar4);
+  if ((((ItemPropCache_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((ItemPropCache_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620();
+  }
+  pNVar5 = ItemPropCache__GetPropByItem(param_1,(MethodInfo *)0x0);
+  if (pNVar5 != (NewItemProp_o *)0x0) {
+    PropObject__GetPropValue<int>
+              (pNVar5,StringLiteral_36020,0,Method_PropObject_GetPropValue<int>__);
+    PropObject__GetPropValue<int>
+              (pNVar5,StringLiteral_39967,0,Method_PropObject_GetPropValue<int>__);
+    lVar6 = PropObject__GetPropValue<string>
+                      (pNVar5,StringLiteral_36011,0,Method_PropObject_GetPropValue<List<int>>__);
+    if (lVar6 == 0) {
+      FUN_1804a7d90(0);
+      pcVar1 = (code *)swi(3);
+      uVar4 = (*pcVar1)();
+      return uVar4;
+    }
+    method = Method_System_Collections_Generic_List<int>_GetEnumerator__;
+    puVar7 = (undefined8 *)
+             System_Collections_Generic_List<ShaderPassName>__GetEnumerator(auStack_30,lVar6);
+    pBStack_48 = (BulletChange_CRuleBase_c *)*puVar7;
+    pvStack_40 = (void *)puVar7[1];
+    pUStack_38 = (UnityEngine_MonoBehaviour_o *)puVar7[2];
+    while (cVar2 = FUN_1818bfba0(&pBStack_48,
+                                 Method_System_Collections_Generic_List_Enumerator<int>_MoveNext__),
+          cVar2 != '\0') {
+      iVar3 = BulletChange_CRuleBase__SID
+                        ((BulletChange_CRuleBase_o *)&pBStack_48,
+                         Method_System_Collections_Generic_List_Enumerator<int>_get_Current__);
+      lVar6 = Singleton<object>__GetInstance(Method_Singleton<inscriptionData>_get_Instance__);
+      if (lVar6 == 0) {
+        FUN_1804a7d90(0);
+        FUN_1802590e0(0,0,0);
+        pcVar1 = (code *)swi(3);
+        uVar4 = (*pcVar1)();
+        return uVar4;
+      }
+      method = (MethodInfo *)0x0;
+      DataHelper_inscriptionData__GetInscriptionData(lVar6,iVar3);
+    }
+    NetFunc_basenet__OnServerCommand
+              ((NetFunc_basenet_o *)&pBStack_48,
+               (int32_t)Method_System_Collections_Generic_List_Enumerator<int>_Dispose__,method);
+  }
+  return uVar4;
+}
+
+
+================================================================================
+FUNC: WarInscriptionManager$$GetShareInscription  @ 180b7c440
+
+System_Collections_Generic_List_int__o *
+WarInscriptionManager__GetShareInscription
+          (int32_t shareWeaponID,int32_t bSharedWeaponID,
+          System_Collections_Generic_List_int__o *cacheLst,MethodInfo *method)
+
+{
+  System_Collections_ArrayList_o *__this;
+  code *pcVar1;
+  int32_t weaponSid;
+  NewItemProp_o *__this_00;
+  NewItemProp_o *__this_01;
+  System_Collections_Generic_List_int__o *pSVar2;
+  System_Collections_Generic_List_int__o *bInscription;
+  
+  if (DAT_186ac1ab6 == '\0') {
+    FUN_1804782b0(0x2c528);
+    DAT_186ac1ab6 = '\x01';
+  }
+  if (cacheLst == (System_Collections_Generic_List_int__o *)0x0) {
+    if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+       ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+      FUN_180486620(WarInscriptionManager_TypeInfo);
+    }
+    __this = (System_Collections_ArrayList_o *)
+             WarInscriptionManager_TypeInfo->static_fields->m_shareCache;
+    if (__this == (System_Collections_ArrayList_o *)0x0) {
+      FUN_1804a7d90();
+      pcVar1 = (code *)swi(3);
+      pSVar2 = (System_Collections_Generic_List_int__o *)(*pcVar1)();
+      return pSVar2;
+    }
+    System_Collections_ArrayList__Clear(__this,Method_System_Collections_Generic_List<int>_Clear__);
+    cacheLst = WarInscriptionManager_TypeInfo->static_fields->m_shareCache;
+  }
+  if ((((ItemPropCache_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((ItemPropCache_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620();
+  }
+  __this_00 = ItemPropCache__GetPropByItem(shareWeaponID,(MethodInfo *)0x0);
+  __this_01 = ItemPropCache__GetPropByItem(bSharedWeaponID,(MethodInfo *)0x0);
+  if ((__this_00 != (NewItemProp_o *)0x0) && (__this_01 != (NewItemProp_o *)0x0)) {
+    weaponSid = NewItemProp__get_SID(__this_00,(MethodInfo *)0x0);
+    pSVar2 = NewItemProp__get_Inscription(__this_00,(MethodInfo *)0x0);
+    bInscription = NewItemProp__get_Inscription(__this_01,(MethodInfo *)0x0);
+    if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+       ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+      FUN_180486620();
+    }
+    pSVar2 = WarInscriptionManager__CheckShareInscription
+                       (weaponSid,pSVar2,bInscription,cacheLst,(MethodInfo *)0x0);
+    return pSVar2;
+  }
+  return cacheLst;
+}
+
+
+================================================================================
+FUNC: WarInscriptionManager$$GetBShareInscriptionOnShop  @ 180b7bff0
+
+System_Collections_Generic_List_int__o *
+WarInscriptionManager__GetBShareInscriptionOnShop
+          (int32_t shareWeaponID,System_Collections_Generic_List_int__o *inscription,
+          System_Collections_Generic_List_int__o *cacheLst,MethodInfo *method)
+
+{
+  System_Collections_ArrayList_o *__this;
+  code *pcVar1;
+  int32_t weaponSid;
+  NewItemProp_o *__this_00;
+  System_Collections_Generic_List_int__o *pSVar2;
+  
+  if (cRam0000000186ac1ab8 == '\0') {
+    FUN_1804782b0(0x2c525);
+    cRam0000000186ac1ab8 = '\x01';
+  }
+  if (cacheLst == (System_Collections_Generic_List_int__o *)0x0) {
+    if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+       ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+      FUN_180486620(WarInscriptionManager_TypeInfo);
+    }
+    __this = (System_Collections_ArrayList_o *)
+             WarInscriptionManager_TypeInfo->static_fields->m_shareCache;
+    if (__this == (System_Collections_ArrayList_o *)0x0) {
+      FUN_1804a7d90();
+      pcVar1 = (code *)swi(3);
+      pSVar2 = (System_Collections_Generic_List_int__o *)(*pcVar1)();
+      return pSVar2;
+    }
+    System_Collections_ArrayList__Clear(__this,Method_System_Collections_Generic_List<int>_Clear__);
+    cacheLst = WarInscriptionManager_TypeInfo->static_fields->m_shareCache;
+  }
+  if ((((ItemPropCache_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((ItemPropCache_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620();
+  }
+  __this_00 = ItemPropCache__GetPropByItem(shareWeaponID,(MethodInfo *)0x0);
+  if (__this_00 != (NewItemProp_o *)0x0) {
+    weaponSid = NewItemProp__get_SID(__this_00,(MethodInfo *)0x0);
+    pSVar2 = NewItemProp__get_Inscription(__this_00,(MethodInfo *)0x0);
+    if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+       ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+      FUN_180486620();
+    }
+    pSVar2 = WarInscriptionManager__CheckShareInscription
+                       (weaponSid,pSVar2,inscription,cacheLst,(MethodInfo *)0x0);
+    return pSVar2;
+  }
+  return cacheLst;
+}
+
+
+================================================================================
+FUNC: WarInscriptionManager$$CheckShareInscription  @ 180b7bd20
+
+System_Collections_Generic_List_int__o *
+WarInscriptionManager__CheckShareInscription
+          (int32_t weaponSid,System_Collections_Generic_List_int__o *Inscription,
+          System_Collections_Generic_List_int__o *bInscription,
+          System_Collections_Generic_List_int__o *returnLst,MethodInfo *method)
+
+{
+  int iVar1;
+  code *pcVar2;
+  char cVar3;
+  bool bVar4;
+  int32_t inscSid;
+  longlong lVar5;
+  undefined8 *puVar6;
+  DataHelper_inscriptiondataclass_o *inscriptionData;
+  System_Collections_Generic_List_int__o *pSVar7;
+  MethodInfo *method_00;
+  undefined4 local_88 [4];
+  DataHelper_itemdataclass_o *local_78;
+  undefined4 *local_70;
+  undefined8 local_68;
+  BulletChange_CRuleBase_c *local_58;
+  void *pvStack_50;
+  UnityEngine_MonoBehaviour_o *local_48;
+  undefined1 local_40 [24];
+  
+  local_68 = 0xfffffffffffffffe;
+  if (DAT_186ac1ab9 == '\0') {
+    FUN_1804782b0(0x2c524);
+    DAT_186ac1ab9 = '\x01';
+  }
+  local_58 = (BulletChange_CRuleBase_c *)0x0;
+  pvStack_50 = (void *)0x0;
+  local_48 = (UnityEngine_MonoBehaviour_o *)0x0;
+  local_70 = local_88;
+  lVar5 = Singleton<object>__GetInstance(Method_Singleton<ItemData>_get_Instance__);
+  if (lVar5 == 0) {
+    FUN_1804a7d90(0);
+LAB_180b7bfbe:
+    FUN_1804a7d90(0);
+LAB_180b7bfc5:
+    FUN_1804a7d90(0);
+LAB_180b7bfcc:
+    FUN_1804a7d90(0);
+    FUN_1802590e0(0,0,0);
+    pcVar2 = (code *)swi(3);
+    pSVar7 = (System_Collections_Generic_List_int__o *)(*pcVar2)();
+    return pSVar7;
+  }
+  local_78 = (DataHelper_itemdataclass_o *)DataHelper_ItemData__GetItemData(lVar5,weaponSid,0);
+  if (local_78 != (DataHelper_itemdataclass_o *)0x0) {
+    if (bInscription == (System_Collections_Generic_List_int__o *)0x0) {
+      FUN_1804a7d90(0);
+      pcVar2 = (code *)swi(3);
+      pSVar7 = (System_Collections_Generic_List_int__o *)(*pcVar2)();
+      return pSVar7;
+    }
+    method_00 = Method_System_Collections_Generic_List<int>_GetEnumerator__;
+    puVar6 = (undefined8 *)
+             System_Collections_Generic_List<ShaderPassName>__GetEnumerator(local_40,bInscription);
+    local_58 = (BulletChange_CRuleBase_c *)*puVar6;
+    pvStack_50 = (void *)puVar6[1];
+    local_48 = (UnityEngine_MonoBehaviour_o *)puVar6[2];
+    while (cVar3 = FUN_1818bfba0(&local_58,
+                                 Method_System_Collections_Generic_List_Enumerator<int>_MoveNext__),
+          cVar3 != '\0') {
+      inscSid = BulletChange_CRuleBase__SID
+                          ((BulletChange_CRuleBase_o *)&local_58,
+                           Method_System_Collections_Generic_List_Enumerator<int>_get_Current__);
+      if (Inscription == (System_Collections_Generic_List_int__o *)0x0) goto LAB_180b7bfcc;
+      method_00 = Method_System_Collections_Generic_List<int>_Contains__;
+      cVar3 = System_Collections_Generic_List<SystemLanguage>__Contains(Inscription,inscSid);
+      if (cVar3 == '\0') {
+        lVar5 = Singleton<object>__GetInstance(Method_Singleton<inscriptionData>_get_Instance__);
+        if (lVar5 == 0) goto LAB_180b7bfc5;
+        method_00 = (MethodInfo *)0x0;
+        inscriptionData =
+             (DataHelper_inscriptiondataclass_o *)
+             DataHelper_inscriptionData__GetInscriptionData(lVar5,inscSid);
+        if (inscriptionData != (DataHelper_inscriptiondataclass_o *)0x0) {
+          iVar1 = *(int *)(inscriptionData + 0x20);
+          if ((((PCInscriptionDefine_TypeInfo->_2).bitflags2 & 2) != 0) &&
+             ((PCInscriptionDefine_TypeInfo->_2).cctor_finished == 0)) {
+            FUN_180486620(PCInscriptionDefine_TypeInfo);
+          }
+          if (iVar1 != PCInscriptionDefine_TypeInfo->static_fields->DoubleIns) {
+            if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+               ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+              FUN_180486620();
+            }
+            method_00 = (MethodInfo *)0x0;
+            bVar4 = WarInscriptionManager__CheckExcludeInsc(Inscription,inscSid,(MethodInfo *)0x0);
+            if (!bVar4) {
+              if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+                 ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+                FUN_180486620();
+              }
+              method_00 = (MethodInfo *)0x0;
+              bVar4 = WarInscriptionManager__CheckInscTag
+                                (inscriptionData,local_78,(MethodInfo *)0x0);
+              if (bVar4) {
+                if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+                   ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+                  FUN_180486620();
+                }
+                method_00 = (MethodInfo *)0x0;
+                bVar4 = WarInscriptionManager__CheckInscWeapon
+                                  (weaponSid,inscriptionData,(MethodInfo *)0x0);
+                if (bVar4) {
+                  if (returnLst == (System_Collections_Generic_List_int__o *)0x0)
+                  goto LAB_180b7bfbe;
+                  method_00 = Method_System_Collections_Generic_List<int>_Add__;
+                  System_Collections_Generic_List<EnumRailWorkFileClass>__Add(returnLst,inscSid);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    *local_70 = 0x80;
+    NetFunc_basenet__OnServerCommand
+              ((NetFunc_basenet_o *)&local_58,
+               (int32_t)Method_System_Collections_Generic_List_Enumerator<int>_Dispose__,method_00);
+  }
+  return returnLst;
+}
+
+
+================================================================================
+FUNC: WarInscriptionManager$$CheckExcludeInsc  @ 180b7b7a0
+
+bool WarInscriptionManager__CheckExcludeInsc
+               (System_Collections_Generic_List_int__o *inscription,int32_t inscSid,
+               MethodInfo *method)
+
+{
+  code *pcVar1;
+  char cVar2;
+  undefined1 uVar3;
+  int32_t iVar4;
+  longlong lVar5;
+  undefined8 *puVar6;
+  longlong lVar7;
+  bool bVar8;
+  MethodInfo *method_00;
+  int local_88 [6];
+  int *local_70;
+  undefined8 local_68;
+  BulletChange_CRuleBase_c *local_58;
+  void *pvStack_50;
+  UnityEngine_MonoBehaviour_o *local_48;
+  undefined1 local_40 [24];
+  
+  local_68 = 0xfffffffffffffffe;
+  if (DAT_186ac1aba == '\0') {
+    FUN_1804782b0(0x2c521);
+    DAT_186ac1aba = '\x01';
+  }
+  local_58 = (BulletChange_CRuleBase_c *)0x0;
+  pvStack_50 = (void *)0x0;
+  local_48 = (UnityEngine_MonoBehaviour_o *)0x0;
+  bVar8 = false;
+  local_70 = local_88;
+  lVar5 = Singleton<object>__GetInstance(Method_Singleton<inscriptionData>_get_Instance__);
+  if (lVar5 == 0) {
+    FUN_1804a7d90(0);
+LAB_180b7b9c7:
+    FUN_1804a7d90();
+LAB_180b7b9cd:
+    FUN_1804a7d90();
+LAB_180b7b9d2:
+    FUN_1804a7d90(0);
+    FUN_1802590e0(0,0,0);
+    pcVar1 = (code *)swi(3);
+    uVar3 = (*pcVar1)();
+    return (bool)uVar3;
+  }
+  lVar5 = DataHelper_inscriptionData__GetInscriptionData(lVar5,inscSid,0);
+  if (inscription == (System_Collections_Generic_List_int__o *)0x0) {
+    FUN_1804a7d90(0);
+    pcVar1 = (code *)swi(3);
+    uVar3 = (*pcVar1)();
+    return (bool)uVar3;
+  }
+  method_00 = Method_System_Collections_Generic_List<int>_GetEnumerator__;
+  puVar6 = (undefined8 *)
+           System_Collections_Generic_List<ShaderPassName>__GetEnumerator(local_40,inscription);
+  local_58 = (BulletChange_CRuleBase_c *)*puVar6;
+  pvStack_50 = (void *)puVar6[1];
+  local_48 = (UnityEngine_MonoBehaviour_o *)puVar6[2];
+  while( true ) {
+    do {
+      cVar2 = FUN_1818bfba0(&local_58,
+                            Method_System_Collections_Generic_List_Enumerator<int>_MoveNext__);
+      if (cVar2 == '\0') {
+        local_88[0] = 0x6e;
+        goto LAB_180b7b978;
+      }
+      iVar4 = BulletChange_CRuleBase__SID
+                        ((BulletChange_CRuleBase_o *)&local_58,
+                         Method_System_Collections_Generic_List_Enumerator<int>_get_Current__);
+      lVar7 = Singleton<object>__GetInstance(Method_Singleton<inscriptionData>_get_Instance__);
+      if (lVar7 == 0) goto LAB_180b7b9d2;
+      method_00 = (MethodInfo *)0x0;
+      lVar7 = DataHelper_inscriptionData__GetInscriptionData(lVar7,iVar4);
+    } while (lVar7 == 0);
+    if (*(longlong *)(lVar7 + 0x60) == 0) goto LAB_180b7b9cd;
+    method_00 = Method_System_Collections_Generic_List<int>_Contains__;
+    cVar2 = System_Collections_Generic_List<SystemLanguage>__Contains
+                      (*(longlong *)(lVar7 + 0x60),inscSid);
+    if (cVar2 != '\0') break;
+    if (lVar5 != 0) {
+      if (*(longlong *)(lVar5 + 0x60) == 0) goto LAB_180b7b9c7;
+      method_00 = Method_System_Collections_Generic_List<int>_Contains__;
+      cVar2 = System_Collections_Generic_List<SystemLanguage>__Contains
+                        (*(longlong *)(lVar5 + 0x60),iVar4);
+      if (cVar2 != '\0') {
+        bVar8 = true;
+        local_88[0] = 0x70;
+LAB_180b7b978:
+        NetFunc_basenet__OnServerCommand
+                  ((NetFunc_basenet_o *)&local_58,
+                   (int32_t)Method_System_Collections_Generic_List_Enumerator<int>_Dispose__,
+                   method_00);
+        if (local_88[0] != 0x70) {
+          bVar8 = false;
+        }
+        return bVar8;
+      }
+    }
+  }
+  bVar8 = true;
+  local_88[0] = 0x70;
+  goto LAB_180b7b978;
+}
+
+
+================================================================================
+FUNC: WarInscriptionManager$$CheckInscTag  @ 180b7b9f0
+
+bool WarInscriptionManager__CheckInscTag
+               (DataHelper_inscriptiondataclass_o *inscriptionData,
+               DataHelper_itemdataclass_o *waponData,MethodInfo *method)
+
+{
+  HeroMoveState_HeroMoveHashName_o *__this;
+  longlong lVar1;
+  code *pcVar2;
+  int32_t iVar3;
+  char cVar4;
+  undefined1 uVar5;
+  int32_t iVar6;
+  undefined8 *puVar7;
+  byte bVar8;
+  int iVar9;
+  MethodInfo *method_00;
+  bool bVar10;
+  undefined4 local_a8 [4];
+  int local_98;
+  int32_t local_94;
+  HeroMoveState_HeroMoveHashName_o *local_90;
+  undefined4 *local_88;
+  undefined1 local_80 [16];
+  UnityEngine_MonoBehaviour_o *local_70;
+  System_String_o *local_68;
+  undefined1 local_58 [32];
+  
+  local_68 = (System_String_o *)0xfffffffffffffffe;
+  if (DAT_186ac1abb == '\0') {
+    FUN_1804782b0(0x2c522);
+    DAT_186ac1abb = '\x01';
+  }
+  local_80._0_8_ = (BulletChange_CRuleBase_c *)0x0;
+  local_80._8_8_ = (void *)0x0;
+  local_70 = (UnityEngine_MonoBehaviour_o *)0x0;
+  local_88 = local_a8;
+  bVar8 = 0;
+  if (inscriptionData == (DataHelper_inscriptiondataclass_o *)0x0) {
+    FUN_1804a7d90(0);
+    iVar6 = 0;
+LAB_180b7bc1e:
+    FUN_1804a7d90(0);
+LAB_180b7bc25:
+    FUN_1804a7d90(0);
+    FUN_1802590e0(iVar6,0,0);
+    pcVar2 = (code *)swi(3);
+    uVar5 = (*pcVar2)();
+    return (bool)uVar5;
+  }
+  __this = *(HeroMoveState_HeroMoveHashName_o **)(inscriptionData + 0x38);
+  iVar9 = 0;
+  local_98 = 0;
+  if (__this == (HeroMoveState_HeroMoveHashName_o *)0x0) {
+    FUN_1804a7d90(0);
+    pcVar2 = (code *)swi(3);
+    uVar5 = (*pcVar2)();
+    return (bool)uVar5;
+  }
+  local_94 = HeroMoveState_HeroMoveHashName__get_JumpState
+                       (__this,Method_System_Collections_Generic_List<int>_get_Count__);
+  lVar1 = *(longlong *)(inscriptionData + 0x48);
+  local_90 = *(HeroMoveState_HeroMoveHashName_o **)(inscriptionData + 0x68);
+  if (local_90 == (HeroMoveState_HeroMoveHashName_o *)0x0) {
+    FUN_1804a7d90(0);
+    pcVar2 = (code *)swi(3);
+    uVar5 = (*pcVar2)();
+    return (bool)uVar5;
+  }
+  iVar6 = HeroMoveState_HeroMoveHashName__get_JumpState
+                    (local_90,Method_System_Collections_Generic_List<int>_get_Count__);
+  bVar10 = iVar6 == 0;
+  if (waponData == (DataHelper_itemdataclass_o *)0x0) {
+    FUN_1804a7d90(0);
+    pcVar2 = (code *)swi(3);
+    uVar5 = (*pcVar2)();
+    return (bool)uVar5;
+  }
+  if (*(longlong *)(waponData + 0xf0) == 0) {
+    FUN_1804a7d90(0);
+    pcVar2 = (code *)swi(3);
+    uVar5 = (*pcVar2)();
+    return (bool)uVar5;
+  }
+  method_00 = Method_System_Collections_Generic_List<int>_GetEnumerator__;
+  puVar7 = (undefined8 *)System_Collections_Generic_List<ShaderPassName>__GetEnumerator(local_58);
+  iVar3 = local_94;
+  local_80._0_8_ = *puVar7;
+  local_80._8_8_ = puVar7[1];
+  local_70 = (UnityEngine_MonoBehaviour_o *)puVar7[2];
+  do {
+    cVar4 = FUN_1818bfba0(local_80,Method_System_Collections_Generic_List_Enumerator<int>_MoveNext__
+                         );
+    if (cVar4 == '\0') {
+      *local_88 = 0x94;
+LAB_180b7bbdf:
+      NetFunc_basenet__OnServerCommand
+                ((NetFunc_basenet_o *)local_80,
+                 (int32_t)Method_System_Collections_Generic_List_Enumerator<int>_Dispose__,method_00
+                );
+      return (bool)(iVar9 == iVar3 & bVar10 & bVar8);
+    }
+    iVar6 = BulletChange_CRuleBase__SID
+                      ((BulletChange_CRuleBase_o *)local_80,
+                       Method_System_Collections_Generic_List_Enumerator<int>_get_Current__);
+    if (iVar3 < 1) {
+LAB_180b7bb52:
+      bVar8 = 1;
+    }
+    else {
+      if (__this == (HeroMoveState_HeroMoveHashName_o *)0x0) goto LAB_180b7bc25;
+      cVar4 = System_Collections_Generic_List<SystemLanguage>__Contains
+                        (__this,iVar6,Method_System_Collections_Generic_List<int>_Contains__);
+      if (cVar4 != '\0') {
+        iVar9 = iVar9 + 1;
+        local_98 = iVar9;
+        goto LAB_180b7bb52;
+      }
+    }
+    if (lVar1 == 0) goto LAB_180b7bc1e;
+    method_00 = Method_System_Collections_Generic_List<int>_Contains__;
+    cVar4 = System_Collections_Generic_List<SystemLanguage>__Contains(lVar1,iVar6);
+    if (cVar4 != '\0') {
+      bVar8 = 0;
+      *local_88 = 0x94;
+      goto LAB_180b7bbdf;
+    }
+    method_00 = Method_System_Collections_Generic_List<int>_Contains__;
+    cVar4 = System_Collections_Generic_List<SystemLanguage>__Contains(local_90,iVar6);
+    if (cVar4 != '\0') {
+      bVar10 = true;
+    }
+  } while( true );
+}
+
+
+================================================================================
+FUNC: WarInscriptionManager$$CheckInscWeapon  @ 180b7bc60
+
+bool WarInscriptionManager__CheckInscWeapon
+               (int32_t weaponSid,DataHelper_inscriptiondataclass_o *inscriptionData,
+               MethodInfo *method)
+
+{
+  longlong lVar1;
+  HeroMoveState_HeroMoveHashName_o *__this;
+  code *pcVar2;
+  char cVar3;
+  undefined1 uVar4;
+  int32_t iVar5;
+  bool bVar6;
+  
+  if (DAT_186ac1abc == '\0') {
+    FUN_1804782b0(0x2c523);
+    DAT_186ac1abc = '\x01';
+  }
+  if (inscriptionData != (DataHelper_inscriptiondataclass_o *)0x0) {
+    lVar1 = *(longlong *)(inscriptionData + 0x40);
+    __this = *(HeroMoveState_HeroMoveHashName_o **)(inscriptionData + 0x30);
+    if (__this != (HeroMoveState_HeroMoveHashName_o *)0x0) {
+      iVar5 = HeroMoveState_HeroMoveHashName__get_JumpState
+                        (__this,Method_System_Collections_Generic_List<int>_get_Count__);
+      if (iVar5 < 1) {
+        bVar6 = true;
+      }
+      else {
+        cVar3 = System_Collections_Generic_List<SystemLanguage>__Contains
+                          (__this,weaponSid,Method_System_Collections_Generic_List<int>_Contains__);
+        bVar6 = false;
+        if (cVar3 != '\0') {
+          bVar6 = true;
+        }
+      }
+      if (lVar1 != 0) {
+        cVar3 = System_Collections_Generic_List<SystemLanguage>__Contains
+                          (lVar1,weaponSid,Method_System_Collections_Generic_List<int>_Contains__);
+        if (cVar3 != '\0') {
+          bVar6 = false;
+        }
+        return bVar6;
+      }
+    }
+  }
+  FUN_1804a7d90(0);
+  pcVar2 = (code *)swi(3);
+  uVar4 = (*pcVar2)();
+  return (bool)uVar4;
+}
+
+
+================================================================================
+FUNC: OCNpc.OCSmithNpc$$GetInteractMsg  @ 180a02380
+
+undefined8 OCNpc_OCSmithNpc__GetInteractMsg(void)
+
+{
+  bool bVar1;
+  undefined8 uVar2;
+  
+  if (cRam0000000186ac0d68 == '\0') {
+    FUN_1804782b0(0x17dc7);
+    cRam0000000186ac0d68 = '\x01';
+  }
+  if ((((HeroCtrlMgr_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((HeroCtrlMgr_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620();
+  }
+  bVar1 = HeroCtrlMgr__CheckInscription((MethodInfo *)0x0);
+  uVar2 = 0x3fd;
+  if (bVar1) {
+    uVar2 = 0x3ff;
+  }
+  return uVar2;
+}
+
+
+================================================================================
+FUNC: OCNpc.OCSmithNpc$$OP  @ 180a023e0
+
+void OCNpc_OCSmithNpc__OP(OCNpc_OCNpcBase_o *param_1)
+
+{
+  int32_t iVar1;
+  bool bVar2;
+  
+  if (cRam0000000186ac0d69 == '\0') {
+    FUN_1804782b0(0x17dc8);
+    cRam0000000186ac0d69 = '\x01';
+  }
+  if (cRam0000000186ac0d56 == '\0') {
+    FUN_1804782b0(0x17ce3);
+    cRam0000000186ac0d56 = '\x01';
+  }
+  bVar2 = OCNpc_OCNpcBase__CheckInteractDis(param_1,StringLiteral_73,(MethodInfo *)0x0);
+  if (bVar2) {
+    s2cnpc__C2GSNPCInteract
+              ((param_1->fields).super.ObjectID,(param_1->fields).NpcType,
+               (param_1->fields).super.SID,(MethodInfo *)0x0);
+    (*(param_1->klass->vtable)._21_ShowEffectMusic.methodPtr)
+              (param_1,(param_1->klass->vtable)._21_ShowEffectMusic.method);
+  }
+  iVar1 = (param_1->fields).super.ObjectID;
+  if ((((NpcManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((NpcManager_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620(NpcManager_TypeInfo);
+  }
+  NpcManager_TypeInfo->static_fields->CurOpID = iVar1;
+  return;
+}
+
+
+================================================================================
+FUNC: OCNpc.OCSmithNpc$$Update  @ 180a024a0
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+NewPlayerObject_o * OCNpc_OCSmithNpc__Update(LuaComBase_o *param_1)
+
+{
+  float *pfVar1;
+  undefined8 uVar2;
+  undefined8 uVar3;
+  byte bVar4;
+  int32_t iVar5;
+  UnityEngine_Transform_o *pUVar6;
+  System_String_o *pSVar7;
+  LuaObjectBase_o *pLVar8;
+  GO_Prop_o *pGVar9;
+  LuaComBase_o *__this;
+  code *pcVar10;
+  bool bVar11;
+  UnityEngine_Vector3_o *pUVar12;
+  longlong lVar13;
+  NewPlayerObject_o *pNVar14;
+  NewPlayerObject_o *extraout_RAX;
+  NewPlayerObject_o *pNVar15;
+  NewPlayerObject_o *extraout_RAX_00;
+  NewPlayerObject_o *extraout_RAX_01;
+  LuaObjectBase_o *pLVar16;
+  float fVar17;
+  float fVar18;
+  UnityEngine_Vector3_Fields UStack_48;
+  undefined1 auStack_38 [48];
+  
+  if (cRam0000000186ac0d6a == '\0') {
+    auStack_38._8_8_ = &UNK_180a024bd;
+    FUN_1804782b0(0x17dc9);
+    cRam0000000186ac0d6a = '\x01';
+  }
+  if ((char)param_1[2].fields.SID != '\0') {
+    if (((*(byte *)(UIScript_MarkSystemManager_TypeInfo + 0x127) & 2) != 0) &&
+       (*(int *)(UIScript_MarkSystemManager_TypeInfo + 0xd8) == 0)) {
+      auStack_38._8_8_ = &UNK_180a02531;
+      FUN_180486620();
+    }
+    auStack_38._8_8_ = &UNK_180a02538;
+    lVar13 = UIScript_MarkSystemManager__get_Instance(0);
+    pLVar8 = (param_1->fields).luaparent;
+    if (lVar13 == 0) {
+      auStack_38._8_8_ = &UNK_180a025a9;
+      FUN_1804a7d90(0);
+      pcVar10 = (code *)swi(3);
+      pNVar14 = (NewPlayerObject_o *)(*pcVar10)();
+      return pNVar14;
+    }
+    if (pLVar8 == (LuaObjectBase_o *)0x0) {
+      pLVar16 = (LuaObjectBase_o *)0x0;
+    }
+    else {
+      bVar4 = (NewPlayerObject_TypeInfo->_2).typeHierarchyDepth;
+      if (((pLVar8->klass->_2).typeHierarchyDepth < bVar4) ||
+         ((pLVar8->klass->_2).typeHierarchy[(ulonglong)bVar4 - 1] !=
+          (Il2CppClass *)NewPlayerObject_TypeInfo)) {
+        bVar11 = false;
+      }
+      else {
+        bVar11 = true;
+      }
+      pLVar16 = (LuaObjectBase_o *)0x0;
+      if (bVar11) {
+        pLVar16 = pLVar8;
+      }
+      if (pLVar16 == (LuaObjectBase_o *)0x0) {
+        auStack_38._8_8_ = &UNK_180a025b5;
+        FUN_180259620(pLVar8,NewPlayerObject_TypeInfo);
+        pcVar10 = (code *)swi(3);
+        pNVar14 = (NewPlayerObject_o *)(*pcVar10)();
+        return pNVar14;
+      }
+    }
+    pfVar1 = (float *)((longlong)&param_1[2].klass + 4);
+    if (cRam0000000186ac1614 == '\0') {
+      FUN_1804782b0();
+      cRam0000000186ac1614 = '\x01';
+    }
+    fVar18 = UnityEngine_Time__get_time((MethodInfo *)0x0);
+    pNVar14 = extraout_RAX;
+    if (0.1 <= fVar18 - *pfVar1) {
+      fVar18 = UnityEngine_Time__get_time((MethodInfo *)0x0);
+      *pfVar1 = fVar18;
+      if ((((HeroCtrlMgr_TypeInfo->_2).bitflags2 & 2) != 0) &&
+         ((HeroCtrlMgr_TypeInfo->_2).cctor_finished == 0)) {
+        FUN_180486620(HeroCtrlMgr_TypeInfo);
+      }
+      iVar5 = HeroCtrlMgr_TypeInfo->static_fields->HeroID;
+      if ((((NewPlayerManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+         ((NewPlayerManager_TypeInfo->_2).cctor_finished == 0)) {
+        FUN_180486620();
+      }
+      pNVar15 = NewPlayerManager__GetPlayerSafe(iVar5,(MethodInfo *)0x0);
+      pNVar14 = pNVar15;
+      if (pNVar15 != (NewPlayerObject_o *)0x0) {
+        pUVar6 = (pNVar15->fields).gameTrans;
+        if ((((UnityEngine_Object_TypeInfo->_2).bitflags2 & 2) != 0) &&
+           ((UnityEngine_Object_TypeInfo->_2).cctor_finished == 0)) {
+          FUN_180486620();
+        }
+        bVar11 = UnityEngine_Object__op_Inequality
+                           ((UnityEngine_Object_o *)pUVar6,(UnityEngine_Object_o *)0x0,
+                            (MethodInfo *)0x0);
+        pNVar14 = (NewPlayerObject_o *)(ulonglong)bVar11;
+        if (bVar11) {
+          if ((pLVar16 != (LuaObjectBase_o *)0x0) &&
+             ((UnityEngine_Transform_o *)pLVar16[4].monitor != (UnityEngine_Transform_o *)0x0)) {
+            pUVar12 = UnityEngine_Transform__get_position
+                                ((UnityEngine_Vector3_o *)auStack_38,
+                                 (UnityEngine_Transform_o *)pLVar16[4].monitor,(MethodInfo *)0x0);
+            pUVar6 = (pNVar15->fields).gameTrans;
+            uVar3._0_4_ = (pUVar12->fields).x;
+            uVar3._4_4_ = (pUVar12->fields).y;
+            fVar18 = (pUVar12->fields).z;
+            if (pUVar6 != (UnityEngine_Transform_o *)0x0) {
+              pUVar12 = UnityEngine_Transform__get_position
+                                  ((UnityEngine_Vector3_o *)auStack_38,pUVar6,(MethodInfo *)0x0);
+              UStack_48.x = (pUVar12->fields).x;
+              UStack_48.y = (pUVar12->fields).y;
+              UStack_48.z = (pUVar12->fields).z;
+              if ((((UnityEngine_Vector3_TypeInfo->_2).bitflags2 & 2) != 0) &&
+                 ((UnityEngine_Vector3_TypeInfo->_2).cctor_finished == 0)) {
+                FUN_180486620();
+              }
+              auStack_38._8_4_ = fVar18;
+              auStack_38._0_8_ = uVar3;
+              fVar18 = UnityEngine_Vector3__Distance
+                                 ((UnityEngine_Vector3_o *)auStack_38,
+                                  (UnityEngine_Vector3_o *)&UStack_48,(MethodInfo *)0x0);
+              if (5.0 < fVar18) {
+                return extraout_RAX_00;
+              }
+              iVar5 = *(int32_t *)&pLVar16[1].klass;
+              if (((*(byte *)(HeroWarSign_UISignManager_TypeInfo + 0x127) & 2) != 0) &&
+                 (*(int *)(HeroWarSign_UISignManager_TypeInfo + 0xd8) == 0)) {
+                FUN_180486620();
+              }
+              HeroWarSign_UISignManager__DelMarkPoint(iVar5,(MethodInfo *)0x0);
+              pGVar9 = pLVar16[6].fields.goprop;
+              if (pGVar9 != (GO_Prop_o *)0x0) {
+                *(undefined1 *)((longlong)&pGVar9[3].monitor + 1) = 1;
+                __this = (LuaComBase_o *)pLVar16[6].fields.goprop;
+                if (__this != (LuaComBase_o *)0x0) {
+                  LuaComBase__SetUpdateFlag(__this,false,__this,(MethodInfo *)0x0);
+                  return extraout_RAX_01;
+                }
+              }
+            }
+          }
+          FUN_1804a7d90(0);
+          pcVar10 = (code *)swi(3);
+          pNVar14 = (NewPlayerObject_o *)(*pcVar10)();
+          return pNVar14;
+        }
+      }
+    }
+    return pNVar14;
+  }
+  if ((((UIFormName_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((UIFormName_TypeInfo->_2).cctor_finished == 0)) {
+    auStack_38._8_8_ = &UNK_180a024ee;
+    FUN_180486620(UIFormName_TypeInfo);
+  }
+  pSVar7 = UIFormName_TypeInfo->static_fields->INSCIPRTION_SHOP;
+  if (cRam0000000186ac0d55 == '\0') {
+    FUN_1804782b0(0x17cdf);
+    cRam0000000186ac0d55 = '\x01';
+  }
+  if ((((HeroCtrlMgr_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((HeroCtrlMgr_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620();
+  }
+  bVar11 = HeroCtrlMgr__CheckGameTrans((MethodInfo *)0x0);
+  if (!bVar11) {
+    return (NewPlayerObject_o *)0x0;
+  }
+  if ((((HeroCtrlMgr_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((HeroCtrlMgr_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620(HeroCtrlMgr_TypeInfo);
+  }
+  pNVar14 = HeroCtrlMgr_TypeInfo->static_fields->HeroObj;
+  if ((pNVar14 != (NewPlayerObject_o *)0x0) &&
+     (pUVar6 = (pNVar14->fields).gameTrans, pUVar6 != (UnityEngine_Transform_o *)0x0)) {
+    pUVar12 = UnityEngine_Transform__get_position
+                        ((UnityEngine_Vector3_o *)auStack_38,pUVar6,(MethodInfo *)0x0);
+    pUVar6 = (param_1->fields).gameTrans;
+    uVar2._0_4_ = (pUVar12->fields).x;
+    uVar2._4_4_ = (pUVar12->fields).y;
+    fVar18 = (pUVar12->fields).z;
+    if (pUVar6 != (UnityEngine_Transform_o *)0x0) {
+      pUVar12 = UnityEngine_Transform__get_position
+                          ((UnityEngine_Vector3_o *)auStack_38,pUVar6,(MethodInfo *)0x0);
+      UStack_48.x = (pUVar12->fields).x;
+      UStack_48.y = (pUVar12->fields).y;
+      UStack_48.z = (pUVar12->fields).z;
+      if ((((UnityEngine_Vector3_TypeInfo->_2).bitflags2 & 2) != 0) &&
+         ((UnityEngine_Vector3_TypeInfo->_2).cctor_finished == 0)) {
+        FUN_180486620();
+      }
+      auStack_38._8_4_ = fVar18;
+      auStack_38._0_8_ = uVar2;
+      fVar17 = UnityEngine_Vector3__Distance
+                         ((UnityEngine_Vector3_o *)auStack_38,(UnityEngine_Vector3_o *)&UStack_48,
+                          (MethodInfo *)0x0);
+      fVar18 = *(float *)&param_1[2].fields;
+      if (fVar18 < fVar17) {
+        iVar5 = (param_1->fields).SID;
+        if ((((DebugDY_TypeInfo->_2).bitflags2 & 2) != 0) &&
+           ((DebugDY_TypeInfo->_2).cctor_finished == 0)) {
+          FUN_180486620();
+        }
+        DebugDY__ColorLog<string,_int,_float,_float>
+                  (_StringLiteral_40329,iVar5,fVar17,fVar18,
+                   _Method_DebugDY_ColorLog<string,_int,_float,_float>__);
+        LuaComBase__SetUpdateFlag(param_1,false,param_1,(MethodInfo *)0x0);
+        lVar13 = DYPublic_MonoSingleton<object>__get_Instance
+                           (Method_MonoSingleton<CUIManager>_get_instance__);
+        if (lVar13 == 0) goto DAT_1809e9818;
+        UI_CUIManager__HideUIForm(lVar13,pSVar7,0);
+        pNVar14 = (NewPlayerObject_o *)0x0;
+      }
+      else {
+        pNVar14 = (NewPlayerObject_o *)0x1;
+      }
+      return pNVar14;
+    }
+  }
+DAT_1809e9818:
+  FUN_1804a7d90(0);
+  pcVar10 = (code *)swi(3);
+  pNVar14 = (NewPlayerObject_o *)(*pcVar10)();
+  return pNVar14;
+}
+
+
+INFO  REPORT: Save succeeded for processed file: /GameAssembly.dll (HeadlessAnalyzer)  

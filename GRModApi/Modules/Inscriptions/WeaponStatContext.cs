@@ -24,10 +24,10 @@ public class WeaponStatContext
         }
     }
 
-    public void AddDamage(int percent) => AddStat(Game.ItempropEvent.Att, mulValue: percent);
-    public void AddFireRate(int percent) => AddStat(Game.ItempropEvent.AttSpeed, mulValue: percent);
-    public void AddMagazineSize(int percent) => AddStat(Game.ItempropEvent.MaxBullet, mulValue: percent);
-    public void AddReloadSpeed(int percent) => AddStat(Game.ItempropEvent.FillTime, mulValue: percent);
-    public void AddExplosionRange(int percent) => AddStat(Game.ItempropEvent.Radius, mulValue: percent);
-    public void AddAccuracy(int percent) => AddStat("Accuracy", mulValue: percent);
+    public void AddDamage(int percent) => AddStat(Game.ItempropEvent.Att, mulValue: percent * 100);
+    public void AddFireRate(int percent) => AddStat(Game.ItempropEvent.AttSpeed, mulValue: percent * 100);
+    public void AddMagazineSize(int percent) => AddStat(Game.ItempropEvent.MaxBullet, mulValue: percent * 100);
+    public void AddReloadSpeed(int percent) => AddStat(Game.ItempropEvent.FillTime, mulValue: percent * 100);
+    public void AddExplosionRange(int percent) => AddStat(Game.ItempropEvent.Radius, mulValue: percent * 100);
+    public void AddAccuracy(int percent) => AddStat("Accuracy", mulValue: percent * 100);
 }

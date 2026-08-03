@@ -100,37 +100,14 @@ public class InscriptionRegistry
         if (_idsAssigned) return;
         _idsAssigned = true;
 
-        var oldIds = _inscriptions.Select(i => i.Id).ToList();
-
-        const int maxVanillaId = 13000;
-
-        int start = 1;
+        // Keep the high IDs (starting at 100000) assigned at registration time.
+        // Reassigning into the vanilla range (< 13000) caused the custom
+        // inscriptions to be mistaken for real affixes (see b53ad2d which added
+        // the low-ID reassignment). Only purge stale entries from the table.
         if (table != null)
         {
-            int maxKey = -1;
-            foreach (var key in table.Keys)
-            {
-                if (key >= maxVanillaId) continue;
-                if (key > maxKey) maxKey = key;
-            }
-            start = maxKey + 1;
-            if (start >= maxVanillaId) start = maxVanillaId - _inscriptions.Count;
-        }
-
-        var used = new HashSet<int>(_inscriptions.Select(i => i.Id));
-        int id = start;
-        foreach (var insc in _inscriptions)
-        {
-            while (id < maxVanillaId && used.Contains(id)) id++;
-            insc.Id = id;
-            used.Add(id);
-            _log?.LogInfo($"Reassigned inscription ID to [{insc.Id}]");
-            id++;
-        }
-
-        if (table != null)
-        {
-            foreach (var oldId in oldIds)
+            var staleIds = _inscriptions.Select(i => i.Id).ToList();
+            foreach (var oldId in staleIds)
             {
                 if (table.ContainsKey(oldId))
                     table.Remove(oldId);

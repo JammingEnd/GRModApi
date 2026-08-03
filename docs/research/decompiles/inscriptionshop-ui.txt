@@ -1,0 +1,787 @@
+openjdk version "26.0.1" 2026-04-21
+OpenJDK Runtime Environment (build 26.0.1)
+OpenJDK 64-Bit Server VM (build 26.0.1, mixed mode)
+INFO  Using log config file: jar:file:/home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: /home/jammingend/.config/ghidra/ghidra_11.3.2_PUBLIC/application.log (LoggingInitialization)  
+INFO  Loading user preferences: /home/jammingend/.config/ghidra/ghidra_11.3.2_PUBLIC/preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (495 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (SSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: NativePRNGNonBlocking (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (ApplicationTrustManagerFactory)  
+INFO  Headless startup complete (1116 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 57 extension points (18 false positives) (ClassSearcher)  
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldOffset has been called by org.apache.felix.framework.util.SecureAction (file:/home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Base/lib/org.apache.felix.framework-7.0.5.jar)
+WARNING: Please consider reporting this to the maintainers of class org.apache.felix.framework.util.SecureAction
+WARNING: sun.misc.Unsafe::staticFieldOffset will be removed in a future release
+INFO  HEADLESS Script Paths:
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/DecompilerDependent/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/PyGhidra/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/8051/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/GnuDemangler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/FileFormats/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts
+    /tmp/opencode
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/BytePatterns/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Decompiler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/JVM/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/FunctionID/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/WildcardAssembler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/SwiftDemangler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/VersionTracking/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Base/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/PDB/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Jython/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Debug/Debugger/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/PIC/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/BSim/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/Atmel/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/DATA/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/SystemEmulation/ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: /tmp/opencode/GunfireReborn_decomp_23_7_2026 (HeadlessAnalyzer)  
+INFO  Opening project: /tmp/opencode/GunfireReborn_decomp_23_7_2026 (HeadlessProject)  
+INFO  REPORT: Processing project file: /GameAssembly.dll (HeadlessAnalyzer)  
+INFO  SCRIPT: /tmp/opencode/decompile_shop.py (HeadlessAnalyzer)  
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by com.kenai.jffi.internal.StubLoader in an unnamed module (file:/home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Jython/lib/jython-standalone-2.7.4.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+================================================================================
+FUNC: UIScript.PCInscriptionShop_logic$$Selecting  @ 180c4ccb0
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void UIScript_PCInscriptionShop_logic__Selecting
+               (longlong param_1,undefined8 param_2,float param_3,longlong param_4,
+               undefined1 param_5)
+
+{
+  code *pcVar1;
+  char cVar2;
+  int32_t ItemID;
+  longlong lVar3;
+  undefined8 *puVar4;
+  UnityEngine_Quaternion_o *pUVar5;
+  CommonNotifyManager_o *__this;
+  System_Object_array *msg;
+  undefined8 uVar6;
+  MethodInfo *method;
+  UnityEngine_Transform_o UStack_d8;
+  longlong lStack_c0;
+  undefined4 uStack_b8;
+  int32_t iStack_b4;
+  undefined1 auStack_b0 [40];
+  DYPublic_DYNet_NetClient_ConnectFailHandler_o *pDStack_88;
+  System_Collections_Generic_List_byte__o *pSStack_78;
+  undefined8 uStack_70;
+  UnityEngine_Quaternion_o aUStack_68 [2];
+  
+  pDStack_88 = (DYPublic_DYNet_NetClient_ConnectFailHandler_o *)0xfffffffffffffffe;
+  if (cRam0000000186ac2179 == '\0') {
+    FUN_1804782b0(0x18e1a);
+    cRam0000000186ac2179 = '\x01';
+  }
+  auStack_b0._0_8_ = (NetFunc_basenet_c *)0x0;
+  auStack_b0._8_8_ = (void *)0x0;
+  auStack_b0._16_8_ = (UnityEngine_MonoBehaviour_o *)0x0;
+  auStack_b0._24_8_ = (DYPublic_DYNet_NetInterface_o *)0x0;
+  lStack_c0 = 0;
+  auStack_b0._32_8_ = &UStack_d8;
+  UStack_d8.fields.super.super.m_CachedPtr._0_4_ = 0xffffffff;
+  if (*(longlong *)(param_1 + 0x230) == 0) {
+    FUN_1804a7d90();
+code_r0x000180c4d053:
+    uVar6 = FUN_1804a69d0();
+    FUN_1804a7d00(uVar6,0,0);
+code_r0x000180c4d066:
+    FUN_1804a7d90(0);
+  }
+  else {
+    cVar2 = System_Collections_Generic_Dictionary<RailResult,_FileResult>__ContainsKey
+                      (*(longlong *)(param_1 + 0x230),param_2,
+                       _Method_System_Collections_Generic_Dictionary<Transform,_int>_ContainsKey__);
+    if (cVar2 == '\0') {
+      return;
+    }
+    if (*(longlong *)(param_1 + 0x230) == 0) {
+      FUN_1804a7d90();
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+    ItemID = System_Collections_Generic_Dictionary<object,_int>__get_Item
+                       (*(longlong *)(param_1 + 0x230),param_2,
+                        _Method_System_Collections_Generic_Dictionary<Transform,_int>_get_Item__);
+    iStack_b4 = ItemID;
+    if (*(longlong *)(param_1 + 0x238) == 0) {
+      FUN_1804a7d90();
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+    lVar3 = System_Collections_Generic_Dictionary<int,_TerrainUtility_TerrainMap>__get_Item
+                      (*(longlong *)(param_1 + 0x238),ItemID,
+                       _Method_System_Collections_Generic_Dictionary<int,_InscriptionUnit>_get_Item__
+                      );
+    if (lVar3 == 0) {
+      FUN_1804a7d90(0);
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+    if (*(longlong *)(lVar3 + 0x18) == 0) {
+      FUN_1804a7d90(0);
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+    method = _Method_System_Collections_Generic_List<InscriptionUnit_Option>_GetEnumerator__;
+    puVar4 = (undefined8 *)
+             System_Collections_Generic_List<WeightRandom_Entity<object>>__GetEnumerator(aUStack_68)
+    ;
+    auStack_b0._0_8_ = *puVar4;
+    auStack_b0._8_8_ = puVar4[1];
+    auStack_b0._16_8_ = puVar4[2];
+    auStack_b0._24_8_ = puVar4[3];
+    do {
+      do {
+        cVar2 = func_0x0001817fe370(auStack_b0,
+                                    _Method_System_Collections_Generic_List_Enumerator<InscriptionUnit_Option>_MoveNext__
+                                   );
+        if (cVar2 == '\0') {
+          UStack_d8.klass._0_4_ = 0x97;
+          goto code_r0x000180c4cf3d;
+        }
+        method = 
+        _Method_System_Collections_Generic_List_Enumerator<InscriptionUnit_Option>_get_Current__;
+        pUVar5 = DG_Tweening_ShortcutExtensions_<>c__DisplayClass73_0__<DOBlendableLocalRotateBy>b__0
+                           (aUStack_68,
+                            (DG_Tweening_ShortcutExtensions___c__DisplayClass73_0_o *)auStack_b0,
+                            _Method_System_Collections_Generic_List_Enumerator<InscriptionUnit_Option>_get_Current__
+                           );
+      } while (((pUVar5->fields).x != param_3) || ((pUVar5->fields).w != 1.4013e-45));
+      pSStack_78 = *(System_Collections_Generic_List_byte__o **)&pUVar5->fields;
+      uStack_70._0_4_ = (pUVar5->fields).z;
+      uStack_70._4_4_ = (pUVar5->fields).w;
+      method = (MethodInfo *)0x0;
+      cVar2 = UIScript_PCInscriptionShop_logic__CheckMoneyFit(param_1,&pSStack_78);
+    } while (cVar2 != '\0');
+    __this = CommonNotifyManager__GetInstance((MethodInfo *)0x0);
+    msg = (System_Object_array *)FUN_1804c1430(object___TypeInfo,1);
+    uStack_b8 = 0x843;
+    uVar6 = FUN_1804b8a90(int_TypeInfo,&uStack_b8);
+    if (msg != (System_Object_array *)0x0) {
+      FUN_1802591b0(msg,uVar6);
+      if (*(int *)(msg + 0x18) == 0) goto code_r0x000180c4d053;
+      *(undefined8 *)(msg + 0x20) = uVar6;
+      if (__this != (CommonNotifyManager_o *)0x0) {
+        CommonNotifyManager__ClientFastCommonnotify(__this,msg,(MethodInfo *)0x0);
+        if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+           ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+          FUN_180486620();
+        }
+        method = (MethodInfo *)0x0;
+        WarInscriptionManager__SendRequest(ItemID,-1,(MethodInfo *)0x0);
+        UStack_d8.klass._0_4_ = 0xc3;
+code_r0x000180c4cf3d:
+        UStack_d8.fields.super.super.m_CachedPtr._0_4_ = 0;
+        NetFunc_basenet__OnServerCommand
+                  ((NetFunc_basenet_o *)auStack_b0,
+                   (int32_t)
+                   _Method_System_Collections_Generic_List_Enumerator<InscriptionUnit_Option>_Dispose__
+                   ,method);
+        lVar3 = lStack_c0;
+        if (lStack_c0 == 0) {
+          if ((int)UStack_d8.klass == 0xc3) {
+            return;
+          }
+          if (param_4 == 0) {
+            FUN_1804a7d90(0);
+            pcVar1 = (code *)swi(3);
+            (*pcVar1)();
+            return;
+          }
+          lVar3 = UnityEngine_Component__GetComponent<Renderer>(param_4);
+          if (lVar3 == 0) {
+            FUN_1804a7d90(0);
+            pcVar1 = (code *)swi(3);
+            (*pcVar1)();
+            return;
+          }
+          if (*(char *)(lVar3 + 0x78) == '\0') {
+            if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+               ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+              FUN_180486620();
+            }
+            WarInscriptionManager__SendRequest(ItemID,-1,(MethodInfo *)0x0);
+            return;
+          }
+          if ((((EntryExplainManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+             ((EntryExplainManager_TypeInfo->_2).cctor_finished == 0)) {
+            FUN_180486620();
+          }
+          EntryExplainManager__RemoveEntry(ItemID,(MethodInfo *)0x0);
+          if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+             ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+            FUN_180486620();
+          }
+          WarInscriptionManager__SendRequest(ItemID,(int32_t)param_3,(MethodInfo *)0x0);
+          UIScript_PCInscriptionShop_logic__PlayClickAni(param_1,param_2,param_3,param_5,0);
+          return;
+        }
+        goto code_r0x000180c4d075;
+      }
+      goto code_r0x000180c4d066;
+    }
+  }
+  lVar3 = FUN_1804a7d90(0);
+code_r0x000180c4d075:
+  FUN_1802590e0(lVar3,0,0);
+  pcVar1 = (code *)swi(3);
+  (*pcVar1)();
+  return;
+}
+
+
+================================================================================
+FUNC: UIScript.PCInscriptionShop_logic$$WeaponPropChange  @ 180c4f330
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void UIScript_PCInscriptionShop_logic__WeaponPropChange(longlong param_1,longlong param_2)
+
+{
+  UnityEngine_RectTransform_o *pUVar1;
+  longlong *plVar2;
+  UnityEngine_UI_ObjectPool_LayoutRebuilder__o *pUVar3;
+  undefined8 *puVar4;
+  code *pcVar5;
+  longlong lVar6;
+  bool bVar7;
+  undefined1 uVar8;
+  int32_t iVar9;
+  int iVar10;
+  int *piVar11;
+  UnityEngine_Object_o *__this;
+  undefined8 uVar12;
+  ItemObject_o *pIVar13;
+  ItemObject_o *pIVar14;
+  ScriptEventManager_o *pSVar15;
+  System_String_o *pSVar16;
+  UnityEngine_UI_LayoutRebuilder_o *__this_00;
+  UnityEngine_UI_LayoutRebuilder_o *pUVar17;
+  System_String_o *a;
+  
+  if (cRam0000000186ac2174 == '\0') {
+    FUN_1804782b0(0x18e28);
+    cRam0000000186ac2174 = '\x01';
+  }
+  if (param_2 != 0) {
+    if (*(int *)(param_2 + 0x18) == 0) {
+      uVar12 = FUN_1804a69d0();
+      FUN_1804a7d00(uVar12,0,0);
+      pcVar5 = (code *)swi(3);
+      (*pcVar5)();
+      return;
+    }
+    pSVar16 = *(System_String_o **)(param_2 + 0x20);
+    a = (System_String_o *)0x0;
+    if (pSVar16 != (System_String_o *)0x0) {
+      if (pSVar16->klass == string_TypeInfo) {
+        a = pSVar16;
+      }
+      if (a == (System_String_o *)0x0) {
+        FUN_180259620();
+        pcVar5 = (code *)swi(3);
+        (*pcVar5)();
+        return;
+      }
+    }
+    bVar7 = System_String__op_Equality(a,_StringLiteral_41727,(MethodInfo *)0x0);
+    if (!bVar7) {
+      bVar7 = System_String__op_Equality(a,_StringLiteral_41726,(MethodInfo *)0x0);
+      if (bVar7) {
+        UIScript_PCInscriptionShop_logic__RefreshPanel(param_1,0);
+        UIScript_PCInscriptionShop_logic__ForceRebuildContentFilter(param_1,0);
+        UIScript_PCInscriptionShop_logic__UpdateCurMouseEnterState(param_1,0);
+      }
+      return;
+    }
+    if (*(uint *)(param_2 + 0x18) < 2) {
+      uVar12 = FUN_1804a69d0();
+      FUN_1804a7d00(uVar12,0,0);
+      pcVar5 = (code *)swi(3);
+      (*pcVar5)();
+      return;
+    }
+    plVar2 = *(longlong **)(param_2 + 0x28);
+    if (plVar2 != (longlong *)0x0) {
+      if (*(Il2CppClass **)(*plVar2 + 0x40) != (int_TypeInfo->_1).element_class) {
+        FUN_180259620(plVar2,int_TypeInfo);
+        pcVar5 = (code *)swi(3);
+        (*pcVar5)();
+        return;
+      }
+      piVar11 = (int *)FUN_1803c7fa0();
+      iVar10 = *piVar11;
+      if (*(uint *)(param_2 + 0x18) < 3) {
+        uVar12 = FUN_1804a69d0();
+        FUN_1804a7d00(uVar12,0,0);
+        pcVar5 = (code *)swi(3);
+        (*pcVar5)();
+        return;
+      }
+      plVar2 = *(longlong **)(param_2 + 0x30);
+      if (plVar2 != (longlong *)0x0) {
+        if (*(Il2CppClass **)(*plVar2 + 0x40) != (int_TypeInfo->_1).element_class) {
+          FUN_180259620(plVar2,int_TypeInfo);
+          pcVar5 = (code *)swi(3);
+          (*pcVar5)();
+          return;
+        }
+        piVar11 = (int *)FUN_1803c7fa0();
+        if (*piVar11 == 0) {
+          return;
+        }
+        __this = (UnityEngine_Object_o *)
+                 UIScript_PCInscriptionShop_logic__GetTransform(param_1,iVar10);
+        uVar12 = UIScript_PCInscriptionShop_logic__GetInscriptionUnit(param_1);
+        if (cRam0000000186ac2164 == '\0') {
+          FUN_1804782b0(0x18e27);
+          cRam0000000186ac2164 = '\x01';
+        }
+        if (((*(byte *)(Item_ItemManager_TypeInfo + 0x127) & 2) != 0) &&
+           (*(int *)(Item_ItemManager_TypeInfo + 0xd8) == 0)) {
+          FUN_180486620();
+        }
+        pIVar13 = Item_ItemManager__GetItemByPos(0x28a1,0,(MethodInfo *)0x0);
+        pIVar14 = Item_ItemManager__GetItemByPos(0x28a2,0,(MethodInfo *)0x0);
+        if (((pIVar13 != (ItemObject_o *)0x0) && (iVar10 == (pIVar13->fields).ItemID)) &&
+           (*(char *)(param_1 + 0x248) == '\0')) {
+          uVar8 = UIScript_PCInscriptionShop_logic__IsExistDoubleIns(param_1,iVar10,0);
+          *(undefined1 *)(param_1 + 0x248) = uVar8;
+        }
+        if (((pIVar14 != (ItemObject_o *)0x0) && (iVar10 == (pIVar14->fields).ItemID)) &&
+           (*(char *)(param_1 + 0x249) == '\0')) {
+          uVar8 = UIScript_PCInscriptionShop_logic__IsExistDoubleIns(param_1,iVar10,0);
+          *(undefined1 *)(param_1 + 0x249) = uVar8;
+        }
+        UIScript_PCInscriptionShop_logic__RefreshSetupOption(param_1,__this,uVar12,iVar10,0);
+        pSVar15 = ScriptEventManager__GetInstance((MethodInfo *)0x0);
+        if ((__this != (UnityEngine_Object_o *)0x0) &&
+           (pSVar16 = UnityEngine_Object__get_name(__this,(MethodInfo *)0x0),
+           pSVar15 != (ScriptEventManager_o *)0x0)) {
+          ScriptEventManager__ExecEvent<string,_string,_int>
+                    (pSVar15,_StringLiteral_51259,_StringLiteral_51273,pSVar16,iVar10,
+                     _Method_ScriptEventManager_ExecEvent<string,_string,_int>__);
+          if (cRam0000000186ac217c == '\0') {
+            FUN_1804782b0(0x18df9);
+            cRam0000000186ac217c = '\x01';
+          }
+          pUVar1 = *(UnityEngine_RectTransform_o **)(param_1 + 0x1c8);
+          if ((((UnityEngine_UI_LayoutRebuilder_TypeInfo->_2).bitflags2 & 2) != 0) &&
+             ((UnityEngine_UI_LayoutRebuilder_TypeInfo->_2).cctor_finished == 0)) {
+            FUN_180486620();
+          }
+          UnityEngine_UI_LayoutRebuilder__ForceRebuildLayoutImmediate(pUVar1,(MethodInfo *)0x0);
+          UnityEngine_UI_LayoutRebuilder__ForceRebuildLayoutImmediate
+                    (*(UnityEngine_RectTransform_o **)(param_1 + 0x1c0),(MethodInfo *)0x0);
+          UnityEngine_UI_LayoutRebuilder__ForceRebuildLayoutImmediate
+                    (*(UnityEngine_RectTransform_o **)(param_1 + 0x1d0),(MethodInfo *)0x0);
+          pUVar1 = *(UnityEngine_RectTransform_o **)(param_1 + 0x1d8);
+          if (cRam0000000186ae4f73 == '\0') {
+            FUN_1804782b0(0x1410e,0);
+            cRam0000000186ae4f73 = '\x01';
+          }
+          if ((((UnityEngine_UI_LayoutRebuilder_TypeInfo->_2).bitflags2 & 2) != 0) &&
+             ((UnityEngine_UI_LayoutRebuilder_TypeInfo->_2).cctor_finished == 0)) {
+            FUN_180486620(UnityEngine_UI_LayoutRebuilder_TypeInfo);
+          }
+          pUVar3 = UnityEngine_UI_LayoutRebuilder_TypeInfo->static_fields->s_Rebuilders;
+          if (((pUVar3 != (UnityEngine_UI_ObjectPool_LayoutRebuilder__o *)0x0) &&
+              (__this_00 = (UnityEngine_UI_LayoutRebuilder_o *)
+                           UnityEngine_UI_ObjectPool<LayoutRebuilder>__Get
+                                     (pUVar3,
+                                      _Method_UnityEngine_UI_ObjectPool<LayoutRebuilder>_Get__),
+              __this_00 != (UnityEngine_UI_LayoutRebuilder_o *)0x0)) &&
+             ((__this_00->fields).m_ToRebuild = pUVar1, pUVar1 != (UnityEngine_RectTransform_o *)0x0
+             )) {
+            iVar9 = (*(pUVar1->klass->vtable)._2_GetHashCode.methodPtr)
+                              (pUVar1,(pUVar1->klass->vtable)._2_GetHashCode.method);
+            (__this_00->fields).m_CachedHashFromTransform = iVar9;
+            UnityEngine_UI_LayoutRebuilder__Rebuild(__this_00,1,(MethodInfo *)0x0);
+            lVar6 = _Method_UnityEngine_UI_ObjectPool<LayoutRebuilder>_Release__;
+            pUVar3 = UnityEngine_UI_LayoutRebuilder_TypeInfo->static_fields->s_Rebuilders;
+            if (pUVar3 != (UnityEngine_UI_ObjectPool_LayoutRebuilder__o *)0x0) {
+              if (DAT_186aef8b2 == '\0') {
+                FUN_1804782b0(0x180b7);
+                DAT_186aef8b2 = '\x01';
+              }
+              if (*(longlong *)(pUVar3 + 0x10) != 0) {
+                puVar4 = *(undefined8 **)(*(longlong *)(*(longlong *)(lVar6 + 0x18) + 0xc0) + 0x20);
+                iVar10 = (*(code *)*puVar4)(*(longlong *)(pUVar3 + 0x10),puVar4);
+                if (0 < iVar10) {
+                  if (*(longlong *)(pUVar3 + 0x10) == 0) goto LAB_1849f8bda;
+                  pUVar17 = (UnityEngine_UI_LayoutRebuilder_o *)
+                            (*(code *)**(undefined8 **)
+                                        (*(longlong *)(*(longlong *)(lVar6 + 0x18) + 0xc0) + 0x48))
+                                      ();
+                  if (pUVar17 == __this_00) {
+                    if ((((UnityEngine_Debug_TypeInfo->_2).bitflags2 & 2) != 0) &&
+                       ((UnityEngine_Debug_TypeInfo->_2).cctor_finished == 0)) {
+                      FUN_180486620();
+                    }
+                    UnityEngine_Debug__LogError(StringLiteral_55258,(MethodInfo *)0x0);
+                  }
+                }
+                if (*(longlong *)(pUVar3 + 0x20) != 0) {
+                  puVar4 = *(undefined8 **)
+                            (*(longlong *)(*(longlong *)(lVar6 + 0x18) + 0xc0) + 0x40);
+                  (*(code *)*puVar4)(*(longlong *)(pUVar3 + 0x20),__this_00,puVar4);
+                }
+                if (*(longlong *)(pUVar3 + 0x10) != 0) {
+                  puVar4 = *(undefined8 **)
+                            (*(longlong *)(*(longlong *)(lVar6 + 0x18) + 0xc0) + 0x58);
+                    /* WARNING: Could not recover jumptable at 0x0001849f8bd7. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+                  (*(code *)*puVar4)(*(longlong *)(pUVar3 + 0x10),__this_00,puVar4);
+                  return;
+                }
+              }
+LAB_1849f8bda:
+              FUN_1804a7d90(0);
+              pcVar5 = (code *)swi(3);
+              (*pcVar5)();
+              return;
+            }
+          }
+          FUN_1804a7d90(0);
+          pcVar5 = (code *)swi(3);
+          (*pcVar5)();
+          return;
+        }
+      }
+    }
+  }
+  FUN_1804a7d90(0);
+  pcVar5 = (code *)swi(3);
+  (*pcVar5)();
+  return;
+}
+
+
+================================================================================
+FUNC: UIScript.PCInscriptionShop_logic$$RefreshPanel  @ 180c4bf10
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void UIScript_PCInscriptionShop_logic__RefreshPanel(longlong param_1)
+
+{
+  UnityEngine_Object_o *pUVar1;
+  UnityEngine_Component_o *__this;
+  bool bVar2;
+  int32_t iVar3;
+  System_Collections_Generic_List_InscriptionUnit__o *__this_00;
+  UnityEngine_GameObject_o *pUVar4;
+  longlong lVar5;
+  ItemObject_o *pIVar6;
+  code *pcVar7;
+  undefined8 uVar8;
+  
+  if (cRam0000000186ac2165 == '\0') {
+    FUN_1804782b0(0x18e16);
+    cRam0000000186ac2165 = '\x01';
+  }
+  pUVar1 = *(UnityEngine_Object_o **)(param_1 + 0x20);
+  if ((((UnityEngine_Object_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((UnityEngine_Object_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620();
+  }
+  bVar2 = UnityEngine_Object__op_Equality(pUVar1,(UnityEngine_Object_o *)0x0,(MethodInfo *)0x0);
+  if (!bVar2) {
+    pUVar1 = *(UnityEngine_Object_o **)(param_1 + 0x28);
+    if ((((UnityEngine_Object_TypeInfo->_2).bitflags2 & 2) != 0) &&
+       ((UnityEngine_Object_TypeInfo->_2).cctor_finished == 0)) {
+      FUN_180486620();
+    }
+    bVar2 = UnityEngine_Object__op_Equality(pUVar1,(UnityEngine_Object_o *)0x0,(MethodInfo *)0x0);
+    if (!bVar2) {
+      if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+         ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+        FUN_180486620();
+      }
+      __this_00 = WarInscriptionManager__ReturnCurInscriptionList((MethodInfo *)0x0);
+      *(System_Collections_Generic_List_InscriptionUnit__o **)(param_1 + 0x1b8) = __this_00;
+      if ((__this_00 == (System_Collections_Generic_List_InscriptionUnit__o *)0x0) ||
+         (iVar3 = HeroMoveState_HeroMoveHashName__get_JumpState
+                            ((HeroMoveState_HeroMoveHashName_o *)__this_00,
+                             _Method_System_Collections_Generic_List<InscriptionUnit>_get_Count__),
+         iVar3 == 0)) {
+        if ((*(UnityEngine_Component_o **)(param_1 + 0x20) != (UnityEngine_Component_o *)0x0) &&
+           (pUVar4 = UnityEngine_Component__get_gameObject
+                               (*(UnityEngine_Component_o **)(param_1 + 0x20),(MethodInfo *)0x0),
+           pUVar4 != (UnityEngine_GameObject_o *)0x0)) {
+          UnityEngine_GameObject__SetActive(pUVar4,false,(MethodInfo *)0x0);
+          if ((*(UnityEngine_Component_o **)(param_1 + 0x28) != (UnityEngine_Component_o *)0x0) &&
+             (pUVar4 = UnityEngine_Component__get_gameObject
+                                 (*(UnityEngine_Component_o **)(param_1 + 0x28),(MethodInfo *)0x0),
+             pUVar4 != (UnityEngine_GameObject_o *)0x0)) {
+            pcVar7 = DAT_186ae55e8;
+            if ((DAT_186ae55e8 == (code *)0x0) &&
+               (pcVar7 = (code *)FUN_1804e6260("UnityEngine.GameObject::SetActive(System.Boolean)",0
+                                               ,0), pcVar7 == (code *)0x0)) {
+              uVar8 = FUN_1804a6b30("UnityEngine.GameObject::SetActive(System.Boolean)");
+              FUN_1804a7d00(uVar8,0,0);
+              pcVar7 = (code *)swi(3);
+              (*pcVar7)();
+              return;
+            }
+            DAT_186ae55e8 = pcVar7;
+                    /* WARNING: Could not recover jumptable at 0x0001839c21d4. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+            (*DAT_186ae55e8)(pUVar4,0);
+            return;
+          }
+        }
+      }
+      else if (*(HeroMoveState_HeroMoveHashName_o **)(param_1 + 0x1b8) !=
+               (HeroMoveState_HeroMoveHashName_o *)0x0) {
+        iVar3 = HeroMoveState_HeroMoveHashName__get_JumpState
+                          (*(HeroMoveState_HeroMoveHashName_o **)(param_1 + 0x1b8),
+                           _Method_System_Collections_Generic_List<InscriptionUnit>_get_Count__);
+        if (iVar3 == 1) {
+          if (((*(byte *)(Item_ItemManager_TypeInfo + 0x127) & 2) != 0) &&
+             (*(int *)(Item_ItemManager_TypeInfo + 0xd8) == 0)) {
+            FUN_180486620();
+          }
+          pIVar6 = Item_ItemManager__GetItemByPos(0x28a1,0,(MethodInfo *)0x0);
+          __this = *(UnityEngine_Component_o **)(param_1 + 0x20);
+          if (pIVar6 == (ItemObject_o *)0x0) {
+            if ((__this == (UnityEngine_Component_o *)0x0) ||
+               (pUVar4 = UnityEngine_Component__get_gameObject(__this,(MethodInfo *)0x0),
+               pUVar4 == (UnityEngine_GameObject_o *)0x0)) goto DAT_180c4c2a7;
+            UnityEngine_GameObject__SetActive(pUVar4,false,(MethodInfo *)0x0);
+            if ((*(UnityEngine_Component_o **)(param_1 + 0x28) == (UnityEngine_Component_o *)0x0) ||
+               (pUVar4 = UnityEngine_Component__get_gameObject
+                                   (*(UnityEngine_Component_o **)(param_1 + 0x28),(MethodInfo *)0x0)
+               , pUVar4 == (UnityEngine_GameObject_o *)0x0)) goto DAT_180c4c2a7;
+            UnityEngine_GameObject__SetActive(pUVar4,true,(MethodInfo *)0x0);
+            uVar8 = *(undefined8 *)(param_1 + 0x28);
+          }
+          else {
+            if ((__this == (UnityEngine_Component_o *)0x0) ||
+               (pUVar4 = UnityEngine_Component__get_gameObject(__this,(MethodInfo *)0x0),
+               pUVar4 == (UnityEngine_GameObject_o *)0x0)) goto DAT_180c4c2a7;
+            UnityEngine_GameObject__SetActive(pUVar4,true,(MethodInfo *)0x0);
+            if ((*(UnityEngine_Component_o **)(param_1 + 0x28) == (UnityEngine_Component_o *)0x0) ||
+               (pUVar4 = UnityEngine_Component__get_gameObject
+                                   (*(UnityEngine_Component_o **)(param_1 + 0x28),(MethodInfo *)0x0)
+               , pUVar4 == (UnityEngine_GameObject_o *)0x0)) goto DAT_180c4c2a7;
+            UnityEngine_GameObject__SetActive(pUVar4,false,(MethodInfo *)0x0);
+            uVar8 = *(undefined8 *)(param_1 + 0x20);
+          }
+          if ((*(longlong *)(param_1 + 0x1b8) != 0) &&
+             (lVar5 = System_Collections_Generic_List<ZmID>__get_Item
+                                (*(longlong *)(param_1 + 0x1b8),0,
+                                 _Method_System_Collections_Generic_List<InscriptionUnit>_get_Item__
+                                ), lVar5 != 0)) {
+code_r0x000180c4c1ee:
+            UIScript_PCInscriptionShop_logic__RefreshSetupOption
+                      (param_1,uVar8,lVar5,*(undefined4 *)(lVar5 + 0x10),0);
+            return;
+          }
+        }
+        else if ((*(UnityEngine_Component_o **)(param_1 + 0x20) != (UnityEngine_Component_o *)0x0)
+                && (pUVar4 = UnityEngine_Component__get_gameObject
+                                       (*(UnityEngine_Component_o **)(param_1 + 0x20),
+                                        (MethodInfo *)0x0),
+                   pUVar4 != (UnityEngine_GameObject_o *)0x0)) {
+          UnityEngine_GameObject__SetActive(pUVar4,true,(MethodInfo *)0x0);
+          if ((*(UnityEngine_Component_o **)(param_1 + 0x28) != (UnityEngine_Component_o *)0x0) &&
+             (pUVar4 = UnityEngine_Component__get_gameObject
+                                 (*(UnityEngine_Component_o **)(param_1 + 0x28),(MethodInfo *)0x0),
+             pUVar4 != (UnityEngine_GameObject_o *)0x0)) {
+            UnityEngine_GameObject__SetActive(pUVar4,true,(MethodInfo *)0x0);
+            uVar8 = *(undefined8 *)(param_1 + 0x20);
+            if ((*(longlong *)(param_1 + 0x1b8) != 0) &&
+               (lVar5 = System_Collections_Generic_List<ZmID>__get_Item
+                                  (*(longlong *)(param_1 + 0x1b8),0,
+                                   _Method_System_Collections_Generic_List<InscriptionUnit>_get_Item__
+                                  ), lVar5 != 0)) {
+              UIScript_PCInscriptionShop_logic__RefreshSetupOption
+                        (param_1,uVar8,lVar5,*(undefined4 *)(lVar5 + 0x10),0);
+              uVar8 = *(undefined8 *)(param_1 + 0x28);
+              if ((*(longlong *)(param_1 + 0x1b8) == 0) ||
+                 (lVar5 = System_Collections_Generic_List<ZmID>__get_Item
+                                    (*(longlong *)(param_1 + 0x1b8),1,
+                                     _Method_System_Collections_Generic_List<InscriptionUnit>_get_Item__
+                                    ), lVar5 == 0)) goto DAT_180c4c2a7;
+              goto code_r0x000180c4c1ee;
+            }
+          }
+        }
+      }
+DAT_180c4c2a7:
+      FUN_1804a7d90(0);
+      pcVar7 = (code *)swi(3);
+      (*pcVar7)();
+      return;
+    }
+  }
+  if ((((DebugDY_TypeInfo->_2).bitflags2 & 2) != 0) && ((DebugDY_TypeInfo->_2).cctor_finished == 0))
+  {
+    FUN_180486620();
+  }
+  lVar5 = _Method_DebugDY_LogError<string>__;
+  uVar8 = _StringLiteral_51263;
+  if (cRam0000000186aecece == '\0') {
+    FUN_1804782b0(0xced3);
+    cRam0000000186aecece = '\x01';
+  }
+  if ((((DebugDY_TypeInfo->_2).bitflags2 & 2) != 0) && ((DebugDY_TypeInfo->_2).cctor_finished == 0))
+  {
+    FUN_180486620();
+  }
+  (**(code **)**(undefined8 **)(lVar5 + 0x30))
+            (0,0,5,uVar8,(undefined8 *)**(undefined8 **)(lVar5 + 0x30));
+  return;
+}
+
+
+================================================================================
+FUNC: UIScript.PCInscriptionShop_logic$$ItemPropChange  @ 180c49fa0
+
+void UIScript_PCInscriptionShop_logic__ItemPropChange(undefined8 param_1,longlong param_2)
+
+{
+  System_String_o *pSVar1;
+  longlong *plVar2;
+  code *pcVar3;
+  bool bVar4;
+  undefined4 *puVar5;
+  undefined8 uVar6;
+  System_String_o *a;
+  
+  if (DAT_186ac216f == '\0') {
+    FUN_1804782b0();
+    DAT_186ac216f = '\x01';
+  }
+  if (param_2 != 0) {
+    if (*(int *)(param_2 + 0x18) == 0) {
+      uVar6 = FUN_1804a69d0();
+      FUN_1804a7d00(uVar6,0,0);
+      pcVar3 = (code *)swi(3);
+      (*pcVar3)();
+      return;
+    }
+    pSVar1 = *(System_String_o **)(param_2 + 0x20);
+    if (((*(byte *)(Game_ItempropEvent_TypeInfo + 0x127) & 2) != 0) &&
+       (*(int *)(Game_ItempropEvent_TypeInfo + 0xd8) == 0)) {
+      FUN_180486620();
+    }
+    a = (System_String_o *)0x0;
+    if (pSVar1 != (System_String_o *)0x0) {
+      if (pSVar1->klass == string_TypeInfo) {
+        a = pSVar1;
+      }
+      if (a == (System_String_o *)0x0) {
+        FUN_180259620(pSVar1);
+        pcVar3 = (code *)swi(3);
+        (*pcVar3)();
+        return;
+      }
+    }
+    bVar4 = System_String__op_Equality
+                      (a,*(System_String_o **)
+                          (*(longlong *)(Game_ItempropEvent_TypeInfo + 0xb8) + 0xb8),
+                       (MethodInfo *)0x0);
+    if (bVar4) {
+      if (*(uint *)(param_2 + 0x18) < 2) {
+        uVar6 = FUN_1804a69d0();
+        FUN_1804a7d00(uVar6,0,0);
+        pcVar3 = (code *)swi(3);
+        (*pcVar3)();
+        return;
+      }
+      plVar2 = *(longlong **)(param_2 + 0x28);
+      if (plVar2 == (longlong *)0x0) goto LAB_180c4a08c;
+      if (*(Il2CppClass **)(*plVar2 + 0x40) != (int_TypeInfo->_1).element_class) {
+        FUN_180259620(plVar2,int_TypeInfo);
+        pcVar3 = (code *)swi(3);
+        (*pcVar3)();
+        return;
+      }
+      puVar5 = (undefined4 *)FUN_1803c7fa0();
+      UIScript_PCInscriptionShop_logic__RecordWeaponGradeAndTryPlayAnimator(param_1,*puVar5,0);
+    }
+    return;
+  }
+LAB_180c4a08c:
+  FUN_1804a7d90(0);
+  pcVar3 = (code *)swi(3);
+  (*pcVar3)();
+  return;
+}
+
+
+================================================================================
+FUNC: UIScript.PCInscriptionShop_logic$$SetUpDetailedPanel  @ 180c4d970
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void UIScript_PCInscriptionShop_logic__SetUpDetailedPanel
+               (longlong param_1,UnityEngine_Object_o *param_2,longlong param_3)
+
+{
+  undefined4 uVar1;
+  code *pcVar2;
+  ScriptEventManager_o *pSVar3;
+  System_String_o *pSVar4;
+  undefined8 in_stack_ffffffffffffffe8;
+  undefined4 uVar5;
+  
+  uVar5 = (undefined4)((ulonglong)in_stack_ffffffffffffffe8 >> 0x20);
+  if (cRam0000000186ac2166 == '\0') {
+    FUN_1804782b0(0x18e21);
+    cRam0000000186ac2166 = '\x01';
+  }
+  if ((param_3 != 0) && (*(longlong *)(param_1 + 0x230) != 0)) {
+    uVar1 = *(undefined4 *)(param_3 + 0x10);
+    System_Collections_Generic_Dictionary<RailResult,_FileResult>__set_Item
+              (*(longlong *)(param_1 + 0x230),param_2,uVar1,
+               _Method_System_Collections_Generic_Dictionary<Transform,_int>_set_Item__);
+    if (*(longlong *)(param_1 + 0x238) != 0) {
+      System_Collections_Generic_Dictionary<RailResult,_FileResult>__set_Item
+                (*(longlong *)(param_1 + 0x238),uVar1,param_3,
+                 _Method_System_Collections_Generic_Dictionary<int,_InscriptionUnit>_set_Item__);
+      if (cRam0000000186ac2167 == '\0') {
+        FUN_1804782b0();
+        cRam0000000186ac2167 = '\x01';
+      }
+      pSVar3 = ScriptEventManager__GetInstance((MethodInfo *)0x0);
+      if (param_2 != (UnityEngine_Object_o *)0x0) {
+        pSVar4 = UnityEngine_Object__get_name(param_2,(MethodInfo *)0x0);
+        if (pSVar3 != (ScriptEventManager_o *)0x0) {
+          ScriptEventManager__ExecEvent<string,_string,_int>
+                    (pSVar3,_StringLiteral_51259,_StringLiteral_51264,pSVar4,CONCAT44(uVar5,uVar1),
+                     _Method_ScriptEventManager_ExecEvent<string,_string,_int>__);
+          UIScript_PCInscriptionShop_logic__RefreshSetupOption(param_1,param_2,param_3,uVar1,0);
+          return;
+        }
+      }
+    }
+  }
+  FUN_1804a7d90(0);
+  pcVar2 = (code *)swi(3);
+  (*pcVar2)();
+  return;
+}
+
+
+INFO  REPORT: Save succeeded for processed file: /GameAssembly.dll (HeadlessAnalyzer)  

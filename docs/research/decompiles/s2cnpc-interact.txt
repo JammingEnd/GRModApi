@@ -1,0 +1,360 @@
+openjdk version "26.0.1" 2026-04-21
+OpenJDK Runtime Environment (build 26.0.1)
+OpenJDK 64-Bit Server VM (build 26.0.1, mixed mode)
+INFO  Using log config file: jar:file:/home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: /home/jammingend/.config/ghidra/ghidra_11.3.2_PUBLIC/application.log (LoggingInitialization)  
+INFO  Loading user preferences: /home/jammingend/.config/ghidra/ghidra_11.3.2_PUBLIC/preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (513 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (SSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: NativePRNGNonBlocking (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (ApplicationTrustManagerFactory)  
+INFO  Headless startup complete (1132 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 57 extension points (18 false positives) (ClassSearcher)  
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldOffset has been called by org.apache.felix.framework.util.SecureAction (file:/home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Base/lib/org.apache.felix.framework-7.0.5.jar)
+WARNING: Please consider reporting this to the maintainers of class org.apache.felix.framework.util.SecureAction
+WARNING: sun.misc.Unsafe::staticFieldOffset will be removed in a future release
+INFO  HEADLESS Script Paths:
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/DecompilerDependent/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/PyGhidra/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/8051/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/GnuDemangler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/FileFormats/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts
+    /tmp/opencode
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/BytePatterns/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Decompiler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/JVM/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/FunctionID/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/WildcardAssembler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/SwiftDemangler/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/VersionTracking/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Base/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/PDB/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Jython/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Debug/Debugger/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/PIC/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/BSim/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/Atmel/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Processors/DATA/ghidra_scripts
+    /home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/SystemEmulation/ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: /tmp/opencode/GunfireReborn_decomp_23_7_2026 (HeadlessAnalyzer)  
+INFO  Opening project: /tmp/opencode/GunfireReborn_decomp_23_7_2026 (HeadlessProject)  
+INFO  REPORT: Processing project file: /GameAssembly.dll (HeadlessAnalyzer)  
+INFO  SCRIPT: /tmp/opencode/decompile_npc.py (HeadlessAnalyzer)  
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by com.kenai.jffi.internal.StubLoader in an unnamed module (file:/home/jammingend/Documents/ghidra_11.3.2_PUBLIC/Ghidra/Features/Jython/lib/jython-standalone-2.7.4.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+================================================================================
+FUNC: s2cnpc$$GS2CNpcItemInteract  @ 1808521f0
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void s2cnpc__GS2CNpcItemInteract(undefined8 *param_1)
+
+{
+  UnityEngine_Quaternion_o UVar1;
+  code *pcVar2;
+  longlong lVar3;
+  float oid;
+  bool bVar4;
+  char cVar5;
+  System_Collections_Generic_List_InscriptionUnit__o *objlist;
+  undefined8 *puVar6;
+  UnityEngine_Quaternion_o *pUVar7;
+  UnityEngine_Transform_o *InscriptionOption;
+  UnityEngine_Quaternion_Fields *pUVar8;
+  InscriptionUnit_o *__this;
+  undefined8 uVar9;
+  int iVar10;
+  int iVar11;
+  MethodInfo *pMVar12;
+  DYPublic_DYNet_NetClient_ConnectFailHandler_o aDStack_148 [4];
+  undefined4 auStack_144 [3];
+  System_Collections_Generic_List_InscriptionUnit__o *pSStack_138;
+  undefined8 uStack_128;
+  longlong lStack_120;
+  undefined1 auStack_108 [32];
+  undefined1 auStack_e8 [40];
+  DYPublic_DYNet_NetClient_ConnectFailHandler_o *pDStack_c0;
+  DYPublic_DYNet_NetClient_DisconnectHandler_o *pDStack_b8;
+  undefined8 uStack_a8;
+  longlong lStack_a0;
+  undefined8 uStack_98;
+  UnityEngine_Quaternion_o UStack_80;
+  UnityEngine_Quaternion_o aUStack_70 [3];
+  
+  uStack_98 = 0xfffffffffffffffe;
+  if (cRam0000000186ac028f == '\0') {
+    FUN_1804782b0(0x2e4d2);
+    cRam0000000186ac028f = '\x01';
+  }
+  auStack_e8._0_8_ = (NetFunc_basenet_c *)0x0;
+  auStack_e8._8_8_ = (DYPublic_DYNet_NetClient_ConnectFailHandler_o *)0x0;
+  auStack_e8._16_8_ = (UnityEngine_MonoBehaviour_o *)0x0;
+  auStack_e8._24_8_ = (System_Collections_Generic_List_byte__o *)0x0;
+  auStack_108._0_8_ = (NetFunc_basenet_c *)0x0;
+  auStack_108._8_8_ = (void *)0x0;
+  auStack_108._16_8_ = (UnityEngine_MonoBehaviour_o *)0x0;
+  auStack_108._24_8_ = (DYPublic_DYNet_NetInterface_o *)0x0;
+  uStack_a8 = 0;
+  lStack_a0 = 0;
+  pDStack_c0 = aDStack_148;
+  if ((((HeroCtrlMgr_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((HeroCtrlMgr_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620(HeroCtrlMgr_TypeInfo);
+  }
+  if (HeroCtrlMgr_TypeInfo->static_fields->HeroObj == (NewPlayerObject_o *)0x0) {
+    uVar9 = _StringLiteral_54730;
+    if ((((DebugDY_TypeInfo->_2).bitflags2 & 2) != 0) &&
+       ((DebugDY_TypeInfo->_2).cctor_finished == 0)) {
+      FUN_180486620();
+      uVar9 = _StringLiteral_54730;
+    }
+  }
+  else {
+    if ((((MainManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+       ((MainManager_TypeInfo->_2).cctor_finished == 0)) {
+      FUN_180486620();
+    }
+    bVar4 = MainManager__CanOPNet((MethodInfo *)0x0);
+    if (bVar4) {
+      lVar3 = param_1[1];
+      objlist = (System_Collections_Generic_List_InscriptionUnit__o *)
+                FUN_1804b8f20(_System_Collections_Generic_List<InscriptionUnit>_TypeInfo);
+      System_Collections_Generic_List<serveruiobj>___ctor
+                (objlist,_Method_System_Collections_Generic_List<InscriptionUnit>__ctor__);
+      pSStack_138 = objlist;
+      if (lVar3 == 0) {
+        FUN_1804a7d90(0);
+        pcVar2 = (code *)swi(3);
+        (*pcVar2)();
+        return;
+      }
+      pMVar12 = 
+      _Method_System_Collections_Generic_List<s2cnpc_GS2CNpcItemInteractClass_ClasslstItem>_GetEnumerator__
+      ;
+      puVar6 = (undefined8 *)
+               System_Collections_Generic_List<WeightRandom_Entity<object>>__GetEnumerator
+                         (aUStack_70);
+      auStack_e8._0_8_ = *puVar6;
+      auStack_e8._8_8_ = puVar6[1];
+      auStack_e8._16_8_ = puVar6[2];
+      auStack_e8._24_8_ = puVar6[3];
+      iVar10 = -1;
+      do {
+        cVar5 = func_0x0001817fe370(auStack_e8,
+                                    _Method_System_Collections_Generic_List_Enumerator<s2cnpc_GS2CNpcItemInteractClass_ClasslstItem>_MoveNext__
+                                   );
+        if (cVar5 == '\0') {
+          auStack_144[iVar10] = 0xda;
+          NetFunc_basenet__OnServerCommand
+                    ((NetFunc_basenet_o *)auStack_e8,
+                     (int32_t)
+                     _Method_System_Collections_Generic_List_Enumerator<s2cnpc_GS2CNpcItemInteractClass_ClasslstItem>_Dispose__
+                     ,pMVar12);
+          pDStack_c0 = (DYPublic_DYNet_NetClient_ConnectFailHandler_o *)*param_1;
+          pDStack_b8 = (DYPublic_DYNet_NetClient_DisconnectHandler_o *)param_1[1];
+          uVar9 = *param_1;
+          if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+             ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+            FUN_180486620();
+          }
+          WarInscriptionManager__SetupInscriptionPanel
+                    ((int32_t)pDStack_c0,(int32_t)((ulonglong)uVar9 >> 0x20),objlist,
+                     (MethodInfo *)0x0);
+          return;
+        }
+        pUVar7 = DG_Tweening_ShortcutExtensions_<>c__DisplayClass73_0__<DOBlendableLocalRotateBy>b__0
+                           (&UStack_80,
+                            (DG_Tweening_ShortcutExtensions___c__DisplayClass73_0_o *)auStack_e8,
+                            _Method_System_Collections_Generic_List_Enumerator<s2cnpc_GS2CNpcItemInteractClass_ClasslstItem>_get_Current__
+                           );
+        oid = (pUVar7->fields).x;
+        uStack_128._0_4_ = (pUVar7->fields).x;
+        uStack_128._4_4_ = (pUVar7->fields).y;
+        lStack_120._0_4_ = (pUVar7->fields).z;
+        lStack_120._4_4_ = (pUVar7->fields).w;
+        InscriptionOption =
+             (UnityEngine_Transform_o *)
+             FUN_1804b8f20(_System_Collections_Generic_List<InscriptionUnit_Option>_TypeInfo);
+        System_Collections_Generic_List<serveruiobj>___ctor
+                  (InscriptionOption,
+                   _Method_System_Collections_Generic_List<InscriptionUnit_Option>__ctor__);
+        auStack_e8._32_8_ = InscriptionOption;
+        if (lStack_120 == 0) {
+code_r0x000180852649:
+          FUN_1804a7d90(0);
+          FUN_1802590e0(0,0,0);
+          pcVar2 = (code *)swi(3);
+          (*pcVar2)();
+          return;
+        }
+        pMVar12 = 
+        _Method_System_Collections_Generic_List<s2cnpc_GS2CNpcItemInteractClass_ClasslstOptionCost>_GetEnumerator__
+        ;
+        puVar6 = (undefined8 *)
+                 System_Collections_Generic_List<WeightRandom_Entity<object>>__GetEnumerator
+                           (&uStack_128);
+        auStack_108._0_8_ = *puVar6;
+        auStack_108._8_8_ = puVar6[1];
+        auStack_108._16_8_ = puVar6[2];
+        auStack_108._24_8_ = puVar6[3];
+        while (cVar5 = func_0x0001817fe370(auStack_108,
+                                           _Method_System_Collections_Generic_List_Enumerator<s2cnpc_GS2CNpcItemInteractClass_ClasslstOptionCost>_MoveNext__
+                                          ), cVar5 != '\0') {
+          pUVar8 = &DG_Tweening_ShortcutExtensions_<>c__DisplayClass73_0__<DOBlendableLocalRotateBy>b__0
+                              (aUStack_70,
+                               (DG_Tweening_ShortcutExtensions___c__DisplayClass73_0_o *)auStack_108
+                               ,
+                               _Method_System_Collections_Generic_List_Enumerator<s2cnpc_GS2CNpcItemInteractClass_ClasslstOptionCost>_get_Current__
+                              )->fields;
+          UVar1.fields = *pUVar8;
+          FUN_180f89eb0(&uStack_a8,UVar1.fields.x,UVar1.fields._0_8_ >> 0x20,UVar1.fields.z,
+                        UVar1.fields.w,0);
+          if (InscriptionOption == (UnityEngine_Transform_o *)0x0) {
+            FUN_1804a7d90(0);
+            FUN_1802590e0(0,0,0);
+            goto code_r0x000180852642;
+          }
+          uStack_128 = uStack_a8;
+          lStack_120 = lStack_a0;
+          pMVar12 = _Method_System_Collections_Generic_List<InscriptionUnit_Option>_Add__;
+          System_Collections_Generic_List<WeightRandom_Entity<object>>__Add
+                    (InscriptionOption,&uStack_128);
+        }
+        iVar11 = iVar10 + 1;
+        *(undefined4 *)(aDStack_148 + (longlong)iVar11 * 4) = 0xb1;
+        NetFunc_basenet__OnServerCommand
+                  ((NetFunc_basenet_o *)auStack_108,
+                   (int32_t)
+                   _Method_System_Collections_Generic_List_Enumerator<s2cnpc_GS2CNpcItemInteractClass_ClasslstOptionCost>_Dispose__
+                   ,pMVar12);
+        if (((iVar11 != -1) && (*(int *)(aDStack_148 + (longlong)iVar11 * 4) == 0xb1)) &&
+           (-1 < iVar11)) {
+          iVar11 = iVar10;
+        }
+        __this = (InscriptionUnit_o *)FUN_1804b8f20(InscriptionUnit_TypeInfo);
+        InscriptionUnit___ctor
+                  (__this,(int32_t)oid,
+                   (System_Collections_Generic_List_InscriptionUnit_Option__o *)InscriptionOption,
+                   (MethodInfo *)0x0);
+        if (objlist == (System_Collections_Generic_List_InscriptionUnit__o *)0x0) {
+code_r0x000180852642:
+          FUN_1804a7d90(0);
+          goto code_r0x000180852649;
+        }
+        pMVar12 = _Method_System_Collections_Generic_List<InscriptionUnit>_Add__;
+        System_Collections_Generic_List<serveruiobj>__Add(objlist,__this);
+        iVar10 = iVar11;
+      } while( true );
+    }
+    uVar9 = _StringLiteral_54731;
+    if ((((DebugDY_TypeInfo->_2).bitflags2 & 2) != 0) &&
+       ((DebugDY_TypeInfo->_2).cctor_finished == 0)) {
+      FUN_180486620();
+      uVar9 = _StringLiteral_54731;
+    }
+  }
+  DebugDY__ColorLog<string>(0xfa8,uVar9,Method_DebugDY_ColorLog<string>__);
+  return;
+}
+
+
+================================================================================
+FUNC: s2cnpc$$GS2CNpcItemResult  @ 180852670
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void s2cnpc__GS2CNpcItemResult(ulonglong *param_1)
+
+{
+  code *pcVar1;
+  ulonglong uVar2;
+  ScriptEventManager_o *pSVar3;
+  undefined8 unaff_RDI;
+  ulonglong uVar4;
+  ulonglong uVar5;
+  
+  if (cRam0000000186ac0290 == '\0') {
+    FUN_1804782b0(0x2e4d3);
+    cRam0000000186ac0290 = '\x01';
+  }
+  uVar5 = *param_1;
+  uVar4 = uVar5 >> 0x20;
+  if ((((WarInscriptionManager_TypeInfo->_2).bitflags2 & 2) != 0) &&
+     ((WarInscriptionManager_TypeInfo->_2).cctor_finished == 0)) {
+    FUN_180486620();
+  }
+  uVar2 = param_1[1];
+  if (cRam0000000186ac1ab4 == '\0') {
+    FUN_1804782b0(0x2c529,uVar4,(int)uVar2,0,uVar5);
+    cRam0000000186ac1ab4 = '\x01';
+  }
+  pSVar3 = ScriptEventManager__GetInstance((MethodInfo *)0x0);
+  if (((*(byte *)(Game_EvenType_TypeInfo + 0x127) & 2) != 0) &&
+     (*(int *)(Game_EvenType_TypeInfo + 0xd8) == 0)) {
+    FUN_180486620(Game_EvenType_TypeInfo);
+  }
+  if (pSVar3 != (ScriptEventManager_o *)0x0) {
+    ScriptEventManager__ExecEvent<Transform,_int,_int>
+              (pSVar3,*(undefined8 *)(*(longlong *)(Game_EvenType_TypeInfo + 0xb8) + 0x60),
+               _StringLiteral_41727,uVar4,(int)uVar2,
+               Method_ScriptEventManager_ExecEvent<string,_int,_int>__,unaff_RDI);
+    return;
+  }
+  FUN_1804a7d90(0);
+  pcVar1 = (code *)swi(3);
+  (*pcVar1)();
+  return;
+}
+
+
+================================================================================
+NO FUNCTION at 0x18084d4a0
+================================================================================
+FUNC: s2cnpc$$C2GSNPCInteract  @ 18084e720
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void s2cnpc__C2GSNPCInteract(int32_t iNpc,int32_t iType,int32_t iSID,MethodInfo *method)
+
+{
+  Il2CppObject *arg0;
+  Il2CppObject *arg1;
+  Il2CppObject *arg2;
+  System_String_o *sMsg;
+  int32_t aiStackX_8 [2];
+  int32_t aiStackX_10 [2];
+  int32_t aiStackX_18 [2];
+  
+  if (cRam0000000186ac027d == '\0') {
+    FUN_1804782b0(0x2e4bc);
+    cRam0000000186ac027d = '\x01';
+  }
+  DYPublic_Duonet_Duonet__SendData<s2cnpc_C2GSNPCInteractClass>
+            (StringLiteral_29636,_StringLiteral_30767,CONCAT44(iType,iNpc),
+             _Method_DYPublic_Duonet_Duonet_SendData<s2cnpc_C2GSNPCInteractClass>__);
+  aiStackX_8[0] = iNpc;
+  arg0 = (Il2CppObject *)FUN_1804b8a90(int_TypeInfo,aiStackX_8);
+  aiStackX_10[0] = iSID;
+  arg1 = (Il2CppObject *)FUN_1804b8a90(int_TypeInfo,aiStackX_10);
+  aiStackX_18[0] = iType;
+  arg2 = (Il2CppObject *)FUN_1804b8a90(ServerDefine_FightType_TypeInfo,aiStackX_18);
+  sMsg = System_String__Format(_StringLiteral_54707,arg0,arg1,arg2,(MethodInfo *)0x0);
+  if ((((DebugDY_TypeInfo->_2).bitflags2 & 2) != 0) && ((DebugDY_TypeInfo->_2).cctor_finished == 0))
+  {
+    FUN_180486620();
+  }
+  DebugDY__StateEventLog(0xfa8,sMsg,-1,(MethodInfo *)0x0);
+  return;
+}
+
+
+INFO  REPORT: Save succeeded for processed file: /GameAssembly.dll (HeadlessAnalyzer)  
