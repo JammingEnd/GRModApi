@@ -93,23 +93,37 @@ Test/
 Extracted from `Test_StartingChestHook`. Contains the production-critical path
 that makes custom IDs resolve:
 
-- Patches on `inscriptionData`: `GetData`, `GetNormalData`, `GetPressData`,
-  `GetInscriptionData`, `GetWeaponAttrInfo`, `GetAllInscription`,
+- Patches on `inscriptionData`: `GetInscriptionData` (**prefix only** — the
+  essential half; the diagnostic postfix for the same original moves to
+  `InscriptionDiagnostics`), `GetWeaponAttrInfo`, `GetAllInscription`,
   `GetWeaponInscription`, `Init`.
-- Patches on `TableData.inscriptiondata`: `GetData` family.
+- Patches on `TableData.inscriptiondata`: `GetData`, `GetNormalData`,
+  `GetPressData` (all postfixes; note these live on `TableData.inscriptiondata`,
+  NOT `inscriptionData`).
 - Helpers: `MakeData`, `InjectIntoDict`, `InjectIntoInstance`,
   `InjectIntoTableDict`, `AssignIdsFromTable` call.
+- Diagnostic log lines that currently sit inside essential methods
+  (`PostInscriptionDataInit`'s `[INS_INIT]`, `PostGetTableData`'s
+  `[TABLE_DATA]`, and `InjectIntoInstance`'s `LogDataComparison()` call) are
+  **dropped from the essential module**. `InscriptionDiagnostics` re-triggers the
+  same information by its own postfixes on the same originals (it patches `Init`
+  and the `GetData` family too); no essential→diagnostics reference is kept.
 - Moves out of the `GRModApi.Test` namespace into `GRModApi.Modules.Inscriptions`.
 
 ### Component: `InscriptionDiagnostics` (gated, default off)
 
 Extracted from `Test_StartingChestHook`. Debug-only logging postfixes:
 
-- `OnAddWeapon`, `PostUpdatePropByItem`, `PostGetPropObjAndUpdate`,
-  `PostGS2CItemAdd`, `PostGS2CEquipAdd`, `PostCheckInscWeapon`,
-  `PostCheckInscTag`, `PostSetWeaponInscriptionPanel`, `PostShowInscription`,
-  `PostShowInscriptionList`, `PostGetAddAttrInfo`, `PostAggregateB0`,
-  `LogDataComparison`, `HasCustom`.
+- `PostGetInscriptionData`, `OnAddWeapon`, `PostUpdatePropByItem`,
+  `PostGetPropObjAndUpdate`, `PostGS2CItemAdd`, `PostGS2CEquipAdd`,
+  `PostCheckInscWeapon`, `PostCheckInscTag`, `PostSetWeaponInscriptionPanel`,
+  `PostShowInscription`, `PostShowInscriptionList`, `PostGetAddAttrInfo`,
+  `PostAggregateB0`, `LogDataComparison`, `HasCustom`.
+
+This module patches its own set of originals (including `GetInscriptionData`
+postfix and the `GetData` family, which the essential module also touches) and
+re-implements the `[INS_INIT]`/`[TABLE_DATA]`/`LogDataComparison` logging itself;
+it does not depend on `InscriptionDataPatch`.
 
 Only installs its patches when a config `Debug.Enabled` (default `false`) is set.
 Uses `Logger.CreateLogSource` like the current code.
@@ -129,11 +143,17 @@ reflected in real combat damage (solo/offline — server sim is in-process):
   3. Apply `__result = (base + addSum) * (mulSum + 10000) / 10000` to the base
      `Att` value.
 - Gated by config `Damage.Enabled` (default `true`).
+- `CombatDamagePatch.Apply(harmony, damageEnabled, debugEnabled, log)` — the
+  `[COMBAT]` verification log lines are emitted only when `Debug.Enabled` is on
+  (threaded through), while the postfix itself is installed whenever
+  `Damage.Enabled` is on.
 - Hooks **unconditionally** (no solo/online guard); online co-op is a remote
   server so the getter postfix simply won't fire there. Verification step
   confirms this in-game.
-- Generic-method patching: try open generic via `AccessTools.Method(typeof(CArgBase),
-  "GetCurWeaponAttr")`; fallback to `MakeGenericMethod(typeof(int))` closed form.
+- Generic-method patching: Harmony cannot patch an open generic definition, and
+  the server calls the closed `<int>` form. Lead with
+  `AccessTools.Method(typeof(CArgBase), "GetCurWeaponAttr", ...)` then
+  `MakeGenericMethod(typeof(int))`.
 
 ### Component: `InscriptionInjector` (kept, cleaned)
 
@@ -157,7 +177,7 @@ reflected in real combat damage (solo/offline — server sim is in-process):
 - Register `[Damage] Enabled` and `[Debug] Enabled` config entries.
 - Call `InscriptionDataPatch.Apply(harmony)` (essential) always.
 - Call `InscriptionDiagnostics.Apply(harmony, debugEnabled)` when enabled.
-- Call `CombatDamagePatch.Apply(harmony, damageEnabled, log)`.
+- Call `CombatDamagePatch.Apply(harmony, damageEnabled, debugEnabled, log)`.
 - Remove `WeaponStatsPatch.Apply()` / `CombatEventsPatch.Apply()` calls.
 
 ### `InscriptionBase.cs` changes
@@ -181,8 +201,10 @@ GS2CItemAdd/EquipAdd
 
 ## Error handling / risks
 
-- **Generic method patching** on Il2Cpp interop: patch open generic, fallback to
-  closed `<int>` form. If neither binds, log a clear warning and continue.
+- **Generic method patching** on Il2Cpp interop: patch the closed `<int>` form
+  (`AccessTools.Method` + `MakeGenericMethod(typeof(int))`); the open generic
+  definition is not patchable by Harmony. If neither binds, log a clear warning
+  and continue.
 - All patches wrapped in try/catch with `Log.LogWarning` on failure (existing
   pattern in `Test_StartingChestHook.TryPatch`).
 - Postfix must guard null prop / null inscription list / non-custom lists (fast
@@ -198,7 +220,7 @@ GS2CItemAdd/EquipAdd
    - Tooltip number for a `+300%` affix matches the recompute formula.
    - **Real damage dealt** on a hit with the custom affix reflects the bonus
      (CombatDamagePatch path). Log `[COMBAT]` lines on getter hits for
-     verification, gated behind Debug config.
+     verification, emitted only when `Debug.Enabled` is on.
 3. Diagnostics gated off by default: startup log shows the module count but no
    `[PROP]`/`[BASE_UI]` spam unless `Debug.Enabled = true`.
 
