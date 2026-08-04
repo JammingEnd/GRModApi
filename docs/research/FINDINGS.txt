@@ -1,0 +1,4 @@
+-within the singelon/static class ItemData -> instance -> m_WeaponDataDict[] there are the default stats for the weapons, here the ItemDataClass.AttDamage = 12800 for a weapon that does 128 damage.
+-the exact same instances of m_WeaponDataDict are found in m_AvailableData[] regarding weapons.
+-upgrading weapons resets the affix calculation we made. it also seems like theyre base weapons, seeing as their damage is still 12800 (128) but when i upgrade my weapon their AttDamage doesnt go up, whislt the weapons in ItemPropCache are being updated by level. haven found yet where their levels are stored. none in m_propDict (quality or level or enhance) are seeing any data.
+-The stats in these are updates from somewhere, manually editing it in UnityExplorer updates them back to their default stat. something must be updating this as a base
