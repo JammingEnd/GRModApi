@@ -6,9 +6,6 @@ public abstract class WeaponInscription
     public InscriptionAttribute? Metadata { get; internal set; }
 
     public virtual void ModifyStats(WeaponStatContext ctx) { }
-    public virtual void OnHit(HitContext ctx) { }
-    public virtual void OnKill(KillContext ctx) { }
-    public virtual void OnShoot(ShootContext ctx) { }
     public virtual void OnReload() { }
     public virtual void OnWeaponSwap() { }
 }
