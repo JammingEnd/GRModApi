@@ -16,6 +16,7 @@ public static class InscriptionDiagnostics
     private static ManualLogSource? _log;
     private static Il2CppSystem.Collections.Generic.List<int>? _lastForgetList;
     private static PCWeaponBaseTitle? _lastUIInstance;
+    private static bool _comparing;
 
     public static void Apply(Harmony harmony, bool enabled)
     {
@@ -153,6 +154,11 @@ public static class InscriptionDiagnostics
 
     private static void LogDataComparison()
     {
+        // LogDataComparison reads TableData.inscriptiondata.GetData(), which is one
+        // of the methods we postfix (PostGetTableData). Calling it from inside that
+        // postfix recurses infinitely, so guard against reentrancy.
+        if (_comparing) return;
+        _comparing = true;
         try
         {
             var dict = TableData.inscriptiondata.GetData();
@@ -181,6 +187,10 @@ public static class InscriptionDiagnostics
         catch (System.Exception ex)
         {
             _log?.LogWarning($"[COMPARE] Failed: {ex.Message}");
+        }
+        finally
+        {
+            _comparing = false;
         }
     }
 

@@ -59,24 +59,49 @@ public static class CombatDamagePatch
 
     private static void ApplyBonus(CSkillBase skill, STR_ENUM.INFO_PROP_LIST attr, ref int result)
     {
-        if (skill == null || attr != STR_ENUM.INFO_PROP_LIST.Att) return;
+        // Only the Att stat drives damage; ignore the other getter calls.
+        if (attr != STR_ENUM.INFO_PROP_LIST.Att) return;
+
+        if (_debug) _log?.LogInfo($"[COMBAT] Att getter fired, result={result}");
+        if (skill == null)
+        {
+            if (_debug) _log?.LogInfo("[COMBAT] skill=null");
+            return;
+        }
 
         try
         {
             // Read the weapon prop directly from the skill (the server sim populates
             // CSkillBase.ItemPropCache in-process during solo combat).
             var prop = skill.ItemPropCache;
-            if (prop == null) return;
+            if (prop == null)
+            {
+                if (_debug) _log?.LogInfo("[COMBAT] ItemPropCache=null");
+                return;
+            }
 
             var inscriptionList = prop.Inscription;
-            if (inscriptionList == null || inscriptionList.Count == 0) return;
+            if (inscriptionList == null)
+            {
+                if (_debug) _log?.LogInfo("[COMBAT] Inscription=null");
+                return;
+            }
+            if (inscriptionList.Count == 0)
+            {
+                if (_debug) _log?.LogInfo("[COMBAT] Inscription empty");
+                return;
+            }
 
             var ids = new List<int>();
             for (int i = 0; i < inscriptionList.Count; i++)
                 ids.Add(inscriptionList[i]);
 
             var totals = InscriptionStatAggregator.Aggregate(ids);
-            if (!totals.TryGetValue(Game.ItempropEvent.Att, out var t)) return;
+            if (!totals.TryGetValue(Game.ItempropEvent.Att, out var t))
+            {
+                if (_debug) _log?.LogInfo("[COMBAT] no custom Att");
+                return;
+            }
             if (t.Mul == 0 && t.Add == 0) return;
 
             int baseVal = result;
