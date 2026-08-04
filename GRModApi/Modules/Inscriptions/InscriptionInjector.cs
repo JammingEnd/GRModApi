@@ -92,25 +92,15 @@ public static class InscriptionInjector
         Il2CppSystem.Collections.Generic.Dictionary<Il2CppSystem.String, Il2CppSystem.Object> dInfo,
         Il2CppSystem.Collections.Generic.List<int> list)
     {
-        var totals = new Dictionary<string, (int mul, int add)>();
+        var ids = new List<int>();
         for (int i = 0; i < list.Count; i++)
         {
             var id = list[i];
-            if (id == 0) continue;
-            if (!InscriptionRegistry.Instance.IsCustom(id)) continue;
-            var insc = InscriptionRegistry.Instance.GetById(id);
-            if (insc == null) continue;
-
-            var ctx = new WeaponStatContext();
-            insc.ModifyStats(ctx);
-            foreach (var kvp in ctx.Attrs)
-            {
-                if (totals.TryGetValue(kvp.Key, out var acc))
-                    totals[kvp.Key] = (acc.mul + kvp.Value.MulValue, acc.add + kvp.Value.AddValue);
-                else
-                    totals[kvp.Key] = (kvp.Value.MulValue, kvp.Value.AddValue);
-            }
+            if (id != 0 && InscriptionRegistry.Instance.IsCustom(id))
+                ids.Add(id);
         }
+
+        var totals = InscriptionStatAggregator.Aggregate(ids);
 
         foreach (var kvp in totals)
         {
