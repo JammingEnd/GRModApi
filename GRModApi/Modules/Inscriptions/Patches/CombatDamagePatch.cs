@@ -2,6 +2,7 @@ using System.Reflection;
 using BepInEx.Logging;
 using DataHelper;
 using HarmonyLib;
+using Item;
 using SkillBolt;
 
 namespace GRModApi.Modules.Inscriptions.Patches;
@@ -15,6 +16,7 @@ public static class CombatDamagePatch
     private static bool _debug;
     private static readonly HashSet<string> _fired = new();
     private static long _lastCombatLogMs;
+    private static long _lastPropLogMs;
 
     public static void Apply(Harmony harmony, bool debugEnabled, ManualLogSource log)
     {
@@ -23,6 +25,7 @@ public static class CombatDamagePatch
 
         TryPatch(harmony, "GetCurWeaponAttr", nameof(PostfixGetCurWeaponAttr));
         TryPatch(harmony, "GetWeaponPerformAttr", nameof(PostfixGetWeaponPerformAttr));
+        TryPatchPropByItem(harmony);
     }
 
     private static void TryPatch(Harmony harmony, string methodName, string postfixName)
@@ -39,13 +42,39 @@ public static class CombatDamagePatch
             // Harmony cannot patch an open generic definition; the server calls the
             // closed <int> form, so patch that.
             var closed = generic.MakeGenericMethod(typeof(int));
+            long addr = 0;
+            try { addr = (long)closed.MethodHandle.GetFunctionPointer(); } catch { }
             harmony.Patch(closed,
                 postfix: new HarmonyMethod(typeof(CombatDamagePatch).GetMethod(postfixName, Flags)));
-            _log?.LogInfo($"Patched CArgBase.{methodName}<int>");
+            _log?.LogInfo($"Patched CArgBase.{methodName}<int> at 0x{addr:X}");
         }
         catch (System.Exception ex)
         {
             _log?.LogWarning($"Failed to patch CArgBase.{methodName}: {ex.Message}");
+        }
+    }
+
+    // GetPropByItem is the non-generic choke point that GetCurWeaponAttr /
+    // GetWeaponPerformAttr (and every other prop read) calls internally, so a
+    // postfix here fires regardless of which generic instantiation the game uses.
+    private static void TryPatchPropByItem(Harmony harmony)
+    {
+        try
+        {
+            var original = AccessTools.Method(typeof(ItemPropCache),
+                nameof(ItemPropCache.GetPropByItem), new System.Type[] { typeof(int) });
+            if (original == null)
+            {
+                _log?.LogWarning("ItemPropCache.GetPropByItem not found");
+                return;
+            }
+            harmony.Patch(original,
+                postfix: new HarmonyMethod(typeof(CombatDamagePatch).GetMethod(nameof(PostGetPropByItem), Flags)));
+            _log?.LogInfo("Patched ItemPropCache.GetPropByItem");
+        }
+        catch (System.Exception ex)
+        {
+            _log?.LogWarning($"Failed to patch ItemPropCache.GetPropByItem: {ex.Message}");
         }
     }
 
@@ -79,6 +108,38 @@ public static class CombatDamagePatch
         if (now - _lastCombatLogMs < 250) return false;
         _lastCombatLogMs = now;
         return true;
+    }
+
+    private static void PostGetPropByItem(int itemid, NewItemProp __result)
+    {
+        if (!_debug || __result == null) return;
+        try
+        {
+            bool hasOurs = false;
+            var list = __result.Inscription;
+            if (list != null)
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (InscriptionRegistry.Instance.IsCustom(list[i]))
+                    {
+                        hasOurs = true;
+                        break;
+                    }
+                }
+            }
+
+            var now = System.Environment.TickCount64;
+            if (hasOurs || now - _lastPropLogMs >= 500)
+            {
+                _lastPropLogMs = now;
+                _log?.LogInfo($"[GETPROP] itemid={itemid} Att={__result.Att} hasOurs={hasOurs}");
+            }
+        }
+        catch (System.Exception ex)
+        {
+            if (_debug) _log?.LogWarning($"[GETPROP] failed: {ex.Message}");
+        }
     }
 
     private static void ApplyBonus(CSkillBase skill, STR_ENUM.INFO_PROP_LIST attr, ref int result)
